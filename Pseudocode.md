@@ -1,3 +1,5 @@
+## Pseudocode
+
 This page discusses the pseudocode used for code examples throughout the site.
 
 The pseudocode used here is not a formal language, but should be understandable to anyone with a semester or two of coursework
