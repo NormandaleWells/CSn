@@ -33,12 +33,12 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [rotate left](algorithms/rotate-left.md)
 * * [rotate right](algorithms/rotate-right.md)
 * [Half-open ranges](Half-open-ranges.md)
-* * [Basic algorithms revisited](Basic-algorithms-with-subranges.md)
+* * [Basic algorithms revisited](Basic-algorithms-subranges.md)
 * Algorithm correctness
 * * Preconditions and exceptions
 * * Postconditions and testing
 * * Invariants
-* * [Basic algorithms revisited](Basic-algorithms-with-correctness-proofs.md)
+* * [Basic algorithms revisited](Basic-algorithms-proofs.md)
 * * Upper/lower bound (binary search)
 * Simple sorts
 * * Selection sort
@@ -58,7 +58,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Comparator
 * * * Iterator
 * * * Predicate
-* * [Basic algorithms revisited](Basic-algorithms-using-generics.md)
+* * [Basic algorithms revisited](Basic-algorithms-generic.md)
 * Linked lists
 * Some elementary ADTs
 * * Stack
