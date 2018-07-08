@@ -1,0 +1,76 @@
+This page discusses the pseudocode used for code examples throughout the site.
+
+The pseudocode used here is not a formal language, but should be understandable to anyone with a semester or two of coursework
+that involved writing code.  The documentation here is really a set of conventions.
+
+### Types
+
+Data types within collections will generally not be specified.  Any necessary functionality will be documented
+(e.g. "the elements of `A` must be comparable").  Collection types have a `.type` property that can be used to get
+the type of data stored in the collection.  All elements of a collection will have the same type.
+
+Scalar types will, when appropriate, be typed as `integer`, `float`, `boolean`, or `string`, with the obvious meaning.
+There is also a scalar type `index` which can be used to indicate an array index.  The `index` type has a special value
+`invalid` which indicates an invalid index.
+
+### Variable names
+
+Variables whose names begin with an uppercase character are arrays or other collections, and those with names beginning
+with lowercase characters are scalars or aggregates.  Collections and aggregates may have properties, specified using dot
+notation, e.g. A.length or node.next.  The available properties for a type will be enumerated in the accompanying discussion
+of that type, along with their meaning.  Property names will begin with a lowercase letter.
+
+Arrays are indexed using `[]`.
+
+Variable names for aggregate types (e.g. the Node type used by linked lists) will begin with a lowercase character,
+mainly because these are often also used as properties of a collection type (e.g. List.first).
+
+Function names begin with a lowercase character.
+
+Multiple words within a variable or function name will be separated by underscores (e.g. min_index).  The language-specific
+implementations will, of course, follow the standard conventions for that language (e.g. camelCase for names in Java code).
+
+### Operators
+
+The usual arithmetic operators are available: `+`, `-`, `/`, `*`, and `%` (where the last indicates a modulus operation).
+Integer arithmetic rounds toward `-infinity`.
+
+### Statement blocks
+
+Blocks of statements are delineated by indentation, rather than curly braces, `begin`/`end` statements, or other syntactic elements.
+ 
+### Conditionals
+
+Conditional statements use the standard `if/elseif/else` keywords.
+
+### Loops
+
+Both `while` loops and `for` loops are supported.  There are two flavors of `for` loops; the traditional C-style loop with
+the initialization, condition, and increment sections separated by semi-colons, and the range-style, for which the `in`
+keyword is used to specify a range over which an index variable ranges.  The most common such loops are
+```
+for (node = List.first; node != null; node = node.next)
+```
+and
+```
+for (i in [0,a.length))
+```
+Note the use of a half-open range in the latter example.  This is discussed in [half-open ranges](Half-open-ranges).
+
+### Functions
+
+Functions are defined similarly to C++ and Java, except that argument types are often left out if they're obvious from the context.
+For example, in
+```
+index find(A, v)
+```
+it should obvious from the context that `A` is an array, and `v` is an object of the same type stored in the array.
+
+Functions which return nothing simply leave out the return value in the first line of the function, like this:
+```
+swap(A, idx1, idx2)
+```
+
+### Comments
+
+Comments begin with `//` and extend to the end of the line.
