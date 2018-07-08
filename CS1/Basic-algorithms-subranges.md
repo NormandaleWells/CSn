@@ -1,4 +1,4 @@
-In these section, we're going to modify our [basic algorithms](Basic-algorithms) to support sub-ranges.
+In these section, we're going to modify our [basic algorithms](Basic-algorithms.md) to support sub-ranges.
 We'll change the calling parameters so that index variables `lo` and `hi` come immediately after the array,
 followed by other parameters (if any).  For example, the find algorithm becomes
 ```
