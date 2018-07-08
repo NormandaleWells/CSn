@@ -1,3 +1,5 @@
+## Basic algorithms
+
 This section introduces some very basic array-based algorithms.  We'll see that we can put these simple algorithms to use in creating more complex algorithms and data structures.  Also, as we go through the topics in CS1, we'll come back to these often and update them to reflect what we've learned.
 
 We're purposely ignoring the fact that most of these algorithms are available in the standard libraries of most languages, since the purpose here is to show how they're implemented, and how to use them to get useful work done.  They're also simple enough to provide good examples when discussing preconditions, loop invariants, and generic coding.  When writing in, say, C++, you're advised to use the versions in the `<algorithms>` header rather than these.
