@@ -1,9 +1,10 @@
-# CSn
+# Welcome to the CSn wiki!
+
 Wiki and code repository for my CS0, CS1, and CS2 classes
 
 This repo is my course notes and source code for the CS0, CS1, and CS2 classes I teach at Normandale Community College, in Bloomington, MN.  This is, and will probably forever remain, a work in progress.
 
-# Welcome to the CSn wiki!
+# Table of Contents
 
 Here is the breakdown of topics, by course.  Note that this is not a hard-and-fast breakdown; there are some semesters in which I may choose to incorporate some CS1 topics into CS0 or CS2, or introduce some CS2 topics into CS1.
 
