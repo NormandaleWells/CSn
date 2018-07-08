@@ -13,7 +13,7 @@ A half-open range begins some at some index `lo`, and extends up to **but not in
 In this section, I hope to convince you that using half-open ranges is the most natural and least error-prone
 of the two techniques for working with sub-ranges of arrays.
 
-We will also [re-implement our basic algorithms](Basic-algorithms-subranges) so that they work with sub-ranges of arrays.
+We will also [re-implement our basic algorithms](Basic-algorithms-subranges.md) so that they work with sub-ranges of arrays.
 
 ### Notation
 
@@ -35,7 +35,7 @@ Consider the canonical loop for processing all the elements of an array:
 ```
 for (int i = 0; i < A.length; i++)
 ```
-Note that we're effectively thinking in terms of the half-open range [0,A.length).
+Note that we're effectively thinking in terms of the half-open range `[0,A.length)`.
 No experienced programmer would ever use the equivalent closed range code:
 ```
 // No experienced programmer does this.
@@ -120,7 +120,7 @@ Be aware, however, that `[2,2)` is an empty range; this does seem a bit counter-
 but it's really no worse than the fact that the corresponding closed range would be `[2,1]`.
 
 Finally, using half-open ranges makes it much easier to state loop invariants, and do correctness arguments.
-For a good example of this, see the [lower_bound()](lower_bound-algorithm) algorithm.
+For a good example of this, see the [lower_bound()](algorithms-proof/lower_bound.md) algorithm.
 
 ### Language support
 
