@@ -24,7 +24,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * Recursion
 
 ## CS1 (CSci 2001 at Normandale)
-* [Some basic algorithms](Basic-algorithms.md)
+* [Some basic algorithms](CS1/Basic-algorithms.md)
 * * [find (linear search)](algorithms/find.md)
 * * [count](algorithms/count.md)
 * * [min element](algorithms/min-element.md)
@@ -32,13 +32,13 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [swap](algorithms/swap.md)
 * * [rotate left](algorithms/rotate-left.md)
 * * [rotate right](algorithms/rotate-right.md)
-* [Half-open ranges](Half-open-ranges.md)
-* * [Basic algorithms revisited](Basic-algorithms-subranges.md)
+* [Half-open ranges](CS1/Half-open-ranges.md)
+* * [Basic algorithms revisited](CS1/Basic-algorithms-subranges.md)
 * Algorithm correctness
 * * Preconditions and exceptions
 * * Postconditions and testing
 * * Invariants
-* * [Basic algorithms revisited](Basic-algorithms-proofs.md)
+* * [Basic algorithms revisited](CS1/Basic-algorithms-proofs.md)
 * * Upper/lower bound (binary search)
 * Simple sorts
 * * Selection sort
@@ -58,7 +58,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Comparator
 * * * Iterator
 * * * Predicate
-* * [Basic algorithms revisited](Basic-algorithms-generic.md)
+* * [Basic algorithms revisited](CS1/Basic-algorithms-generic.md)
 * Linked lists
 * Some elementary ADTs
 * * Stack

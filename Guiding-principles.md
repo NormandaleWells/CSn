@@ -26,7 +26,7 @@ Every modern language starts arrays at 0, and most books on algorithms completel
 _Algorithms, 4th edition_ is one notable exception.  See [references](References).)  I often wonder how many off-by-one errors are
 caused by programmers improperly translating a book's 1-based array pseudocode into their 0-based language of choice.
 
-Furthermore, 0-based array indexing invites the use of [half-open ranges](Half-open-ranges), which are used extensively throughout
+Furthermore, 0-based array indexing invites the use of [half-open ranges](CS1/Half-open-ranges), which are used extensively throughout
 the code here.  For good examples of how the use of half-open simplify programming and make it easier to analyze code for correctness,
 see the code for upper_bound, lower_bound, and quicksort_3way.
 

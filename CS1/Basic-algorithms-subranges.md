@@ -13,11 +13,11 @@ index find(A, v)
     return find(A, 0, A.length, v)
 ```
 Here are the new calling parameters:
-* [`find(A, lo, hi, v)`](algorithms-subrange/find.md) - find first occurrence of `v` in `A[lo:hi)`
-* [`count(A, lo, hi, v)`](algorithms-subrange/count.md) - count the number of items in `A[lo:hi)` equal to `v`
-* [`min_element(A, lo, hi)`](algorithms-subrange/min-element.md) - find the minimum element of `A[lo:hi)`
-* [`max_element(A, lo, hi)`](algorithms-subrange/max-element.md) - find the maximum element of `A[lo:hi)`
-* [`rotate_left(A, lo, hi)`](algorithms-subrange/rotate-left.md) - rotate elements of `A[lo:hi)` one element to the left
-* [`rotate_right(A, lo, hi)`](algorithms-subrange/rotate-right.md) - rotate elements of `A[lo:hi)` one element to the right
+* [`find(A, lo, hi, v)`](../algorithms-subrange/find.md) - find first occurrence of `v` in `A[lo:hi)`
+* [`count(A, lo, hi, v)`](../algorithms-subrange/count.md) - count the number of items in `A[lo:hi)` equal to `v`
+* [`min_element(A, lo, hi)`](../algorithms-subrange/min-element.md) - find the minimum element of `A[lo:hi)`
+* [`max_element(A, lo, hi)`](../algorithms-subrange/max-element.md) - find the maximum element of `A[lo:hi)`
+* [`rotate_left(A, lo, hi)`](../algorithms-subrange/rotate-left.md) - rotate elements of `A[lo:hi)` one element to the left
+* [`rotate_right(A, lo, hi)`](../algorithms-subrange/rotate-right.md) - rotate elements of `A[lo:hi)` one element to the right
 
 Note that we don't create a sub-range version of swap, since swap does not operate on the entire array; it just modifies the elements at two specific indices.
