@@ -7,11 +7,11 @@ This repo is my course notes and source code for the CS0, CS1, and CS2 classes I
 
 Here is the breakdown of topics, by course.  Note that this is not a hard-and-fast breakdown; there are some semesters in which I may choose to incorporate some CS1 topics into CS0 or CS2, or introduce some CS2 topics into CS1.
 
-[Guiding principles](Guiding-principles)
+[Guiding principles](Guiding-principles.md)
 
-[Pseudocode used here](Pseudocode)
+[Pseudocode used here](Pseudocode.md)
 
-[References](References)
+[References](References.md)
 
 ## CS0 (Csci 1101 at Normandale)
 * Variables and Types
@@ -23,21 +23,21 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * Recursion
 
 ## CS1 (CSci 2001 at Normandale)
-* [Some basic algorithms](Basic-algorithms)
-* * [find (linear search)](find-algorithm)
-* * [count](count-algorithm)
-* * [min element](min-element-algorithm)
-* * [max element](max-element-algorithm)
-* * [swap](swap-algorithm)
-* * [rotate left](rotate-left-algorithm)
-* * [rotate right](rotate-right-algorithm)
-* [Half-open ranges](Half-open-ranges)
-* * [Basic algorithms revisited](Basic-algorithms-with-subranges)
+* [Some basic algorithms](Basic-algorithms.md)
+* * [find (linear search)](find-algorithm.md)
+* * [count](count-algorithm.md)
+* * [min element](min-element-algorithm.md)
+* * [max element](max-element-algorithm.md)
+* * [swap](swap-algorithm.md)
+* * [rotate left](rotate-left-algorithm.md)
+* * [rotate right](rotate-right-algorithm.md)
+* [Half-open ranges](Half-open-ranges.md)
+* * [Basic algorithms revisited](Basic-algorithms-with-subranges.md)
 * Algorithm correctness
 * * Preconditions and exceptions
 * * Postconditions and testing
 * * Invariants
-* * [Basic algorithms revisited](Basic-algorithms-with-correctness-proofs)
+* * [Basic algorithms revisited](Basic-algorithms-with-correctness-proofs.md)
 * * Upper/lower bound (binary search)
 * Simple sorts
 * * Selection sort
@@ -57,7 +57,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Comparator
 * * * Iterator
 * * * Predicate
-* * * [Basic algorithms revisited](Basic-algorithms-using-generics)
+* * [Basic algorithms revisited](Basic-algorithms-using-generics.md)
 * Linked lists
 * Some elementary ADTs
 * * Stack
