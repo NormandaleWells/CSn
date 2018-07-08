@@ -1,3 +1,5 @@
+## References
+
 This web site is highly influenced by the following references, some of which just happen to be the textbooks
 I use for CS0, CS1, and CS2.
 
