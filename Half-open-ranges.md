@@ -1,3 +1,4 @@
+## Half-open ranges
 
 It is often useful to work with only a sub-range of an entire array.
 For example, search algorithms often work by narrowing down the portion of an array in which the sought-for element can be found,
