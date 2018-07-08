@@ -3,13 +3,13 @@ This section introduces some very basic array-based algorithms.  We'll see that 
 We're purposely ignoring the fact that most of these algorithms are available in the standard libraries of most languages, since the purpose here is to show how they're implemented, and how to use them to get useful work done.  They're also simple enough to provide good examples when discussing preconditions, loop invariants, and generic coding.  When writing in, say, C++, you're advised to use the versions in the `<algorithms>` header rather than these.
 
 The algorithms we'll be studying are:
-* [`find(A, v)`](find-algorithm) - find first occurrence of `v` in `A`
-* [`count(A, v)`](count-algorithm) - count the number of items in `A` equal to `v`
-* [`min_element(A)`](min-element-algorithm) - find the minimum element of `A`
-* [`max_element(A)`](max-element-algorithm) - find the maximum element of `A`
-* [`swap(A, idx1, idx2)`](swap-algorithm) - exchange `A[idx1]` and `A[idx2]`
-* [`rotate_left(A)`](rotate-left-algorithm) - rotate elements of `A` one element to the left
-* [`rotate_right(A)`](rotate-right-algorithm) - rotate elements of `A` one element to the right
+* [`find(A, v)`](find-algorithm.md) - find first occurrence of `v` in `A`
+* [`count(A, v)`](count-algorithm.md) - count the number of items in `A` equal to `v`
+* [`min_element(A)`](min-element-algorithm.md) - find the minimum element of `A`
+* [`max_element(A)`](max-element-algorithm.md) - find the maximum element of `A`
+* [`swap(A, idx1, idx2)`](swap-algorithm.md) - exchange `A[idx1]` and `A[idx2]`
+* [`rotate_left(A)`](rotate-left-algorithm.md) - rotate elements of `A` one element to the left
+* [`rotate_right(A)`](rotate-right-algorithm.md) - rotate elements of `A` one element to the right
 
 Our initial versions will work only with arrays of integers; we'll create generic versions later on.
 
