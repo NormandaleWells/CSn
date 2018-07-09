@@ -13,7 +13,8 @@ the type of data stored in the collection.  All elements of a collection will ha
 
 Scalar types will, when appropriate, be typed as `integer`, `float`, `boolean`, or `string`, with the obvious meaning.
 There is also a scalar type `index` which can be used to indicate an array index.  The `index` type has a special value
-`invalid` which indicates an invalid index.
+`invalid` which indicates an invalid index.  I woudl expect that most language implementations would use -1 as that
+special value.
 
 ### Variable names
 
@@ -72,6 +73,18 @@ Functions which return nothing simply leave out the return value in the first li
 ```
 swap(A, idx1, idx2)
 ```
+
+### Errors
+
+Errors are indicated by an `error` statement that takes a string describing the message:
+```
+if hi-lo <= 0
+    error "The subrange [lo,hi) cannot be empty."
+```
+For most languages (e.g. Java, C++, Python), this will translate into throwing an exception.
+
+None of the code here will have any need to catch exceptions, so there is no syntax in this pseudocode
+for catching exceptions.
 
 ### Comments
 
