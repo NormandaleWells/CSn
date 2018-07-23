@@ -32,6 +32,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [swap](algorithms/swap.md)
 * * [rotate left](algorithms/rotate-left.md)
 * * [rotate right](algorithms/rotate-right.md)
+* * [copy](algorithms/copy.md)
 * [Half-open ranges](CS1/Half-open-ranges.md)
 * * [Basic algorithms revisited](CS1/Basic-algorithms-subranges.md)
 * Algorithm correctness
