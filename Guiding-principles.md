@@ -48,7 +48,7 @@ Furthermore, 0-based array indexing invites the use of [half-open ranges](CS1/Ha
 which are used extensively throughout the code here.
 For good examples of how the use of half-open simplify programming
 and make it easier to analyze code for correctness,
-see the code for upper_bound, lower_bound, and quicksort_3way.
+see the code for `upper_bound`, `lower_bound`, and `quicksort_3way`.
 
 ## Writing style
 You can have my Oxford comma when you can pry it out of my cold, dying hands.
