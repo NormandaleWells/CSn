@@ -1,8 +1,19 @@
 ## Basic algorithms
 
-This section introduces some very basic array-based algorithms.  We'll see that we can put these simple algorithms to use in creating more complex algorithms and data structures.  Also, as we go through the topics in CS1, we'll come back to these often and update them to reflect what we've learned.
+This section introduces some very basic array-based algorithms.
+We'll see that we can put these simple algorithms to use in creating
+more complex algorithms and data structures.
+Also, as we go through the topics in CS1, we'll come back to these often
+and update them to reflect what we've learned.
 
-We're purposely ignoring the fact that most of these algorithms are available in the standard libraries of most languages, since the purpose here is to show how they're implemented, and how to use them to get useful work done.  They're also simple enough to provide good examples when discussing preconditions, loop invariants, and generic coding.  When writing in, say, C++, you're advised to use the versions in the `<algorithms>` header rather than these.
+We're purposely ignoring the fact that most of these algorithms are available
+in the standard libraries of most languages,
+since the purpose here is to show how they're implemented,
+and how to use them to get useful work done.
+They're also simple enough to provide good examples when discussing preconditions,
+loop invariants, and generic coding.
+When writing in, say, C++, you're advised to use the versions
+in the `<algorithms>` header rather than these.
 
 The algorithms we'll be studying are:
 * [`find(A, v)`](../algorithms/find.md) - find first occurrence of `v` in `A`
@@ -39,4 +50,8 @@ Finally, these algorithms may be used as homework assignments:
 * `reverse(A)` - reverse the elements of `A`
 * `rotate(A, lo, mid, hi)` - rotate elements of `A[lo,hi)` so that `A[mid]` moves to `A[lo]`
 
-Note that among the first three (`any_of()`, `all_of()`, and `none_of()`), two are exact opposites of each other; that is, any inputs for which one returns `true`, the other will return `false`, and vice versa.  And they are not the two you might first think!
+Note that among the first three (`any_of()`, `all_of()`, and `none_of()`),
+two are exact opposites of each other;
+that is, any inputs for which one returns `true`,
+the other will return `false`, and vice versa.
+And they are not the two you might first think!
