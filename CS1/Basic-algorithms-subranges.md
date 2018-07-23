@@ -25,7 +25,7 @@ Here are the new calling parameters:
 * [`max_element(A, lo, hi)`](../algorithms-subrange/max-element.md) - find the maximum element of `A[lo,hi)`
 * [`rotate_left(A, lo, hi)`](../algorithms-subrange/rotate-left.md) - rotate elements of `A[lo,hi)` one element to the left
 * [`rotate_right(A, lo, hi)`](../algorithms-subrange/rotate-right.md) - rotate elements of `A[lo,hi)` one element to the right
-* [`copy(A, lo, hi, B, lo_dest)`](../algorithms-subrange/copy.md) - copy `A[lo,hi) to B[lo_dest,lo_dest+(hi-lo))`
+* [`copy(A, lo, hi, B, lo_dest)`](../algorithms-subrange/copy.md) - copy `A[lo,hi)` to `B[lo_dest,lo_dest+(hi-lo))`
 
 Note that we don't create a sub-range version of swap, since swap does not operate on the entire array; it just modifies
 the elements at two specific indices.
