@@ -12,6 +12,7 @@ The algorithms we'll be studying are:
 * [`swap(A, idx1, idx2)`](../algorithms/swap.md) - exchange `A[idx1]` and `A[idx2]`
 * [`rotate_left(A)`](../algorithms/rotate-left.md) - rotate elements of `A` one element to the left
 * [`rotate_right(A)`](../algorithms/rotate-right.md) - rotate elements of `A` one element to the right
+* [`copy(A, B)`](../algorithms/copy.md) - copy array `A` to array `B`
 
 Our initial versions will work only with arrays of integers; we'll create generic versions later on.
 
