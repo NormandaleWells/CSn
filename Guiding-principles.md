@@ -39,7 +39,7 @@ than anything you'll find in the code repository here.
 Every modern language starts arrays at 0,
 and most books on algorithms completely ignore this simple fact.
 (Sedgewick and Wayne's _Algorithms, 4th edition_ is one notable exception.
-See [references](References).)
+See [references](References.md).)
 I often wonder how many off-by-one errors are caused
 by programmers improperly translating a book's 1-based array pseudocode
 into their 0-based language of choice.
