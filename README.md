@@ -35,7 +35,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [copy](algorithms/copy.md)
 * [Half-open ranges](CS1/Half-open-ranges.md)
 * * [Basic algorithms revisited](CS1/Basic-algorithms-subranges.md)
-* Algorithm correctness
+* [Algorithm correctness](CS1/Algorithm_correctness.md)
 * * [Preconditions and exceptions](CS1/Preconditions.md)
 * * [Postconditions and testing](CS1/Postconditions.md)
 * * [Invariants](CS1/Invariants.md)
