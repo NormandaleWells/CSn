@@ -5,7 +5,7 @@ For example, search algorithms often work by narrowing down the portion of an ar
 in which the sought-for element can be found,
 and sort algorithms often work by splitting the array
 in pieces and sorting the pieces separately.
-There are also times when over-allocate an array
+There are also times when we over-allocate an array
 so can add items without reallocating and copying the array every time,
 and in that case we need to be able to deal with
 only the first N elements of the array.
