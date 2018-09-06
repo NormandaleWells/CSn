@@ -36,3 +36,9 @@ The only drawback for me is that it is very flowchart based,
 and I do have a "thing" against flowcharts.
 But this book does flowcharts in a very controlled way
 that makes them palatable to me.
+
+* *Introduction to Algorithms*, by Thomas Cormen, Charles Leiserson, Ronald Rivest, and Clifford Stein
+
+This is a more advanced text than Sedgewick and Wayne.  It emphasizes proofs more than S&W, and
+covers additional topics. In particular it discusses general techniques for algorithm design
+(dynamic programming, greedy methods, etc.) more than Sedgewick and Wayne.
