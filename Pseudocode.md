@@ -13,7 +13,7 @@ the type of data stored in the collection.  All elements of a collection will ha
 
 Scalar types will, when appropriate, be typed as `integer`, `float`, `boolean`, or `string`, with the obvious meaning.
 There is also a scalar type `index` which can be used to indicate an array index.  The `index` type has a special value
-`invalid` which indicates an invalid index.  I woudl expect that most language implementations would use -1 as that
+`invalid` which indicates an invalid index.  I would expect that most language implementations would use -1 as that
 special value.
 
 ### Variable names
