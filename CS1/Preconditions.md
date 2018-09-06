@@ -121,7 +121,7 @@ An exception causes control to transfer to a corresponding
 "catch" block.
 This forces the caller to either anticipate the
 possible failure,
-or take the conscious step of allow the program
+or take the conscious step of allowing the program
 to terminate if the exception is never caught.
 
 The fact that the caller is forced to anticipate failure
@@ -132,7 +132,7 @@ what he or she is doing is a Good Thing.
 
 Also, exceptions prevent invalid partial results
 from percolating through the system
-when error codes are ignored.
+as they would when error codes are ignored.
 
 Exceptions work well with error logging systems.
 A `catch` block at the top level can catch and log
@@ -145,7 +145,7 @@ code such that all the error handling is in one place,
 rather than strewn throughout every function.
 This makes for much cleaner-looking code.
 
-The one problem with exceptions is that they generally
+One problem with exceptions is that they generally
 cannot be used in real-time code.
 This is because it is impossible to determine
 how long it takes the run-time system to throw an exception.
