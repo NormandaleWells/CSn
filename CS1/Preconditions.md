@@ -156,5 +156,5 @@ cannot use exceptions in some of his work
 as you can get).
 
 For more on error handling and exceptions,
-see [exception guarantees](exception-guarantees.md).
+see [exception guarantees](Exception-guarantees.md).
 
