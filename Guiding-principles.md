@@ -50,6 +50,27 @@ For good examples of how the use of half-open simplify programming
 and make it easier to analyze code for correctness,
 see the code for `upper_bound`, `lower_bound`, and `quicksort_3way`.
 
+## Coding Style
+I take a very pragmatic approach to programming.
+If I think having multiple `return` statements in a function will make it
+more readable, I do it.
+If I think a `break` or `continue` statement makes the code more readable,
+I do it.
+Send complaints to /dev/null.
+
+I also do not believe any one paradigm
+(as in object-oriented, generic, or functional programming)
+is the be-all and end-all of how to write software.
+Each paradigm has its uses,
+and each contributes good ideas to the writing of good code.
+Different languages support these paradigms to different degrees,
+so the code here for different languages
+may be inconsistent in that regard.
+My C++ code will tend to be more generic,
+my Java code more object-oriented,
+and both incorporate functional programming principles
+where appropriate.
+
 ## Writing style
 You can have my Oxford comma when you can pry it out of my cold, dying hands.
 After all, without the Oxford comma,
