@@ -58,7 +58,7 @@ and
 ```
 for (i in [0,a.length))
 ```
-Note the use of a half-open range in the latter example.  This is discussed in [half-open ranges](Half-open-ranges).
+Note the use of a half-open range in the latter example.  This is discussed in [half-open ranges](CS1/Half-open-ranges.md).
 
 ### Functions
 
