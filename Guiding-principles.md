@@ -66,7 +66,7 @@ and each contributes good ideas to the writing of good code.
 Different languages support these paradigms to different degrees,
 so the code here for different languages
 may be inconsistent in that regard.
-My C++ code will tend to be more generic,
+My C++ and Python code will tend to be more generic,
 my Java code more object-oriented,
 and both incorporate functional programming principles
 where appropriate.
