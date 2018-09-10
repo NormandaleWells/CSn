@@ -49,6 +49,9 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * Encapsulation
 * * Data hiding
 * * Class invariants
+* Linked lists
+* * Basic structure
+* * Insertion and removal
 * Inheritance
 * * Implementation inheritance
 * * Interface inheritance
@@ -61,8 +64,11 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Iterator
 * * * Predicate
 * * [Basic algorithms revisited](CS1/Basic-algorithms-generic.md)
-* Linked lists
+* * Linked lists revisited
+* * * Find min/max element
+* * * Remove min/max element
 * Some elementary ADTs
+* * Arrays vs. linked lists
 * * Stack
 * * Queue
 * * Priority queues
