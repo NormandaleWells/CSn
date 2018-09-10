@@ -25,7 +25,7 @@ One of the ironies of teaching a data structures and algorithms course
 is that every language's standard library already contains
 the data structures and algorithms studied in that course.
 I've chosen here to ignore that fact.
-The idea here is that the purpose of the course is to show the student
+The purpose of the course is to show the student
 how these algorithms work,
 and the best way to do that is to provide an implementation she can
 study and modify.
@@ -44,7 +44,8 @@ I often wonder how many off-by-one errors are caused
 by programmers improperly translating a book's 1-based array pseudocode
 into their 0-based language of choice.
 
-Furthermore, 0-based array indexing invites the use of [half-open ranges](CS1/Half-open-ranges),
+Furthermore, 0-based array indexing invites (properly, IMNSHO)
+the use of [half-open ranges](CS1/Half-open-ranges),
 which are used extensively throughout the code here.
 For good examples of how the use of half-open simplify programming
 and make it easier to analyze code for correctness,
