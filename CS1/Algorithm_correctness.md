@@ -25,9 +25,9 @@ Finally, we'll use these concepts to develop a pair of
 addition algorithms, which are variations on binary search
 called `lower_bound()` and `upper_bound()`.
 
-* [Preconditions and exceptions](CS1/Preconditions.md)
-* [Postconditions and testing](CS1/Postconditions.md)
-* [Invariants](CS1/Invariants.md)
-* [Exception guarantees](CS1/Exception-guarantees.md)
-* [Basic algorithms revisited](CS1/Basic-algorithms-proofs.md)
-* [Upper/lower bound (binary search)](CS1/Lower-upper-bound.md)
+* [Preconditions and exceptions](Preconditions.md)
+* [Postconditions and testing](Postconditions.md)
+* [Invariants](Invariants.md)
+* [Exception guarantees](Exception-guarantees.md)
+* [Basic algorithms revisited](Basic-algorithms-proofs.md)
+* [Upper/lower bound (binary search)](Lower-upper-bound.md)
