@@ -109,3 +109,8 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * DAG shortest path
 * * * Job scheduling
 * * * Bellman-Ford
+## Miscellaneous topics
+* How not to code like a n00b
+* Don't write your own date/time classes
+* Practice
+* Create a portfolio
