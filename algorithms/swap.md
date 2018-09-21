@@ -4,8 +4,7 @@
 Here is the full pseudocode for `swap`:
 ```
 swap(A, idx1, idx2)
-    A.type t
-    t = A[idx1]
+    A.type t = A[idx1]
     A[idx1] = A[idx2]
     A[idx2] = t
 ```
