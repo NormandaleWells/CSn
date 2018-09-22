@@ -17,6 +17,22 @@ The "proofs" presented here shuld probably be considered
 Anywhere I use the word "proof" in this section,
 imagine quotes around word.
 
+Briefly, a precondition is something
+that must be true of a function's inputs
+in order for the function to do its job.
+A postcondition is something which should be
+true of the function's outputs.
+A function's pre- and postconditions
+form a contract; if the caller ensures
+that the function's preconditions are met,
+the function ensures that the postconditions
+are met.  Failure to do so is a defect.
+
+(Preconditions and postconditions
+can also incorporate and affect global
+program state, but as with any use of global
+variables, this is best avoided.)
+
 We'll start with a discussion of pre-conditions, post-conditions,
 and (loop) invariants,
 and then revisit our basic array-based algorithms to incorporate
