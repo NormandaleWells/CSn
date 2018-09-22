@@ -25,6 +25,10 @@ Finally, we'll use these concepts to develop a pair of
 addition algorithms, which are variations on binary search
 called `lower_bound()` and `upper_bound()`.
 
+Later, we'll extend these concepts to cover instance functions
+of a class, at which point the concept of a class invariant
+will come into play.
+
 * [Preconditions and exceptions](Preconditions.md)
 * [Postconditions and testing](Postconditions.md)
 * [Invariants](Invariants.md)
