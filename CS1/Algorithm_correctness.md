@@ -1,4 +1,5 @@
-TODO: Have this reviewed by someone who knows what they're talking about.
+TODO: Have this reviewed by someone for correctness,
+and for consistency with the discrete math course.
 
 Computer programming is a very logical - and therefore very mathematical - activity.
 It is often useful to think of a function as a theorem that can be proven,
