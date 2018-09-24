@@ -27,7 +27,7 @@ A function's pre- and postconditions
 form a contract; if the caller ensures
 that the function's preconditions are met,
 the function ensures that the postconditions
-are met.  Failure to do so is a defect.
+are met.  Failure to do so is a coding defect.
 
 (Preconditions and postconditions
 can also incorporate and affect global
@@ -39,7 +39,7 @@ and (loop) invariants,
 and then revisit our basic array-based algorithms to incorporate
 informal proofs of correctness.
 Finally, we'll use these concepts to develop a pair of
-addition algorithms, which are variations on binary search
+additional algorithms, which are variations on binary search
 called `lower_bound()` and `upper_bound()`.
 
 Later, we'll extend these concepts to cover instance functions
