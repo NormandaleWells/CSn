@@ -27,10 +27,10 @@ types.
 For example, languages for which arrays
 and array elements are reference types
 may include these preconditions
-(assume ```a``` is an array):
+(assume ```A``` is an array):
 ```
-assert a != null
-assert a[0,a.length) != null
+assert A != null
+assert A[lo,hi) != null
 ```
 Each specific basic algorithm is discussed
 on its own page below.
