@@ -38,7 +38,24 @@ Another useful guideline is that if an algorithm
 can check a prediction without changing its time
 complexity, it's probably worthwhile to do so.
 
-It is also often possible to differentiate between "debug"
+For the pseudocode used here,
+failure to meet a precondition
+is flagged via an ```assert``` statement.
+This causes the program to simply stop executing.
+That is, the ```sqrt``` function shown above would be:
+```
+real sqrt(real x)
+  assert x >= 0
+  real t = x
+  while abs(t - x/t) > 1e-15 * t
+    t = (c/t + t) / 2
+  return t
+```
+In real world code there are generally better options,
+as discussed below.
+
+In many languages,
+it is possible to differentiate between "debug"
 and "release" builds of a program, and do more stringent
 checking of preconditions in a debug build.
 

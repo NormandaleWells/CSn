@@ -1,5 +1,8 @@
 TODO: Have this reviewed by someone for correctness,
-and for consistency with the discrete math course.
+since much of this is a somewhat non-traditional
+approach to this topic.
+It should also be checked for consistency
+with the discrete math course.
 
 Computer programming is a very logical - and therefore very mathematical - activity.
 It is often useful to think of a function as a theorem that can be proven,
@@ -34,10 +37,11 @@ can also incorporate and affect global
 program state, but as with any use of global
 variables, this is best avoided.)
 
-We'll start with a discussion of pre-conditions, post-conditions,
+We'll start with general discussions
+of pre-conditions, post-conditions,
 and (loop) invariants,
 and then revisit our basic array-based algorithms to incorporate
-informal proofs of correctness.
+these concepts to provide informal proofs of correctness.
 Finally, we'll use these concepts to develop a pair of
 additional algorithms, which are variations on binary search
 called `lower_bound()` and `upper_bound()`.
@@ -48,7 +52,7 @@ will come into play.
 
 * [Preconditions and exceptions](Preconditions.md)
 * [Postconditions and testing](Postconditions.md)
-* [Invariants](Invariants.md)
+* [Loop Invariants](Invariants.md)
 * [Exception guarantees](Exception-guarantees.md)
 * [Basic algorithms revisited](Basic-algorithms-proofs.md)
 * [Upper/lower bound (binary search)](Lower-upper-bound.md)

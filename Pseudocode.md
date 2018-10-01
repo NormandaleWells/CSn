@@ -76,15 +76,41 @@ swap(A, idx1, idx2)
 
 ### Errors
 
-Errors are indicated by an `error` statement that takes a string describing the message:
+Errors are indicated by an `error` statement
+that takes a string describing the message:
 ```
 if hi-lo <= 0
     error "The subrange [lo,hi) cannot be empty."
 ```
-For most languages (e.g. Java, C++, Python), this will translate into throwing an exception.
+For most languages (e.g. Java, C++, Python),
+this will translate into throwing an exception.
 
-None of the code here will have any need to catch exceptions, so there is no syntax in this pseudocode
+None of the code here will have any need to catch exceptions,
+so there is no syntax in this pseudocode
 for catching exceptions.
+
+### Assertions
+
+There is a special statement used here
+for checking preconditions and loop invariants.
+It is an ```assert``` statement, modelled after
+Java's ```assert``` statement.
+
+An ```assert``` statement is simply the word "assert"
+followed by a logical condition which should be true.
+For example
+```
+assert x >= 0
+```
+```assert``` statements have a special syntax
+for asserting a condition that must be true
+for every element in a consecutive subrange
+of an array.
+The condition ```a[lo,hi) > 0```, for example,
+is equivalent to ```for all i in [lo,hi), a[i] > 0```.
+
+This same syntax is used when describing
+precoditions and postconditions.
 
 ### Comments
 
