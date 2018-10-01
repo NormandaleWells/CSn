@@ -28,7 +28,7 @@ no element of the array
 with an index less than ```i```
 is equal to v:
 ```
-assert A[lo,i) != v```
+assert A[lo,i) != v
 ```
 For the first loop execution,
 the loop invariant is trivially true,
