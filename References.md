@@ -42,3 +42,7 @@ that makes them palatable to me.
 This is a more advanced text than Sedgewick and Wayne.  It emphasizes proofs more than S&W, and
 covers additional topics. In particular it discusses general techniques for algorithm design
 (dynamic programming, greedy methods, etc.) more than Sedgewick and Wayne.
+
+* *The Science of Programming*, by David Gries
+
+TODO: write summary.  Be sure to mention "flaw charts".
