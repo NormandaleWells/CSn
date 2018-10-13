@@ -73,7 +73,18 @@ and both incorporate functional programming principles
 where appropriate.
 
 ## Writing style
-You can have my Oxford comma when you can pry it out of my cold, dying hands.
+I prefer a fairly informal style of writing.
+I write mainly in the first person;
+this helps avoid the use of the
+sleep-inducing English passive tense.
+I use "I" when expressing an opinion -
+so as not to force those opinions upon any future contributors - 
+and I use "we" at all other times.
+Using "we" not only includes future contributors,
+but also gets the reader personally involved.
+
+Finally, you can have my Oxford comma
+when you can pry it out of my cold, dying hands.
 After all, without the Oxford comma,
-I could claim that some of my major influences
+I would claim that some of my major influences
 would be my parents, Robert Sedgewick and David Gries.
