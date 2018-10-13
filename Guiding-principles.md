@@ -45,7 +45,7 @@ by programmers improperly translating a book's 1-based array pseudocode
 into their 0-based language of choice.
 
 Furthermore, 0-based array indexing invites (properly, IMNSHO)
-the use of [half-open ranges](CS1/Half-open-ranges),
+the use of [half-open ranges](CS1/Half-open-ranges.md),
 which are used extensively throughout the code here.
 For good examples of how the use of half-open simplify programming
 and make it easier to analyze code for correctness,
