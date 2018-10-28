@@ -1,8 +1,8 @@
 ## Preconditions
 
-A precondition is a logical statement
-that must be true for an algorithm to
-function correctly.
+A precondition of an algorithm is a logical statement
+that must be true for the algorithm to
+function correctly (that is, return a correct result).
 It generally involves only the algorithm parameters,
 but later we'll study algorithms that execute within
 the context of an "object" which contains some state,
@@ -22,6 +22,9 @@ real sqrt(real x)
   return t
 ```
 has the precondition that `x >= 0`.
+(NOTE: This code is adapted
+from Sedgewick's and Wayne's * Algorithms, fourth edition *.
+See See [references](References.md).)
 
 It is the responsibility of the caller
 to establish the validity of an algorithm's precondition(s).

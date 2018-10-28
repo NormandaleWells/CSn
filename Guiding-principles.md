@@ -59,6 +59,16 @@ If I think a `break` or `continue` statement makes the code more readable,
 I do it.
 Send complaints to /dev/null.
 
+I believe that the length of a variable name
+should be proportional to the size of its scope.
+Most of the algorithms here are short,
+and so I use short variable names.
+I do, however, try to be consistent.
+For example, `lo` and `hi` are used
+for the lower and upper bound of a half-open range,
+`n` is used as a total number of items to process,
+`i`, `j`, `k` are loop counters, etc.
+
 I also do not believe any one paradigm
 (as in object-oriented, generic, or functional programming)
 is the be-all and end-all of how to write software.
