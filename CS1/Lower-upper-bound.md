@@ -15,7 +15,8 @@ if the key is found, and `false` otherwise.
 
 >The version you'll find in many books
 returns the index rather than a boolean.
-The problem with that is the index is somewhat
+The problem with that approach
+is that the index is somewhat
 meaningless, since in the presence of
 repeated key values, you don't know
 which is returned.
@@ -24,14 +25,15 @@ return a meaningful index.
 
 We find the key
 by dividing the subarray into
-three further subranges:
+three further subranges
+(`lo'` and `hi'` indicate the
+original values of `lo` and `hi`):
 
-- `A[lo,i)` contains elements known to be < `key`
-- `A[i,j)` contains elements whose relationship to `key` is unknown
-- `A[j,hi)` contains elements known to be > `key`
+- `A[lo',lo)` contains elements known to be < `key`
+- `A[lo,hi)` contains elements whose relationship to `key` is unknown
+- `A[hi,hi')` contains elements known to be > `key`
 
-To start, we set `i = lo` and `j = hi`,
-and so the first and last ranges are initially empty.
+The first and last ranges are initially empty.
 We then enter a loop in which
 we calculate the midpoint of the middle range
 and compare that value to `key`.
@@ -40,7 +42,7 @@ If not, we adjust the ranges according
 to include the midpoint value
 in the proper range.
 
-If we get to a point where `i == j`,
+If we get to a point where `lo == hi`,
 we know that the middle range of unchecked
 elements is empty without the key value
 having been found, and we can then return `false`.
@@ -50,21 +52,19 @@ Here is the code for this version of binary search.
 ```
 binary_search(A, lo, hi, key)
 	assert is_sorted(A[lo,hi))
-	i = lo
-	j = hi
 	while i < j
-		assert A[lo,i) < key
-		assert A[j,hi) > key
-		mid = i + (j - i) / 2
+		assert A[lo',lo) < key
+		assert A[hi,hi') > key
+		mid = lo + (hi - lo) / 2
 		if A[mid] < key
 			lo = mid + 1
 		else if A[mid] > key
 			hi = mid
 		else
 			return true
-	assert i == j
-	assert a[lo,i) < key
-	assert a[i,hi) > key
+	assert lo == hi
+	assert a[lo',lo) < key
+	assert a[lo,hi') > key
 	return false
 
 binary_search(A, key)
@@ -90,7 +90,7 @@ is an element of the subrange `A[lo,mid+1)`.
 Need I tell you how I discovered that?
 
 Second, to be complete, we should also prove that
-we never get into a situation where `i > j`.
+we never get into a situation where `lo > hi`.
 I'll leave that as an exercise to the reader.
 Hint: consider how `mid` is computed,
 and what happens with ranges of size 1 and 2.
@@ -98,7 +98,7 @@ and what happens with ranges of size 1 and 2.
 The third subtlety is the way we compute `mid`.
 We cannot use the simpler `mid = (lo + hi) / 2`
 because a large enough array could cause
-`hi + lo` to overflow an integer.
+`lo + hi` to overflow an integer.
 
 We'll now look at two other binary search
 algorithms:
@@ -115,8 +115,10 @@ we mean the one with the lowest index.
 
 There is no need for any special value
 to indicate that the value was not found,
-since both of these algorithms always return
-a valid array index in the range [lo,hi].
+since neither algorithm indicates
+whether the value was actually found.
+Both of these algorithms always return
+a valid array index in the range `[lo,hi]`.
 
 One advantage that these algorithms provide
 over the basic binary search
@@ -132,6 +134,14 @@ upper_bound(A,key) - lower_bound(A,key)
 ```
 is the number of elements in `A` that are equal to the key.
 
+Another advantage is that `lower_bound()` and `upper_bound()`
+indicate where an array element with the key value
+could be added to maintain the sortedness of the array.
+If it needs to be placed before any other equal elements,
+it can be inserted at `A[lower_bound()]`;
+if it needs to be placed after any equal elements,
+it can be inserted at `A[upper_bound()]`.
+
 The algorithms themselves are very similar
 to the `binary_search()` algorithm shown above.
 We'll show `lower_bound()`,
@@ -143,9 +153,9 @@ upon finding an array element equal to the key,
 since it may not be the first one.
 For upper_bound() the ranges of interest are:
 
-- `A[lo,i)` contains elements known to be < `key`
-- `A[i,j)` contains elements whose relationship to `key` is unknown
-- `A[j,hi)` contains elements known to be >= `key`
+- `A[lo',lo)` contains elements known to be < `key`
+- `A[lo,hi)` contains elements whose relationship to `key` is unknown
+- `A[hi,hi')` contains elements known to be >= `key`
 
 The only difference from what we defined above
 for `binary_search()` is that the upper range
@@ -156,25 +166,23 @@ The algorithm is
 ```
 lower_bound(A, lo, hi, key)
 	assert is_sorted(A[lo,hi))
-	i = lo
-	j = hi
-	while i < j
-		assert A[lo,i) < key
-		assert A[j,hi) >= key
-		mid = i + (j - i) / 2
+	while lo < hi
+		assert A[lo',lo) < key
+		assert A[hi,hi') >= key
+		mid = lo + (hi - lo) / 2
 		if A[mid] < key
 			lo = mid + 1
 		else
 			hi = mid
-	assert i == j
-	assert a[lo,i) < key
-	assert a[i,hi) >= key
-	return i
+	assert lo == hi
+	assert a[lo',lo) < key
+	assert a[hi,hi') >= key
+	return lo
 
 lower_bound(A, key)
 	return lower_bound(A, 0, a.length, key)
 ```
-Since `A[lo,i) < key`, we know that `A[i]`
+Since `A[lo',lo) < key`, we know that `A[lo]`
 is the first element greater than or equal to
 the key, as required.
 
