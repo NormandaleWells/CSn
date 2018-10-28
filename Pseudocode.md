@@ -36,7 +36,7 @@ implementations will, of course, follow the standard conventions for that langua
 ### Operators
 
 The usual arithmetic operators are available: `+`, `-`, `/`, `*`, and `%` (where the last indicates a modulus operation).
-Integer arithmetic rounds toward `-infinity`.
+Integer division rounds toward `-infinity`.
 
 ### Statement blocks
 
