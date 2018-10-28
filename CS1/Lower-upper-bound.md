@@ -50,7 +50,7 @@ having been found, and we can then return `false`.
 Here is the code for this version of binary search.
 
 ```
-binary_search(A, lo, hi, key)
+boolean binary_search(A, lo, hi, key)
 	assert is_sorted(A[lo,hi))
 	while i < j
 		assert A[lo',lo) < key
@@ -67,7 +67,7 @@ binary_search(A, lo, hi, key)
 	assert a[lo,hi') > key
 	return false
 
-binary_search(A, key)
+boolean binary_search(A, key)
 	return binary_search(A, 0, a.length, key)
 ```
 Note that the code is liberally annotated
@@ -164,7 +164,7 @@ rather than just greater than.
 
 The algorithm is
 ```
-lower_bound(A, lo, hi, key)
+index lower_bound(A, lo, hi, key)
 	assert is_sorted(A[lo,hi))
 	while lo < hi
 		assert A[lo',lo) < key
@@ -179,7 +179,7 @@ lower_bound(A, lo, hi, key)
 	assert a[hi,hi') >= key
 	return lo
 
-lower_bound(A, key)
+index lower_bound(A, key)
 	return lower_bound(A, 0, a.length, key)
 ```
 Since `A[lo',lo) < key`, we know that `A[lo]`
