@@ -42,7 +42,7 @@ and most books on algorithms completely ignore this simple fact.
 See [references](References.md).)
 I often wonder how many off-by-one errors are caused
 by programmers improperly translating a book's 1-based array pseudocode
-into their 0-based language of choice.
+into their 0-based implementation language.
 
 Furthermore, 0-based array indexing invites (properly, IMNSHO)
 the use of [half-open ranges](CS1/Half-open-ranges.md),
