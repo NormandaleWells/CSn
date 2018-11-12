@@ -12,6 +12,11 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 
 [Pseudocode used here](Pseudocode.md)
 
+[Implementation notes](Implementation-notes.md)
+* [Java](java-notes.md)
+* [C++](cpp-notes.md)
+* [Python](python-notes.md)
+
 [References](References.md)
 
 ## CS0 (Csci 1101 at Normandale)
@@ -116,6 +121,10 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Job scheduling
 * * * Bellman-Ford
 ## Miscellaneous topics
+* Language rants
+** [Java](java-rants.md)
+** [C++](cpp-rants.md)
+** [Python](python-rants.md)
 * How not to code like a n00b
 * Don't write your own date/time classes
 * Practice

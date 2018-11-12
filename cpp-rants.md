@@ -1,0 +1,15 @@
+# C++ rants
+
+My main complaint about C++
+is that it has become so large.
+It's become the Microsoft Word
+of languages -- nobody ever needs
+all the features,
+but every feature is absolutely
+essential to someone's work.
+
+This makes teaching C++ particularly hard.
+It is impossible to teach the entire language
+in a single semester,
+so it is necessary to pick a subset
+to teach.
