@@ -53,7 +53,7 @@ public class SymbolTable<K,V> implements Indexable<K,V> {
 {
 	SymbolTable <String,Integer> st = new SymbolTable<>();
 	String s = "xyzzy";
-	st[s] = 42;	        // calls put()
+	st[s] = 42;	    // calls put()
 	Integer i = st[s]   // calls get()
 }
 ```
@@ -129,7 +129,7 @@ which consist of nothing but
 static functions,
 are an anti-pattern
 that should not be used.
-For an exmplae of why I consider
+For an example of why I consider
 this ridiculous, consider this
 article:
 [OOP Alternative to Utility Classes](https://www.yegor256.com/2014/05/05/oop-alternative-to-utility-classes.html).
@@ -188,9 +188,9 @@ was garbage collected.
 Of course, Java does have the
 try-with-resources method,
 but I fail to see how remembering
-to use that is all that different
+to do that is all that different
 from remembering to use close -- or,
-for that matter, remember to free memory.
+for that matter, remembering to free memory.
 
 This is one thing that I think C++
 gets exactly right.
