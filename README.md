@@ -122,9 +122,9 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Bellman-Ford
 ## Miscellaneous topics
 * Language rants
-** [Java](java-rants.md)
-** [C++](cpp-rants.md)
-** [Python](python-rants.md)
+* * [Java](java-rants.md)
+* * [C++](cpp-rants.md)
+* * [Python](python-rants.md)
 * How not to code like a n00b
 * Don't write your own date/time classes
 * Practice
