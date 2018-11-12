@@ -208,7 +208,7 @@ with the dodge that when you pass
 an object to a function,
 you're passing the value of the reference.
 
-By the defintion I'm familiar with,
+By the definition I'm familiar with,
 if Java passed objects by value,
 then this code:
 ```
