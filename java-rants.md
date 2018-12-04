@@ -32,6 +32,31 @@ any time a object
 that ```implements Comparator<T1,T2>```
 is in scope.
 
+### comparing ```String```s
+
+This is really a special of the previous item,
+but it's common enough to be worth a special
+mention.  Why can't Java compare ```String```s
+using ```==```?
+
+The Java compiler alreadys knows that String
+objects are special in other senses
+(for example, it treats quoted strings
+as String objects),
+so why can't it have special code
+to support comparing ```String```s using ```==```?
+
+Granted, that would make it impossible
+to check ```String```s for reference equality,
+but when has anyone ever needed that?
+
+If I had a dollar for every time
+a student came to me for help with
+code that wasn't working,
+and it turned out be caused by
+using ```==``` to compare two ```String```s,
+I'd be able to retire already.
+
 ### subscripting
 
 Why can't Java use an interface like this:
