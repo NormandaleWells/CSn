@@ -23,8 +23,8 @@ real sqrt(real x)
 ```
 has the precondition that `x >= 0`.
 (NOTE: This code is adapted
-from Sedgewick's and Wayne's * Algorithms, fourth edition *.
-See See [references](References.md).)
+from Sedgewick's and Wayne's *Algorithms, fourth edition*.
+See [references](References.md).)
 
 It is the responsibility of the caller
 to establish the validity of an algorithm's precondition(s).
