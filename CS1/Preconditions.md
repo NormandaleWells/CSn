@@ -29,7 +29,8 @@ See [references](References.md).)
 It is the responsibility of the caller
 to establish the validity of an algorithm's precondition(s).
 An algorithm may check that its preconditions are met,
-but it may also fail - often spectacularly and without warning -
+but it may also choose to simply
+fail - often spectacularly and without warning -
 if a precondition is violated.
 For example, the `sqrt` algorithm shown above
 will loop forever if the precondition is not met.
@@ -71,7 +72,7 @@ The algorithm may simply ignore failed precondition
 and carry on as best it can.
 In many cases, the unmet precondition will cause a failure
 in the algorithm,
-like a divide by zero or an out-of-range array subscript.
+such as a divide by zero or an out-of-range array subscript.
 
 One problem with this approach is that the caller may have
 no idea why an invalid result was generated,
