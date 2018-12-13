@@ -11,7 +11,7 @@ very similar to a functions postconditions;
 in fact, the postconditions will, in most cases,
 follow directly from the loop invariant.
 
-Note that for a for loop,
+Note that for a ```for``` loop,
 the "top" of the loop is when the loop condition
 is tested.
 
@@ -21,6 +21,12 @@ it is necessary to demonstrate two things:
 true before the first execution of the loop.
 * You must show that the loop invariant is
 re-established by the action of the loop.
+
+We'll see that the re-establishment
+of a loop invariant
+is one of the key parts of
+proving the correctness of an algorithm
+or its implementation.
 
 Note that within the loop itself,
 it is possible that the loop invariant
