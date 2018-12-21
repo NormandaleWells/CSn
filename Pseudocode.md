@@ -89,28 +89,46 @@ None of the code here will have any need to catch exceptions,
 so there is no syntax in this pseudocode
 for catching exceptions.
 
-### Assertions
+### Assertions (preconditions, postconditions, and invariants)
 
-There is a special statement used here
-for checking preconditions and loop invariants.
-It is an ```assert``` statement, modelled after
+There are special statements used here
+for documenting preconditions,
+postconditions, and loop invariants.
+There are referred to generically here
+as assertions.
+These statements are modelled after
 Java's ```assert``` statement.
 
-An ```assert``` statement is simply the word "assert"
-followed by a logical condition which should be true.
+As assertion is not an executable statement;
+rather, it is a way of documenting
+that a given logical condition must always
+be true at that point in the function.
+
+Syntactically, an assertion is simply
+the word ```Pre:```,
+```Post:```, or ```Inv:```
+followed by the logical condition which should be true.
 For example
 ```
-assert x >= 0
+Pre: x >= 0
 ```
-```assert``` statements have a special syntax
+The capitalization and use of a colon
+are intended to make these statements
+stand out.
+
+Assertions have a special syntax
 for asserting a condition that must be true
 for every element in a consecutive subrange
 of an array.
 The condition ```a[lo,hi) > 0```, for example,
 is equivalent to ```for all i in [lo,hi), a[i] > 0```.
 
-This same syntax is used when describing
-precoditions and postconditions.
+There is no similar syntax for
+an existential qualifier,
+but ```not a[lo,hi) == val```
+serves the same purpose,
+since it is equalivalent
+to ```for some i in [lo,hi), a[i] != val```.
 
 ### Comments
 
