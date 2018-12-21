@@ -13,7 +13,7 @@ This means that no array element prior to ```ret```
 may be equal to ```v```.
 Therefore, the full postcondition is this:
 ```
-assert (ret == invalid and a[lo,hi) != v)
+Post: (ret == invalid and a[lo,hi) != v)
         or (A[ret] == v and A[lo,ret) != v)
 ```
 Note that because the postcondition is a disjunction,
@@ -28,7 +28,7 @@ no element of the array
 with an index less than ```i```
 is equal to v:
 ```
-assert A[lo,i) != v
+Inv: A[lo,i) != v
 ```
 For the first loop execution,
 the loop invariant is trivially true,
@@ -59,12 +59,13 @@ in the postcondition's disjunction.
 The fully annotated code for ```find``` is therefore: 
 ```
 index find(A, lo, hi, v)
-    assert 0 <= lo <= hi <= A.length
+    Pre: 0 <= lo <= hi <= A.length
     for i in [lo,hi)
-        assert A[lo,i) != v
+        Inv: A[lo,i) != v
         if A[i] = v
-            assert A[lo,i) != v and A[i] == v
+            Post: A[lo,i) != v and A[i] == v
             return i
-    assert A[lo,hi) != v
+		Inv: A[lo,hi] != v
+    Post: A[lo,hi) != v
     return invalid
 ```

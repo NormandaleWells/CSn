@@ -10,7 +10,7 @@ in order for it to be meaningful
 to have a maximum element.
 Therefore, the precondition here is
 ```
-assert 0 <= lo < hi <= A.length
+Pre: 0 <= lo < hi <= A.length
 ```
 It is possible for the maximum element
 to appear multiple times in the array.
@@ -25,14 +25,14 @@ greater than or equal to the maximum element.
 
 So the postcondition is:
 ```
-assert A[lo,ret) < A[ret] and A[ret,hi) <= A[ret]
+Post: A[lo,ret) < A[ret] and A[ret,hi) <= A[ret]
 ```
 As usual, the loop invariant
 mimics the postcondition.
 At the start of the loop,
 we want to ensure that:
 ```
-assert A[lo,max_index) < A[max_index] and A[max_index,i) <= A[max_index]
+Inv: A[lo,max_index) < A[max_index] and A[max_index,i) <= A[max_index]
 ```
 Within the loop, we check ```A[i] > A[max_index]```,
 and so we have two possibilities:
@@ -50,15 +50,15 @@ and the loop invariant is re-established.
 The fully annotated code for ```max_element``` is:
 ```
 index max_element(A, lo, hi)
-    assert 0 <= lo < hi <= a.length
+    Pre: 0 <= lo < hi <= a.length
     if hi - lo = 0
         error "call to max_element with empty subrange"
     index max_index = lo
     for i in [lo+1,hi)
-        assert a[lo,max_index) < a[max_index] and a[max_index,i) <= a[max_index]
+        Inv: a[lo,max_index) < a[max_index] and a[max_index,i) <= a[max_index]
         if A[i] > A[max_index]
             max_index = i
-        assert a[lo,max_index) < a[max_index] and a[max_index,i] <= a[max_index]
-    assert a[lo,max_index) < a[max_index] and a[max_index,hi) <= a[max_index]
+        Inv: a[lo,max_index) < a[max_index] and a[max_index,i] <= a[max_index]
+    Post: a[lo,max_index) < a[max_index] and a[max_index,hi) <= a[max_index]
     return max_index
 ```

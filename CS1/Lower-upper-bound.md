@@ -51,20 +51,25 @@ Here is the code for this version of binary search.
 
 ```
 boolean binary_search(A, lo, hi, key)
-	assert is_sorted(A[lo,hi))
-	while i < j
-		assert A[lo',lo) < key
-		assert A[hi,hi') > key
+	Pre: is_sorted(A[lo,hi))
+	while lo < hi
+		Inv: A[lo',lo) < key
+		Inv: A[hi,hi') > key
 		mid = lo + (hi - lo) / 2
 		if A[mid] < key
 			lo = mid + 1
+			// First invariant maintained
 		else if A[mid] > key
 			hi = mid
+			// Second invariant maintained
 		else
+			Post: a[mid] == key
 			return true
-	assert lo == hi
-	assert a[lo',lo) < key
-	assert a[lo,hi') > key
+	Inv: lo == hi
+	Post: a[lo,hi) != key
+	// This follows from the two invariants,
+	// which produce the separate postconditions
+	// a[lo',lo) < key and a[lo,hi') > key
 	return false
 
 boolean binary_search(A, key)
@@ -108,10 +113,16 @@ in `A[lo,hi)` that is greater than or equal to the key value.
 - `upper_bound()` returns the index of the first element
 in `A[lo,hi)` that is strictly greater than the key value.
 
-If the key value is greater than every value in the array,
-both algorithms return `hi`.
 By "first element"
 we mean the one with the lowest index.
+
+The postcondition for ```lower_bound()```
+is therefore ```a[lo,ret) < key and a[ret,hi) >= key```.
+Likewise, the postcondition for ```upper_bound()```
+is ```a[lo,ret) <= key and a[ret,hi) > key```.
+
+If the key value is greater than every value in the array,
+both algorithms return `hi`.
 
 There is no need for any special value
 to indicate that the value was not found,
@@ -151,7 +162,7 @@ The main difference between lower_bound()
 and binary_search() is that we don't return immediately
 upon finding an array element equal to the key,
 since it may not be the first one.
-For upper_bound() the ranges of interest are:
+For lower_bound() the ranges of interest are:
 
 - `A[lo',lo)` contains elements known to be < `key`
 - `A[lo,hi)` contains elements whose relationship to `key` is unknown
@@ -165,18 +176,21 @@ rather than just greater than.
 The algorithm is
 ```
 index lower_bound(A, lo, hi, key)
-	assert is_sorted(A[lo,hi))
+	Pre: is_sorted(A[lo,hi))
 	while lo < hi
-		assert A[lo',lo) < key
-		assert A[hi,hi') >= key
+		Inv: A[lo',lo) < key
+		Inv: A[hi,hi') >= key
 		mid = lo + (hi - lo) / 2
 		if A[mid] < key
 			lo = mid + 1
+			// First invariant maintained
 		else
 			hi = mid
-	assert lo == hi
-	assert a[lo',lo) < key
-	assert a[hi,hi') >= key
+			// A[mid] >=key
+			// Second invariant maintained
+	Inv: lo == hi
+	Post: a[lo',lo) < key
+	Post: a[lo,hi') >= key
 	return lo
 
 index lower_bound(A, key)

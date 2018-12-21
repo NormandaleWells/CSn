@@ -13,7 +13,7 @@ Any algorithms which work
 with a half-open subrange of an array ```A```
 will have this precondition:
 ```
-assert 0 <= lo <= hi <= A.length
+Pre: 0 <= lo <= hi <= A.length
 ```
 In discussions of postconditions,
 I will use ```ret``` to represent
@@ -29,8 +29,8 @@ and array elements are reference types
 may include these preconditions
 (assume ```A``` is an array):
 ```
-assert A != null
-assert A[lo,hi) != null
+Pre: A != null
+Pre: A[lo,hi) != null
 ```
 Each specific basic algorithm is discussed
 on its own page below.
