@@ -21,7 +21,10 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 
 ## CS0 (Csci 1101 at Normandale)
 * Variables and Types
+* * Assignment statements
+* * Arithmetic expressions
 * Selection
+* * Logical expressions
 * Loops
 * Arrays
 * Functions
