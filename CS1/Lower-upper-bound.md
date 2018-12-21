@@ -89,7 +89,7 @@ rather than `lo = mid`.
 We do this is for two reasons:
 
 1. It takes advantage of the fact that we know
-that `A[mid] > key`, since `A[mid]`
+that `A[mid] < key`, since `A[mid]`
 is an element of the subrange `A[lo,mid+1)`.
 2. It avoids a potential infinite loop.
 Need I tell you how I discovered that?
