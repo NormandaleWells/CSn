@@ -37,7 +37,7 @@ public:
 	{
 		if (this != &other)
 		{
-			inner = other.inner->clone();
+			inner.reset(other.inner->clone());
 		}
 		return *this;
 	}

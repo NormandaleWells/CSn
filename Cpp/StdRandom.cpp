@@ -20,14 +20,15 @@ double random()
 	return unif(rng);
 }
 
-int uniform(int n)
+unsigned int uniform(unsigned int n)
 {
 	return static_cast<int>(random() * n);
 }
 
 int uniform(int low, int high)
 {
-	return low + uniform(high - low);
+	unsigned int range = high - low;
+	return low + uniform(range);
 }
 
 double uniform(double low, double high)
@@ -52,7 +53,7 @@ double gaussian(double m, double s)
 	return nd(rng);
 }
 
-size_t discrete(const std::vector<double> & a)
+size_t discrete(const Array<double> & a)
 {
 	double r = random();
 	double sum = 0.0;

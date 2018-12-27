@@ -5,8 +5,6 @@
 #include "Array.h"
 
 #include <stdexcept>
-#include <utility>
-#include <vector>
 
 namespace CSn
 {

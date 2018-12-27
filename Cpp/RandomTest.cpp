@@ -6,8 +6,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <iostream>
-#include <iterator>
 #include <numeric>
 
 using namespace CSn;
@@ -142,9 +140,9 @@ TEST_CASE("gaussian provides reasonable results", "[StdRandom]")
 TEST_CASE("discrete provides reasonable results", "[StdRandom]")
 {
 	set_seed(0);
-	std::vector<int> v(4);
+	Array<int> v(4);
 	std::fill(v.begin(), v.end(), 0);
-	std::vector<double> d = { 0.1, 0.4, 0.1, 0.4 };
+	Array<double> d = { 0.1, 0.4, 0.1, 0.4 };
 	for (size_t i = 0; i < 10000; i++)
 	{
 		v[CSn::discrete(d)] += 1;
@@ -160,7 +158,8 @@ TEST_CASE("discrete provides reasonable results", "[StdRandom]")
 	REQUIRE(v[3] < 4250);
 }
 
-bool is_sorted(const std::vector<double> & v)
+template<typename T>
+bool is_sorted(const Array<T> & v)
 {
 	for (size_t i = 1; i < v.size(); i++)
 	{
@@ -173,7 +172,7 @@ TEST_CASE("shuffle shuffles", "[StdRandom]")
 {
 	SECTION("with doubles")
 	{
-		std::vector<double> v(10);
+		Array<double> v(10);
 		std::iota(v.begin(), v.end(), 0.0);
 		CSn::shuffle(v);
 		REQUIRE_FALSE(is_sorted(v));
@@ -186,7 +185,7 @@ TEST_CASE("shuffle shuffles", "[StdRandom]")
 
 	SECTION("with ints")
 	{
-		std::vector<double> v(10);
+		Array<int> v(10);
 		std::iota(v.begin(), v.end(), 0);
 		CSn::shuffle(v);
 		REQUIRE_FALSE(is_sorted(v));

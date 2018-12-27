@@ -2,7 +2,7 @@
 #ifndef STDRANDOM_H
 #define STDRANDOM_H
 
-#include <vector>
+#include "Array.h"
 
 namespace CSn
 {
@@ -14,7 +14,7 @@ void set_seed(long seed);
 double random();
 
 // return integer in range [0,n)
-int uniform(int n);
+unsigned int uniform(unsigned int n);
 
 // return integer in range [high,low)
 int uniform(int low, int high);
@@ -33,16 +33,16 @@ double gaussian(double m, double s);
 
 // return i with probability a[i]
 // NOTE: sum of values in a must be 1.0
-size_t discrete(const std::vector<double> & a);
+size_t discrete(const Array<double> & a);
 
 // randomly shuffle a
 template <typename T>
-void shuffle(std::vector<T> & a)
+void shuffle(Array<T> & a)
 {
-	size_t n = a.size();
-	for (size_t i = 0; i < n; i++)
+	unsigned int n = static_cast<unsigned int>(a.size());
+	for (unsigned int i = 0; i < n; i++)
 	{
-		int r = i + uniform(n - i);
+		unsigned int r = i + uniform(n - i);
 		std::swap(a[i], a[r]);
 	}
 }

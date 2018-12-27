@@ -2,12 +2,11 @@
 #ifndef ALGS4_ARRAY_H
 #define ALGS4_ARRAY_H
 
-#include <algorithm>
 #include <initializer_list>
 #include <iterator>
 #include <stdexcept>
 
-#include "Iterator.h"
+//#include "Iterator.h"
 
 namespace CSn
 {
@@ -36,10 +35,22 @@ public:
 	*/
 	using size_type = size_t;
 
+	/**
+		iterator is the iterator type used for an Array.
+	*/
+	using iterator = T *;
+
 private:
 
 	size_type cap;
 	T * data;
+
+#if 0
+	InnerIterator<T> * create_iterator(bool at_end) const noexcept
+	{
+		return new Array<T>::ForwardIterator(*this, at_end ? cap : 0);
+	}
+#endif
 
 public:
 
@@ -166,6 +177,65 @@ public:
 	}
 
 	/**
+		Returns an iterator which references the first element of the Array.
+
+		@return An iterator which references the first element of the Array.
+	*/
+	iterator begin() const noexcept
+	{
+		return &data[0];
+	}
+
+	/**
+		Returns an iterator which references the last element of the Array.
+
+		@return An iterator which references the last element of the Array.
+	*/
+	iterator end() const noexcept
+	{
+		return &data[cap];
+	}
+
+#if 0
+	// We maye eventually need fancier iterator types for Stack
+	// and Queue, but Array itself only needs the T* iterators
+	// returned above for begin() and end().
+
+	/**
+		Implements InnerIterator to iterate forward through the array
+		starting at the given index.
+	*/
+	class ForwardIterator : public InnerIterator<T>
+	{
+	private:
+		T * pos;
+		T * end;
+		ForwardIterator(T * p, T * e) : pos(p), end(p) {}
+	public:
+		ForwardIterator(const Array & a, size_t idx)
+			: pos(&a.data[idx]), end(&a.data[a.cap]) {}
+		~ForwardIterator() {}
+		T & dereference() const override
+		{
+			if (pos == end)
+				throw std::out_of_range("ForwardIterator::dereference");
+			return *pos;
+		}
+		void increment() noexcept override
+		{
+			pos += 1;
+		}
+		bool equal_to(const InnerIterator<T> * rhs) const noexcept override
+		{
+			return pos == dynamic_cast<const ForwardIterator *>(rhs)->pos;
+		}
+		InnerIterator<T> * clone() const override
+		{
+			return new ForwardIterator(pos, end);
+		}
+	};
+
+	/**
 		Implements InnerIterator to iterate backward through the array
 		starting from a given index.
 	*/
@@ -178,7 +248,7 @@ public:
 	public:
 		BackwardIterator(const Array & a, int idx) : pos(&a.data[idx]), end(a.data) {}
 		~BackwardIterator() {}
-		const T & dereference() const override
+		T & dereference() const override
 		{
 			if (pos == end)
 				throw std::out_of_range("BackwardIterator::dereference*");
@@ -197,6 +267,8 @@ public:
 			return new BackwardIterator(pos, end);
 		}
 	};
+
+#endif
 };
 
 /**
