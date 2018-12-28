@@ -12,6 +12,19 @@ namespace CSn
 {
 
 /**
+	size_type is an unsigned integer type used for the array
+	size.  It can also be used for array indices.
+*/
+using index = size_t;
+
+/**
+	invalid is a special index value representing an
+	invalid index.  This is generally used as a "not found"
+	return value.
+*/
+const index invalid = static_cast<index>(-1);
+
+/**
 	Array is a simple array class that does bounds checking.
 
 	The type parameter T is assumed to satisfy the
@@ -30,19 +43,13 @@ public:
 	using value_type = T;
 
 	/**
-		size_type is an unsigned integer type used for the array
-		size.  It can also be used for array indices.
-	*/
-	using size_type = size_t;
-
-	/**
 		iterator is the iterator type used for an Array.
 	*/
 	using iterator = T *;
 
 private:
 
-	size_type cap;
+	index cap;
 	T * data;
 
 #if 0
@@ -65,7 +72,7 @@ public:
 
 		@param[in] size The initial size of the Array.
 	*/
-	explicit Array(size_type size)
+	explicit Array(index size)
 		: data(size == 0 ? nullptr : new T[size]), cap(size) {}
 
 	/**
@@ -76,9 +83,9 @@ public:
 		@param[in] size The initial size of the Array.
 		@param[in] value The initial value for all the Array elements.
 	*/
-	Array(size_type size, const T & value) : data (new T[size]), cap(size)
+	Array(index size, const T & value) : data (new T[size]), cap(size)
 	{
-		for (size_type i = 0; i <  cap; i++)
+		for (index i = 0; i < cap; i++)
 			data[i] = value;
 	}
 
@@ -147,7 +154,7 @@ public:
 	/**
 		Returns the size of the Array.
 	*/
-	size_type size() const noexcept
+	index size() const noexcept
 	{
 		return cap;
 	}
@@ -158,7 +165,7 @@ public:
 
 		@param[in] idx The index of the item to retrieve.
 	*/
-	T & operator[](size_type idx)
+	T & operator[](index idx)
 	{
 		if (idx >= cap) throw std::out_of_range("Array::operator[]");
 		return data[idx];
@@ -170,7 +177,7 @@ public:
 
 		@param[in] idx The index of the item to retrieve.
 		*/
-	const T & operator[](size_type idx) const
+	const T & operator[](index idx) const
 	{
 		if (idx >= cap) throw std::out_of_range("Array::operator[] const");
 		return data[idx];
@@ -279,7 +286,7 @@ template<typename T>
 bool operator==(const Array<T> & lhs, const Array<T> & rhs)
 {
 	if (lhs.size() != rhs.size()) return false;
-	for (typename Array<T>::size_type i = 0; i < lhs.size(); i++)
+	for (index i = 0; i < lhs.size(); i++)
 		if (lhs[i] != rhs[i]) return false;
 	return true;
 }

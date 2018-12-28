@@ -4,43 +4,43 @@
 
 #include "Array.h"
 
+#include <cassert>
 #include <stdexcept>
 
 namespace CSn
 {
 
-template <typename T>
-size_t find(const Array<T> & v, size_t lo, size_t hi, T t)
-{
-	for (size_t i = lo; i < hi; i++)
-	{
-		if (v[i] == t) return i;
-	}
-
-	return hi;
-}
-
-template <typename T>
-size_t find(const Array<T> & v, T t)
-{
-	return find(v, 0U, v.size(), t);
-}
-
 template <typename T, typename Pred>
-size_t find(const Array<T> & v, size_t lo, size_t hi, Pred p)
+index find(const Array<T> & v, index lo, index hi, Pred p)
 {
-	for (size_t i = lo; i < hi; i++)
+	assert(0 <= lo);
+	assert(lo <= hi);
+	assert(hi <= v.size());
+
+	for (index i = lo; i < hi; i++)
 	{
 		if (p(v[i])) return i;
 	}
 
-	return hi;
+	return invalid;
 }
 
 template <typename T, typename Pred>
-size_t find(const Array<T> & v, Pred p)
+index find(const Array<T> & v, Pred p)
 {
-	return find(v, 0U, v.size(), p);
+	return find(v, 0, v.size(), p);
+}
+
+template <typename T>
+index find(const Array<T> & v, index lo, index hi, T t)
+{
+	return find(v, lo, hi, [&t](const T & v) { return v == t; });
+}
+
+template <typename T>
+index find(const Array<T> & v, T t)
+{
+	return find(v, 0, v.size(), t);
 }
 
 ////////////////////
@@ -53,13 +53,13 @@ size_t find(const Array<T> & v, Pred p)
 ///////////////////
 
 template <typename T>
-size_t binary_search(const Array<T> & v, size_t lo, size_t hi, T key)
+index binary_search(const Array<T> & v, index lo, index hi, T key)
 {
 	// Invariant: If key is in v, then key is in [lo..hi).
 	// When lo == hi, [lo..hi) is empty, and key is not found.
 	while (hi > lo)
 	{
-		size_t mid = lo + (hi - lo) / 2;
+		index mid = lo + (hi - lo) / 2;
 		if (key < v[mid])
 			hi = mid;
 		else if (v[mid] < key)
@@ -68,23 +68,23 @@ size_t binary_search(const Array<T> & v, size_t lo, size_t hi, T key)
 			return mid;
 	}
 
-	return -1;
+	return invalid;
 }
 
 template <typename T>
-size_t binary_search(const Array<T> & v, T key)
+index binary_search(const Array<T> & v, T key)
 {
-	return binary_search(v, 0U, v.size(), key);
+	return binary_search(v, 0, v.size(), key);
 }
 
 template <typename T>
-size_t lower_bound(const Array<T> & v, size_t lo, size_t hi, T key)
+index lower_bound(const Array<T> & v, index lo, index hi, T key)
 {
 	// Invariant: [0..lo) < key, key <= [hi..v.size())
 	// When lo == hi, v[hi] is the smallest index s.t. v[i] >= key
 	while (lo != hi)
 	{
-		size_t mid = lo + (hi - lo) / 2;
+		index mid = lo + (hi - lo) / 2;
 		if (!(v[mid] < key))
 			hi = mid;
 		else
@@ -95,19 +95,19 @@ size_t lower_bound(const Array<T> & v, size_t lo, size_t hi, T key)
 }
 
 template <typename T>
-size_t lower_bound(const Array<T> & v, T key)
+index lower_bound(const Array<T> & v, T key)
 {
 	return lower_bound(v, 0U, v.size(), key);
 }
 
 template <typename T>
-size_t upper_bound(const Array<T> & v, size_t lo, size_t hi, T key)
+index upper_bound(const Array<T> & v, index lo, index hi, T key)
 {
 	// Invariant: [0..lo) <= key, key < [hi..v.size())
 	// When lo == hi, v[hi] is the smallest index s.t. v[i] > key
 	while (lo != hi)
 	{
-		size_t mid = lo + (hi - lo) / 2;
+		index mid = lo + (hi - lo) / 2;
 		if (key < v[mid])
 			hi = mid;
 		else
@@ -118,19 +118,20 @@ size_t upper_bound(const Array<T> & v, size_t lo, size_t hi, T key)
 }
 
 template <typename T>
-size_t upper_bound(const Array<T> & v, T key)
+index upper_bound(const Array<T> & v, T key)
 {
 	return upper_bound(v, 0U, v.size(), key);
 }
 
 template <typename T>
-void copy(const Array<T> & src, size_t src_begin, size_t src_end, Array<T> & dst, size_t dest_begin)
+void copy(const Array<T> & src, index src_begin, index src_end,
+		Array<T> & dst, index dest_begin)
 {
 	if (src_end > src.size())
 		throw std::out_of_range("copy src");
 	if (dest_begin + (src_end - src_begin) > dst.size())
 		throw std::out_of_range("copy dst");
-	for (size_t i = src_begin, j = dest_begin; i < src_end; i++, j++)
+	for (index i = src_begin, j = dest_begin; i < src_end; i++, j++)
 		dst[j] = src[i];
 }
 

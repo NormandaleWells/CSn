@@ -108,7 +108,7 @@ TEST_CASE("class Array")
 		{
 			Array<int> a = { 2, 3, 5, 7 };
 			Array<int> b = { 7, 5, 3, 2 };
-			size_t i = 0;
+			index i = 0;
 			for (auto ai = a.begin(), bi = b.begin(); ai != a.end(); ++ai, ++bi)
 			{
 				*bi = *ai;
@@ -164,34 +164,51 @@ TEST_CASE("find()", "[StdArray]")
 	SECTION("find a value in a range")
 	{
 		REQUIRE(find(vi, 0, 6, 1) == 0);
-		REQUIRE(find(vi, 1, 6, 1) == 6);
+		REQUIRE(find(vi, 0, 6, 42) == 1);
+		REQUIRE(find(vi, 0, 6, 57) == 4);
 		REQUIRE(find(vi, 0, 6, 19) == 5);
+		REQUIRE(find(vi, 0, 6, 24) == invalid);
+
+		REQUIRE(find(vi, 1, 6, 1) == invalid);
+		REQUIRE(find(vi, 1, 6, 42) == 1);
+		REQUIRE(find(vi, 1, 6, 57) == 4);
+		REQUIRE(find(vi, 1, 6, 19) == 5);
+		REQUIRE(find(vi, 1, 6, 24) == invalid);
+
 		REQUIRE(find(vi, 0, 5, 1) == 0);
-		REQUIRE(find(vi, 1, 5, 0) == 5);
-		REQUIRE(find(vi, 1, 5, 50) == 5);
-		REQUIRE(find(vi, 1, 5, 17) == 2);
-		REQUIRE(find(vi, 1, 5, 33) == 3);
+		REQUIRE(find(vi, 0, 5, 42) == 1);
+		REQUIRE(find(vi, 0, 5, 57) == 4);
+		REQUIRE(find(vi, 0, 5, 19) == invalid);
+		REQUIRE(find(vi, 0, 5, 24) == invalid);
+
+		REQUIRE(find(vi, 1, 5, 1) == invalid);
+		REQUIRE(find(vi, 1, 5, 42) == 1);
+		REQUIRE(find(vi, 1, 5, 57) == 4);
+		REQUIRE(find(vi, 1, 5, 19) == invalid);
+		REQUIRE(find(vi, 1, 5, 24) == invalid);
 	}
 	SECTION("find a value in the entire array")
 	{
 		REQUIRE(find(vi, 1) == 0);
+		REQUIRE(find(vi, 42) == 1);
+		REQUIRE(find(vi, 57) == 4);
 		REQUIRE(find(vi, 19) == 5);
-		REQUIRE(find(vi, 0) == 6);
-		REQUIRE(find(vi, 50) == 6);
-		REQUIRE(find(vi, 17) == 2);
-		REQUIRE(find(vi, 33) == 3);
+		REQUIRE(find(vi, 24) == invalid);
 	}
 	SECTION("find a value in a range using a predicate")
 	{
 		REQUIRE(find(vi, 0, 6, [](int i) { return i > 45; }) == 4);
 		REQUIRE(find(vi, 1, 5, [](int i) { return i > 45; }) == 4);
-		REQUIRE(find(vi, 0, 6, [](int i) { return i < 0; }) == 6);
-		REQUIRE(find(vi, 1, 5, [](int i) { return i < 0; }) == 5);
+		REQUIRE(find(vi, 0, 6, [](int i) { return i % 2 == 0; }) == 1);
+		REQUIRE(find(vi, 1, 5, [](int i) { return i % 2 == 0; }) == 1);
+		REQUIRE(find(vi, 0, 6, [](int i) { return i > 100; }) == invalid);
+		REQUIRE(find(vi, 1, 5, [](int i) { return i > 100; }) == invalid);
 	}
 	SECTION("find a value in the entire array using a predicate")
 	{
 		REQUIRE(find(vi, [](int i) { return i > 45; }) == 4);
-		REQUIRE(find(vi, [](int i) { return i < 0; }) == 6);
+		REQUIRE(find(vi, [](int i) { return i % 2 == 0; }) == 1);
+		REQUIRE(find(vi, [](int i) { return i < 0; }) == invalid);
 	}
 }
 
@@ -201,31 +218,31 @@ TEST_CASE("binary_search()", "[StdArray]")
 
 	SECTION("with a subrange of the vector")
 	{
-		REQUIRE(binary_search(vi, 1, 6, 13) == -1);
+		REQUIRE(binary_search(vi, 1, 6, 13) == invalid);
 		REQUIRE(binary_search(vi, 1, 6, 17) == 1);
 		REQUIRE(binary_search(vi, 1, 6, 19) == 2);
 		REQUIRE(binary_search(vi, 1, 6, 23) == 3);
 		REQUIRE(binary_search(vi, 1, 6, 29) == 4);
 		REQUIRE(binary_search(vi, 1, 6, 31) == 5);
-		REQUIRE(binary_search(vi, 1, 6, 37) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 11) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 41) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 15) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 34) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 21) == -1);
-		REQUIRE(binary_search(vi, 1, 6, 26) == -1);
+		REQUIRE(binary_search(vi, 1, 6, 37) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 11) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 41) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 15) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 34) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 21) == invalid);
+		REQUIRE(binary_search(vi, 1, 6, 26) == invalid);
 	}
 	SECTION("with the entire vector")
 	{
 		REQUIRE(binary_search(vi, 13) == 0);
 		REQUIRE(binary_search(vi, 23) == 3);
 		REQUIRE(binary_search(vi, 37) == 6);
-		REQUIRE(binary_search(vi, 11) == -1);
-		REQUIRE(binary_search(vi, 41) == -1);
-		REQUIRE(binary_search(vi, 15) == -1);
-		REQUIRE(binary_search(vi, 34) == -1);
-		REQUIRE(binary_search(vi, 21) == -1);
-		REQUIRE(binary_search(vi, 26) == -1);
+		REQUIRE(binary_search(vi, 11) == invalid);
+		REQUIRE(binary_search(vi, 41) == invalid);
+		REQUIRE(binary_search(vi, 15) == invalid);
+		REQUIRE(binary_search(vi, 34) == invalid);
+		REQUIRE(binary_search(vi, 21) == invalid);
+		REQUIRE(binary_search(vi, 26) == invalid);
 	}
 }
 
