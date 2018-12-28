@@ -212,6 +212,128 @@ TEST_CASE("find()", "[StdArray]")
 	}
 }
 
+TEST_CASE("count()", "[StdArray]")
+{
+	Array<int> a1{ 1, 2, 3, 1, 4, 3 };
+	Array<int> a2{ 2, 1, 1, 3, 3, 4 };
+	SECTION("count values in a range")
+	{
+		REQUIRE(count(a1, 0, 6, 1) == 2);
+		REQUIRE(count(a1, 0, 6, 2) == 1);
+		REQUIRE(count(a1, 0, 6, 3) == 2);
+		REQUIRE(count(a1, 0, 6, 4) == 1);
+		REQUIRE(count(a1, 0, 6, 5) == 0);
+
+		REQUIRE(count(a1, 1, 6, 1) == 1);
+		REQUIRE(count(a1, 1, 6, 2) == 1);
+		REQUIRE(count(a1, 1, 6, 3) == 2);
+		REQUIRE(count(a1, 1, 6, 4) == 1);
+		REQUIRE(count(a1, 1, 6, 5) == 0);
+
+		REQUIRE(count(a1, 0, 5, 1) == 2);
+		REQUIRE(count(a1, 0, 5, 2) == 1);
+		REQUIRE(count(a1, 0, 5, 3) == 1);
+		REQUIRE(count(a1, 0, 5, 4) == 1);
+		REQUIRE(count(a1, 0, 5, 5) == 0);
+
+		REQUIRE(count(a1, 1, 5, 1) == 1);
+		REQUIRE(count(a1, 1, 5, 2) == 1);
+		REQUIRE(count(a1, 1, 5, 3) == 1);
+		REQUIRE(count(a1, 1, 5, 4) == 1);
+		REQUIRE(count(a1, 1, 5, 5) == 0);
+
+		REQUIRE(count(a2, 0, 6, 1) == 2);
+		REQUIRE(count(a2, 0, 6, 2) == 1);
+		REQUIRE(count(a2, 0, 6, 3) == 2);
+		REQUIRE(count(a2, 0, 6, 4) == 1);
+		REQUIRE(count(a2, 0, 6, 5) == 0);
+
+		REQUIRE(count(a2, 1, 6, 1) == 2);
+		REQUIRE(count(a2, 1, 6, 2) == 0);
+		REQUIRE(count(a2, 1, 6, 3) == 2);
+		REQUIRE(count(a2, 1, 6, 4) == 1);
+		REQUIRE(count(a2, 1, 6, 5) == 0);
+
+		REQUIRE(count(a2, 0, 5, 1) == 2);
+		REQUIRE(count(a2, 0, 5, 2) == 1);
+		REQUIRE(count(a2, 0, 5, 3) == 2);
+		REQUIRE(count(a2, 0, 5, 4) == 0);
+		REQUIRE(count(a2, 0, 5, 5) == 0);
+
+		REQUIRE(count(a2, 1, 5, 1) == 2);
+		REQUIRE(count(a2, 1, 5, 2) == 0);
+		REQUIRE(count(a2, 1, 5, 3) == 2);
+		REQUIRE(count(a2, 1, 5, 4) == 0);
+		REQUIRE(count(a2, 1, 5, 5) == 0);
+	}
+	SECTION("find a value in the entire array")
+	{
+		REQUIRE(count(a1, 1) == 2);
+		REQUIRE(count(a1, 2) == 1);
+		REQUIRE(count(a1, 3) == 2);
+		REQUIRE(count(a1, 4) == 1);
+		REQUIRE(count(a1, 5) == 0);
+	}
+}
+
+TEST_CASE("max_element()", "[StdArray]")
+{
+	SECTION("max element in a range")
+	{
+		Array<int> a1{ 1, 1, 0, 0, 1, 0, 0, 1, 1 };
+		REQUIRE(max_element(a1, 0, 9) == 0);
+		REQUIRE(max_element(a1, 1, 9) == 1);
+		REQUIRE(max_element(a1, 2, 9) == 4);
+		REQUIRE(max_element(a1, 3, 9) == 4);
+		REQUIRE(max_element(a1, 4, 9) == 4);
+		REQUIRE(max_element(a1, 5, 9) == 7);
+		REQUIRE(max_element(a1, 5, 8) == 7);
+		REQUIRE(max_element(a1, 5, 7) == 5);
+		REQUIRE(max_element(a1, 5, 6) == 5);
+		REQUIRE(max_element(a1, 0, 1) == 0);
+		REQUIRE(max_element(a1, 0, 2) == 0);
+		REQUIRE(max_element(a1, 1, 2) == 1);
+	}
+	SECTION("max element in the entire array")
+	{
+		Array<int> a1{ 1, 0, 0 };
+		Array<int> a2{ 0, 1, 0 };
+		Array<int> a3{ 0, 0, 1 };
+		REQUIRE(max_element(a1) == 0);
+		REQUIRE(max_element(a2) == 1);
+		REQUIRE(max_element(a3) == 2);
+	}
+}
+
+TEST_CASE("min_element()", "[StdArray]")
+{
+	SECTION("min element in a range")
+	{
+		Array<int> a1{ 0, 0, 1, 1, 0, 1, 1, 0, 0 };
+		REQUIRE(min_element(a1, 0, 9) == 0);
+		REQUIRE(min_element(a1, 1, 9) == 1);
+		REQUIRE(min_element(a1, 2, 9) == 4);
+		REQUIRE(min_element(a1, 3, 9) == 4);
+		REQUIRE(min_element(a1, 4, 9) == 4);
+		REQUIRE(min_element(a1, 5, 9) == 7);
+		REQUIRE(min_element(a1, 5, 8) == 7);
+		REQUIRE(min_element(a1, 5, 7) == 5);
+		REQUIRE(min_element(a1, 5, 6) == 5);
+		REQUIRE(min_element(a1, 0, 1) == 0);
+		REQUIRE(min_element(a1, 0, 2) == 0);
+		REQUIRE(min_element(a1, 1, 2) == 1);
+	}
+	SECTION("min element in the entire array")
+	{
+		Array<int> a1{ 0, 1, 1 };
+		Array<int> a2{ 1, 0, 1 };
+		Array<int> a3{ 1, 1, 0 };
+		REQUIRE(min_element(a1) == 0);
+		REQUIRE(min_element(a2) == 1);
+		REQUIRE(min_element(a3) == 2);
+	}
+}
+
 TEST_CASE("binary_search()", "[StdArray]")
 {
 	Array<int> vi = { 13, 17, 19, 23, 29, 31, 37 };

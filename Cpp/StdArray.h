@@ -43,6 +43,81 @@ index find(const Array<T> & v, T t)
 	return find(v, 0, v.size(), t);
 }
 
+template <typename T, typename Pred>
+int count(const Array<T> & v, index lo, index hi, Pred p)
+{
+	assert(0 <= lo);
+	assert(lo <= hi);
+	assert(hi <= v.size());
+
+	int c = 0;
+	for (index i = lo; i < hi; i++)
+	{
+		if (p(v[i]))
+			c++;
+	}
+
+	return c;
+}
+
+template <typename T, typename Pred>
+int count(const Array<T> & v, Pred p)
+{
+	return count(v, 0, v.size(), p);
+}
+
+template <typename T>
+int count(const Array<T> & v, index lo, index hi, T t)
+{
+	return count(v, lo, hi, [&t](const T & v) { return v == t; });
+}
+
+template <typename T>
+int count(const Array<T> & v, T t)
+{
+	return count(v, 0, v.size(), t);
+}
+
+template <typename T>
+index max_element(const Array<T> & v, index lo, index hi)
+{
+	assert(0 <= lo);
+	assert(lo < hi);
+	assert(hi <= v.size());
+
+	index idx_max = lo;
+	for (index i = lo; i < hi; i++)
+		if (v[idx_max] < v[i])
+			idx_max = i;
+	return idx_max;
+}
+
+template <typename T>
+index max_element(const Array<T> & v)
+{
+	return max_element(v, 0, v.size());
+}
+
+template <typename T>
+index min_element(const Array<T> & v, index lo, index hi)
+{
+	assert(0 <= lo);
+	assert(lo < hi);
+	assert(hi <= v.size());
+
+	index idx_min = lo;
+	for (index i = lo; i < hi; i++)
+		if (v[i] < v[idx_min])
+			idx_min = i;
+	return idx_min;
+}
+
+template <typename T>
+index min_element(const Array<T> & v)
+{
+	return min_element(v, 0, v.size());
+}
+
 ////////////////////
 //
 // Note that in all binary search functions, we only use the

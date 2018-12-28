@@ -2,6 +2,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
+#include "StdArray.h"
 #include "StdRandom.h"
 
 #include <algorithm>
@@ -58,12 +59,12 @@ TEST_CASE("uniform(int) provides results in the correct range", "[StdRandom]")
 
 	// If the maximum entry is as high as 20, we probably have an error
 	// in our code.
-	int mx = *std::max_element(vi.begin(), vi.end());
+	int mx = vi[max_element(vi)];
 	REQUIRE(mx < 20);
 
 	// If the minimum entry is as low as 2, we probably have an error
 	// in our code.
-	int mn = *std::min_element(vi.begin(), vi.end());
+	int mn = vi[min_element(vi)];
 	REQUIRE(mn > 2);
 }
 
@@ -77,10 +78,10 @@ TEST_CASE("uniform(double) provides results in the correct range", "[StdRandom]"
 	REQUIRE(a > 1400.0);
 	REQUIRE(a < 1600.0);
 
-	double mn = *std::min_element(vd.begin(), vd.end());
+	double mn = vd[min_element(vd)];
 	REQUIRE(mn >= 10.0);
 
-	double mx = *std::max_element(vd.begin(), vd.end());
+	double mx = vd[max_element(vd)];
 	REQUIRE(mn < 20.0);
 }
 
