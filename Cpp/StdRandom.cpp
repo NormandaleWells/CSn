@@ -53,11 +53,11 @@ double gaussian(double m, double s)
 	return nd(rng);
 }
 
-size_t discrete(const Array<double> & a)
+index discrete(const Array<double> & a)
 {
 	double r = random();
 	double sum = 0.0;
-	for (size_t i = 0; i < a.size(); i++)
+	for (index i = 0; i < a.size(); i++)
 	{
 		sum += a[i];
 		if (sum >= r) return i;

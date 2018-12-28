@@ -126,7 +126,7 @@ TEST_CASE("class Array")
 		{
 			Array<int> a = { 2, 3, 5, 7 };
 			Array<int> b = { 7, 5, 3, 2 };
-			size_t i = 0;
+			index i = 0;
 			for (int x : a)
 			{
 				b[i++] = x;

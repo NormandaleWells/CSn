@@ -47,12 +47,12 @@ TEST_CASE("uniform() returns a number in the proper range", "[StdRandom]")
 TEST_CASE("uniform(int) provides results in the correct range", "[StdRandom]")
 {
 	set_seed(0);
-	std::vector<int> vi(10);
+	Array<int> vi(10);
 	std::fill(vi.begin(), vi.end(), 0);
 	for (size_t i = 0; i < vi.size() * 10; i++)
 		vi[uniform(10, 20) - 10] += 1;
 
-	// We should have incrermented vi.size() times.
+	// We should have incremented vi.size() times.
 	int a = std::accumulate(vi.begin(), vi.end(), 0);
 	REQUIRE(a == vi.size() * 10);
 
@@ -70,7 +70,7 @@ TEST_CASE("uniform(int) provides results in the correct range", "[StdRandom]")
 TEST_CASE("uniform(double) provides results in the correct range", "[StdRandom]")
 {
 	set_seed(0);
-	std::vector<double> vd(100);
+	Array<double> vd(100);
 	std::generate(vd.begin(), vd.end(), []() { return uniform(10.0, 20.0); });
 
 	double a = std::accumulate(vd.begin(), vd.end(), 0.0);
@@ -107,7 +107,7 @@ TEST_CASE("bernoulli provides reasonable results", "[StdRandom]")
 TEST_CASE("gaussian provides reasonable results", "[StdRandom]")
 {
 	set_seed(0);
-	std::vector<int> v(21);
+	Array<int> v(21);
 	std::fill(v.begin(), v.end(), 0);
 	for (size_t i = 0; i < 10000; i++)
 	{
@@ -161,7 +161,7 @@ TEST_CASE("discrete provides reasonable results", "[StdRandom]")
 template<typename T>
 bool is_sorted(const Array<T> & v)
 {
-	for (size_t i = 1; i < v.size(); i++)
+	for (index i = 1; i < v.size(); i++)
 	{
 		if (v[i] < v[i - 1]) return false;
 	}
@@ -177,7 +177,7 @@ TEST_CASE("shuffle shuffles", "[StdRandom]")
 		CSn::shuffle(v);
 		REQUIRE_FALSE(is_sorted(v));
 		std::sort(v.begin(), v.end());
-		for (size_t i = 0; i < v.size(); i++)
+		for (index i = 0; i < v.size(); i++)
 		{
 			REQUIRE(v[i] == i);
 		}
@@ -190,7 +190,7 @@ TEST_CASE("shuffle shuffles", "[StdRandom]")
 		CSn::shuffle(v);
 		REQUIRE_FALSE(is_sorted(v));
 		std::sort(v.begin(), v.end());
-		for (size_t i = 0; i < v.size(); i++)
+		for (index i = 0; i < v.size(); i++)
 		{
 			REQUIRE(v[i] == i);
 		}

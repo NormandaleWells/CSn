@@ -33,16 +33,16 @@ double gaussian(double m, double s);
 
 // return i with probability a[i]
 // NOTE: sum of values in a must be 1.0
-size_t discrete(const Array<double> & a);
+index discrete(const Array<double> & a);
 
 // randomly shuffle a
 template <typename T>
 void shuffle(Array<T> & a)
 {
-	unsigned int n = static_cast<unsigned int>(a.size());
-	for (unsigned int i = 0; i < n; i++)
+	index n = static_cast<unsigned int>(a.size());
+	for (index i = 0; i < n; i++)
 	{
-		unsigned int r = i + uniform(n - i);
+		index r = i + uniform(n - i);
 		std::swap(a[i], a[r]);
 	}
 }

@@ -15,7 +15,7 @@ namespace CSn
 	size_type is an unsigned integer type used for the array
 	size.  It can also be used for array indices.
 */
-using index = size_t;
+using index = unsigned int;
 
 /**
 	invalid is a special index value representing an
@@ -100,7 +100,8 @@ public:
 		is the number of items in the initializer list.
 	*/
 	Array(std::initializer_list<T> init)
-		: cap(std::distance(init.begin(), init.end())), data(new T[cap])
+		: cap(static_cast<index>(std::distance(init.begin(), init.end()))),
+		  data(new T[cap])
 	{
 		int i = 0;
 		for (auto iter = init.begin(); iter != init.end(); iter++)
