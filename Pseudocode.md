@@ -73,6 +73,7 @@ Functions which return nothing simply leave out the return value in the first li
 ```
 swap(A, idx1, idx2)
 ```
+Arrays are passed to functions by reference.
 
 ### Errors
 
