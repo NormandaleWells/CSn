@@ -2,6 +2,7 @@
 #ifndef ALGS4_ARRAY_H
 #define ALGS4_ARRAY_H
 
+#include <algorithm>
 #include <initializer_list>
 #include <iterator>
 #include <stdexcept>
@@ -45,7 +46,7 @@ public:
 	/**
 		iterator is the iterator type used for an Array.
 	*/
-	using iterator = T *;
+	using iterator = T * ;
 
 private:
 
@@ -83,7 +84,7 @@ public:
 		@param[in] size The initial size of the Array.
 		@param[in] value The initial value for all the Array elements.
 	*/
-	Array(index size, const T & value) : data (new T[size]), cap(size)
+	Array(index size, const T & value) : data(new T[size]), cap(size)
 	{
 		for (index i = 0; i < cap; i++)
 			data[i] = value;
@@ -101,11 +102,10 @@ public:
 	*/
 	Array(std::initializer_list<T> init)
 		: cap(static_cast<index>(std::distance(init.begin(), init.end()))),
-		  data(new T[cap])
+		data(new T[cap])
 	{
 		int i = 0;
-		for (auto iter = init.begin(); iter != init.end(); iter++)
-			data[i++] = *iter;
+		std::copy(init.begin(), init.end(), this->begin());
 	}
 
 	/**
@@ -119,12 +119,21 @@ public:
 	/**
 		Copy constructor.  This is marked as deleted until needed.
 	*/
-	Array(const Array & other) = delete;
+	Array(const Array & other)
+		: cap(other.cap), data(new T[cap])
+	{
+		std::copy(other.begin(), other.end(), this->begin());
+	}
 
 	/**
 		Assignment operator.  This is marked as deleted until needed.
 	*/
-	Array & operator=(const Array & rhs) = delete;
+	Array & operator=(const Array & rhs)
+	{
+		Array<T> a(rhs);
+		std::swap(*this, a);
+		return *this;
+	}
 
 	/**
 		Move constructor.

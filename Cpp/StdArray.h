@@ -118,6 +118,61 @@ index min_element(const Array<T> & v)
 	return min_element(v, 0, v.size());
 }
 
+template <typename T>
+void rotate_left(Array<T> & a, index lo, index hi)
+{
+	assert(0 <= lo);
+	assert(lo <= hi);
+	assert(hi <= a.size());
+
+	if (hi - lo <= 1)
+		return;
+	T t = a[lo];
+	for (index i = lo + 1; i < hi; i++)
+		a[i - 1] = a[i];
+	a[hi - 1] = t;
+}
+
+template <typename T>
+void rotate_left(Array<T> & a)
+{
+	rotate_left(a, 0, a.size());
+}
+
+template <typename T>
+void rotate_right(Array<T> & a, index lo, index hi)
+{
+	assert(0 <= lo);
+	assert(lo <= hi);
+	assert(hi <= a.size());
+
+	if (hi - lo <= 1)
+		return;
+	T t = a[hi-1];
+	for (index i = hi - 1; i > lo; i--)
+		a[i] = a[i - 1];
+	a[lo] = t;
+}
+
+template <typename T>
+void rotate_right(Array<T> & a)
+{
+	rotate_right(a, 0, a.size());
+}
+
+template <typename T>
+void swap(Array<T> & a, index idx1, index idx2)
+{
+	assert(0 <= idx1);
+	assert(0 <= idx2);
+	assert(idx1 < a.size());
+	assert(idx2 < a.size());
+
+	T t = a[idx1];
+	a[idx1] = a[idx2];
+	a[idx2] = t;
+}
+
 ////////////////////
 //
 // Note that in all binary search functions, we only use the

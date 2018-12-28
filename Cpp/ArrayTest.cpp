@@ -334,6 +334,149 @@ TEST_CASE("min_element()", "[StdArray]")
 	}
 }
 
+TEST_CASE("rotate_left()", "[StdArray]")
+{
+	SECTION("rotate a range")
+	{
+		Array<int> a = { 0, 1, 2, 3, 4 };
+
+		Array<int> atest(a);
+		rotate_left(atest, 0, 5);
+		REQUIRE(atest == Array<int>{ 1, 2, 3, 4, 0 });
+
+		atest = a;
+		rotate_left(atest, 1, 5);
+		REQUIRE(atest == Array<int>{ 0, 2, 3, 4, 1 });
+
+		atest = a;
+		rotate_left(atest, 0, 4);
+		REQUIRE(atest == Array<int>{ 1, 2, 3, 0, 4 });
+
+		atest = a;
+		rotate_left(atest, 1, 4);
+		REQUIRE(atest == Array<int>{ 0, 2, 3, 1, 4 });
+
+		atest = a;
+		rotate_left(atest, 0, 1);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_left(atest, 4, 5);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_left(atest, 2, 3);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_left(atest, 0, 0);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_left(atest, 5, 5);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_left(atest, 2, 2);
+		REQUIRE(atest == a);
+	}
+	SECTION("rotate a full array")
+	{
+		Array<int> a5 = { 0, 1, 2, 3, 4 };
+		rotate_left(a5);
+		REQUIRE(a5 == Array<int>{ 1, 2, 3, 4, 0 });
+
+		Array<int> a1 = { 0 };
+		rotate_left(a1);
+		REQUIRE(a1 == Array<int>{ 0 });
+
+		Array<int> a0;
+		rotate_left(a0);
+		REQUIRE(a0 == Array<int>());
+	}
+}
+
+TEST_CASE("rotate_right()", "[StdArray]")
+{
+	SECTION("rotate a range")
+	{
+		Array<int> a = { 0, 1, 2, 3, 4 };
+
+		Array<int> atest(a);
+		rotate_right(atest, 0, 5);
+		REQUIRE(atest == Array<int>{ 4, 0, 1, 2, 3 });
+
+		atest = a;
+		rotate_right(atest, 1, 5);
+		REQUIRE(atest == Array<int>{ 0, 4, 1, 2, 3 });
+
+		atest = a;
+		rotate_right(atest, 0, 4);
+		REQUIRE(atest == Array<int>{ 3, 0, 1, 2, 4 });
+
+		atest = a;
+		rotate_right(atest, 1, 4);
+		REQUIRE(atest == Array<int>{ 0, 3, 1, 2, 4 });
+
+		atest = a;
+		rotate_right(atest, 0, 1);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_right(atest, 4, 5);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_right(atest, 2, 3);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_right(atest, 0, 0);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_right(atest, 5, 5);
+		REQUIRE(atest == a);
+
+		atest = a;
+		rotate_right(atest, 2, 2);
+		REQUIRE(atest == a);
+	}
+	SECTION("rotate a full array")
+	{
+		Array<int> a5 = { 0, 1, 2, 3, 4 };
+		rotate_right(a5);
+		REQUIRE(a5 == Array<int>{ 4, 0, 1, 2, 3 });
+
+		Array<int> a1 = { 0 };
+		rotate_right(a1);
+		REQUIRE(a1 == Array<int>{ 0 });
+
+		Array<int> a0;
+		rotate_right(a0);
+		REQUIRE(a0 == Array<int>());
+	}
+}
+
+TEST_CASE("swap()", "[StdArray]")
+{
+	Array<int> a = { 0, 1, 2, 3, 4 };
+	swap(a, 0, 4);
+	REQUIRE(a == Array<int>{ 4, 1, 2, 3, 0 });
+	swap(a, 1, 4);
+	REQUIRE(a == Array<int>{ 4, 0, 2, 3, 1 });
+	swap(a, 0, 3);
+	REQUIRE(a == Array<int>{ 3, 0, 2, 4, 1 });
+	swap(a, 1, 3);
+	REQUIRE(a == Array<int>{ 3, 4, 2, 0, 1 });
+	swap(a, 0, 0);
+	REQUIRE(a == Array<int>{ 3, 4, 2, 0, 1 });
+	swap(a, 4, 4);
+	REQUIRE(a == Array<int>{ 3, 4, 2, 0, 1 });
+	swap(a, 2, 2);
+	REQUIRE(a == Array<int>{ 3, 4, 2, 0, 1 });
+}
+
 TEST_CASE("binary_search()", "[StdArray]")
 {
 	Array<int> vi = { 13, 17, 19, 23, 29, 31, 37 };
