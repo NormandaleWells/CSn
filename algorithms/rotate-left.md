@@ -12,3 +12,7 @@ rotate_left(A)
         A[i-1] = A[i]
     A[A.length-1] = t
 ```
+While we do not need to treat an array
+of size 1 as a special case, we do have
+to treat a zero-length array specially,
+so we may as well treat 1 specially also.

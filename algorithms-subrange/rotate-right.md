@@ -8,7 +8,7 @@ rotate_right(A, lo, hi)
     if hi-lo <= 1
         return
     A.type t = A[hi-1]
-    for (index i = hi-1; i > 0; i--)
+    for (index i = hi-1; i > lo; i--)
         A[i] = A[i-1]
     A[lo] = t
 ```
