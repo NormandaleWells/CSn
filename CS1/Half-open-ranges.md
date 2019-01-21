@@ -142,7 +142,7 @@ that the corresponding closed range would be `[2,1]`.
 Finally, using half-open ranges makes it much easier to state loop invariants,
 and do correctness arguments.
 For a good example of this,
-see the [lower_bound() and upper_bound()](lower_upper_bound.md) algorithms.
+see the [lower_bound() and upper_bound()](Lower-upper-bound.md) algorithms.
 
 ### Language support
 
