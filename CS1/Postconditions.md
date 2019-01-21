@@ -13,7 +13,7 @@ real sqrt(real x)
     t = (c/t + t) / 2
   return t
 ```
-has the postcondition that the return value,
+which has the postcondition that the return value,
 multiplied by itself,
 will evaluate to the parameter;
 that is, `ret * ret = x`.

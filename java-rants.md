@@ -28,7 +28,7 @@ if (obj1.compareTo(obj2))
 	// do something
 ```
 The same could, I think, be done
-any time a object
+any time an object
 that ```implements Comparator<T1,T2>```
 is in scope.
 
@@ -107,6 +107,7 @@ for each object, and reference itself.
 
 For example,
 a simple array of 2D points,
+(call it Point2D)
 using ```double``` as the underlying type,
 could use 16+16N bytes of memory
 (16 for the array object overhead,

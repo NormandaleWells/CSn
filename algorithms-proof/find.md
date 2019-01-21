@@ -65,7 +65,7 @@ index find(A, lo, hi, v)
         if A[i] = v
             Post: A[lo,i) != v and A[i] == v
             return i
-		Inv: A[lo,hi] != v
+        Inv: A[lo,hi] != v
     Post: A[lo,hi) != v
     return invalid
 ```

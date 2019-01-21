@@ -65,7 +65,7 @@ For some reason, when switching from processing a full array to processing a por
 many programmers switch to thinking in terms of closed ranges.
 
 Personal experience shows that this inconsistency is the cause of many off-by-one defects.
-It is better to always treat array sub-ranges as half-open arrays.
+It is better to consistently treat array sub-ranges as half-open arrays.
 This experience is reflected in, for example, the C++ standard library and Python's use of array sub-ranges.
 
 Consider the common case of splitting an array in half and processing the two halves separately.
@@ -142,14 +142,16 @@ that the corresponding closed range would be `[2,1]`.
 Finally, using half-open ranges makes it much easier to state loop invariants,
 and do correctness arguments.
 For a good example of this,
-see the [lower_bound()](algorithms-proof/lower_bound.md) algorithm.
+see the [lower_bound() and upper_bound()](upper_lower_bound.md) algorithms.
 
 ### Language support
 
 C++ and Python, in particular, use half-open ranges extensively.
 
-The C++ Standard Template Library algorithms use half-open ranges exclusively.
-Every algorithm works on a sub-range of a collection specified by a pair of iterators
+The C++ Standard Template Library algorithms
+are all defined in terms of half-open ranges.
+Every algorithm works on a sub-range
+of a collection specified by a pair of iterators
 (generally called `begin` and `end`),
 the first of which specifies the first element to process,
 and the second is one past the last item to process.
@@ -161,8 +163,9 @@ some_algorithm(iter begin, iter end)
         process element referenced by i
         i++
 ```
-The Python language uses ranges extensively.
-There is a `range` function which generates a range of integers, specified as a half-open range.
+The Python language has is a `range` function
+which generates a range of integers,
+specified as a half-open range.
 For example, `range(2,5)` generates the range `[2,5) = { 2, 3, 4 }`.
 With a single argument, `range` produces a rage starting at 0; `range(3)`
 generates the range `[0,3) = { 0, 1, 2 }`.
@@ -171,3 +174,9 @@ Python also has a notation for splicing a list (what Python calls an array)
 that generates a half-open sub-range of the list.
 `my_list[2:5]` is a sub-range of `my_list`
 consisting of elements `my_list[2]`, `my_list[3]`, and `my_list[4]`.
+
+### Basic algorithms
+
+[This page](Basic-algorithms-subranges.md) discusses
+rewriting our basic array algorithms to work with
+half-open ranges.
