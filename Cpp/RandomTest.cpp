@@ -54,7 +54,7 @@ TEST_CASE("uniform(int) provides results in the correct range", "[StdRandom]")
 		vi[uniform(10, 20) - 10] += 1;
 
 	// We should have incremented vi.size() times.
-	int a = std::accumulate(vi.begin(), vi.end(), 0);
+	unsigned int a = std::accumulate(vi.begin(), vi.end(), 0U);
 	REQUIRE(a == vi.size() * 10);
 
 	// If the maximum entry is as high as 20, we probably have an error
@@ -82,7 +82,7 @@ TEST_CASE("uniform(double) provides results in the correct range", "[StdRandom]"
 	REQUIRE(mn >= 10.0);
 
 	double mx = vd[max_element(vd)];
-	REQUIRE(mn < 20.0);
+	REQUIRE(mx < 20.0);
 }
 
 TEST_CASE("bernoulli provides reasonable results", "[StdRandom]")
@@ -120,8 +120,8 @@ TEST_CASE("gaussian provides reasonable results", "[StdRandom]")
 			// floor to get [-10, 11)
 			// convert to int to get [-10, 11)
 			// add 10 to get [0, 21)
-			int i = static_cast<int>(floor(val * 5.0 + 0.5)) + 10;
-			v[i] += 1;
+			int j = static_cast<int>(floor(val * 5.0 + 0.5)) + 10;
+			v[j] += 1;
 		}
 	}
 
@@ -186,8 +186,8 @@ TEST_CASE("shuffle shuffles", "[StdRandom]")
 
 	SECTION("with ints")
 	{
-		Array<int> v(10);
-		std::iota(v.begin(), v.end(), 0);
+		Array<unsigned int> v(10);
+		std::iota(v.begin(), v.end(), 0U);
 		CSn::shuffle(v);
 		REQUIRE_FALSE(is_sorted(v));
 		std::sort(v.begin(), v.end());

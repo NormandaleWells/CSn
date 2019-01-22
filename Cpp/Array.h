@@ -104,7 +104,6 @@ public:
 		: cap(static_cast<index>(std::distance(init.begin(), init.end()))),
 		data(new T[cap])
 	{
-		int i = 0;
 		std::copy(init.begin(), init.end(), this->begin());
 	}
 

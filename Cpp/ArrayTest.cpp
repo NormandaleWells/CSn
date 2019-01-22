@@ -108,7 +108,6 @@ TEST_CASE("class Array")
 		{
 			Array<int> a = { 2, 3, 5, 7 };
 			Array<int> b = { 7, 5, 3, 2 };
-			index i = 0;
 			for (auto ai = a.begin(), bi = b.begin(); ai != a.end(); ++ai, ++bi)
 			{
 				*bi = *ai;
