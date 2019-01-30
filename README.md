@@ -84,11 +84,14 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 ## CS2 (CSci 2002 at Normandale)
 * Algorithm complexity
 * * TwoSum and ThreeSum
+* * Maximum sub-array
 * * Basic algorithms
 * * Other common patterns
 * Sorting
 * * Mergesort
 * * Quicksort
+* * * Partition
+* * * Nth Element
 * * Heaps
 * * Priority queues
 * * Heapsort
