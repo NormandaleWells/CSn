@@ -98,9 +98,24 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * Searching
 * * Set API
 * * Symbol table API
-* * Binary Trees
-* * Balanced binary trees
-* * Hash tables
+* * Applications
+* * Implementation
+* * * Search trees
+* * * * Unbalanced binary trees
+* * * * Balanced binary trees
+* * * * * 2-3 trees
+* * * * * Red-black trees
+* * * * * AVL trees
+* * * * KD-trees
+* * * Hash tables
+* * * * Hash functions
+* * * * * Division method
+* * * * * Multiplilcation method
+* * * * Collision resolution
+* * * * * Separate chaining
+* * * * * Linear probing
+* * * * * Double hashing
+* * * * * Cuckoo hashing
 * Graphs
 * * Separation of data structures from algorithms
 * * Union-find
