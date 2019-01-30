@@ -10,3 +10,6 @@ add_executable(ArrayTest ArrayTest.cpp)
 
 project (StdRandomTest)
 add_executable(StdRandomTest StdRandomTest.cpp StdRandom.cpp)
+
+project (StdArrayTest)
+add_executable(StdArrayTest StdArrayTest.cpp)
