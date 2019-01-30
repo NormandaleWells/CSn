@@ -92,6 +92,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * Quicksort
 * * * Partition
 * * * Nth Element
+* * * 3-way quicksort
 * * Heaps
 * * Priority queues
 * * Heapsort
@@ -144,6 +145,8 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * * DAG shortest path
 * * * Job scheduling
 * * * Bellman-Ford
+* * Non-integral vertex IDs
+* * Dynamic graphs
 ## Miscellaneous topics
 * Language rants
 * * [Java](java-rants.md)
