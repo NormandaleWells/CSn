@@ -120,25 +120,28 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * Separation of data structures from algorithms
 * * Union-find
 * * Undirected graphs
-* * * API
-* * * Depth-first search
-* * * Breadth-first search
+* * * Finding Paths
+* * * * API
+* * * * Applications
+* * * * Depth-first search
+* * * * Breadth-first search
 * * * Connected Components
 * * Directed graphs
-* * * API
-* * * DFS and BFS
+* * * Finding Paths
+* * * * API
+* * * * DFS and BFS
 * * * Cycle detection
 * * * Topological sort
 * * * Strong connectivity
 * * Edge-weighted undirected graphs
-* * * APIs (edge and graph)
 * * * Minimum spanning trees
-* * * Prim's algorithm
-* * * Kruskal's algorithm
+* * * * APIs (edge and graph)
+* * * * Prim's algorithm
+* * * * Kruskal's algorithm
 * * Edge-weighted directed graphs
 * * * Shortest path
-* * * Dijkstra's algorithm
-* * * DAG shortest path
+* * * * Dijkstra's algorithm
+* * * * DAG shortest path
 * * * Job scheduling
 * * * Bellman-Ford
 ## Miscellaneous topics
