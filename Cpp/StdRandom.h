@@ -1,6 +1,5 @@
 
-#ifndef STDRANDOM_H
-#define STDRANDOM_H
+#pragma once
 
 #include "Array.h"
 
@@ -48,5 +47,3 @@ void shuffle(Array<T> & a)
 }
 
 };
-
-#endif

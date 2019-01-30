@@ -1,10 +1,10 @@
 
-#ifndef ALGS4_STDARRAY_H
-#define ALGS4_STDARRAY_H
+#pragma once
 
 #include "Array.h"
 
 #include <cassert>
+#include <functional>
 #include <stdexcept>
 
 namespace CSn
@@ -78,8 +78,8 @@ int count(const Array<T> & v, T t)
 	return count(v, 0, v.size(), t);
 }
 
-template <typename T>
-index max_element(const Array<T> & v, index lo, index hi)
+template <typename T, typename C = std::greater<>>
+index max_element(const Array<T> & v, index lo, index hi, C cmp = C())
 {
 	assert(0 <= lo);
 	assert(lo < hi);
@@ -87,19 +87,19 @@ index max_element(const Array<T> & v, index lo, index hi)
 
 	index idx_max = lo;
 	for (index i = lo; i < hi; i++)
-		if (v[idx_max] < v[i])
+		if (cmp(v[i], v[idx_max]))
 			idx_max = i;
 	return idx_max;
 }
 
-template <typename T>
-index max_element(const Array<T> & v)
+template <typename T, typename C = std::greater<>>
+index max_element(const Array<T> & v, C cmp = C())
 {
-	return max_element(v, 0, v.size());
+	return max_element(v, 0, v.size(), cmp);
 }
 
-template <typename T>
-index min_element(const Array<T> & v, index lo, index hi)
+template <typename T, typename C = std::less<>>
+index min_element(const Array<T> & v, index lo, index hi, C cmp = C())
 {
 	assert(0 <= lo);
 	assert(lo < hi);
@@ -107,15 +107,15 @@ index min_element(const Array<T> & v, index lo, index hi)
 
 	index idx_min = lo;
 	for (index i = lo; i < hi; i++)
-		if (v[i] < v[idx_min])
+		if (cmp(v[i], v[idx_min]))
 			idx_min = i;
 	return idx_min;
 }
 
-template <typename T>
-index min_element(const Array<T> & v)
+template <typename T, typename C = std::less<>>
+index min_element(const Array<T> & v, C cmp = C())
 {
-	return min_element(v, 0, v.size());
+	return min_element(v, 0, v.size(), cmp);
 }
 
 template <typename T>
@@ -173,26 +173,17 @@ void swap(Array<T> & a, index idx1, index idx2)
 	a[idx2] = t;
 }
 
-////////////////////
-//
-// Note that in all binary search functions, we only use the
-// less-than operator.  This minimizes the number of comparison
-// operators that need to be overloaded, and also will make it
-// easier to add versions that take predicates.
-//
-///////////////////
-
-template <typename T>
-index binary_search(const Array<T> & v, index lo, index hi, T key)
+template <typename T, typename C = std::less<>>
+index binary_search(const Array<T> & v, index lo, index hi, T key, C cmp = C())
 {
 	// Invariant: If key is in v, then key is in [lo..hi).
 	// When lo == hi, [lo..hi) is empty, and key is not found.
 	while (hi > lo)
 	{
 		index mid = lo + (hi - lo) / 2;
-		if (key < v[mid])
+		if (cmp(key, v[mid]))
 			hi = mid;
-		else if (v[mid] < key)
+		else if (cmp(v[mid], key))
 			lo = mid + 1;
 		else
 			return mid;
@@ -201,56 +192,57 @@ index binary_search(const Array<T> & v, index lo, index hi, T key)
 	return invalid;
 }
 
-template <typename T>
-index binary_search(const Array<T> & v, T key)
+template <typename T, typename C = std::less<>>
+index binary_search(const Array<T> & v, T key, C cmp = C())
 {
-	return binary_search(v, 0, v.size(), key);
+	return binary_search(v, 0, v.size(), key, cmp);
 }
 
-template <typename T>
-index lower_bound(const Array<T> & v, index lo, index hi, T key)
+template <typename T, typename C = std::less<>>
+index lower_bound(const Array<T> & v, index lo, index hi, T key, C cmp = C())
 {
 	// Invariant: [0..lo) < key, key <= [hi..v.size())
 	// When lo == hi, v[hi] is the smallest index s.t. v[i] >= key
 	while (lo != hi)
 	{
 		index mid = lo + (hi - lo) / 2;
-		if (!(v[mid] < key))
-			hi = mid;
-		else
+		if (cmp(v[mid], key))
 			lo = mid + 1;
+		else
+			hi = mid;
 	}
 
 	return hi;
 }
 
-template <typename T>
-index lower_bound(const Array<T> & v, T key)
+template <typename T, typename C = std::less<>>
+index lower_bound(const Array<T> & v, T key, C cmp = C())
 {
-	return lower_bound(v, 0U, v.size(), key);
+	return lower_bound(v, 0U, v.size(), key, cmp);
 }
 
-template <typename T>
-index upper_bound(const Array<T> & v, index lo, index hi, T key)
+template <typename T, typename C = std::less<>>
+index upper_bound(const Array<T> & v, index lo, index hi, T key, C cmp = C())
 {
 	// Invariant: [0..lo) <= key, key < [hi..v.size())
 	// When lo == hi, v[hi] is the smallest index s.t. v[i] > key
 	while (lo != hi)
 	{
 		index mid = lo + (hi - lo) / 2;
-		if (key < v[mid])
-			hi = mid;
-		else
+		// Note that v[mid] <= key <-> key >= v[mid] <-> !(key < v[mid])
+		if (!cmp(key, v[mid]))
 			lo = mid + 1;
+		else
+			hi = mid;
 	}
 
 	return hi;
 }
 
-template <typename T>
-index upper_bound(const Array<T> & v, T key)
+template <typename T, typename C = std::less<>>
+index upper_bound(const Array<T> & v, T key, C cmp = C())
 {
-	return upper_bound(v, 0U, v.size(), key);
+	return upper_bound(v, 0U, v.size(), key, cmp);
 }
 
 template <typename T>
@@ -266,5 +258,3 @@ void copy(const Array<T> & src, index src_begin, index src_end,
 }
 
 }
-
-#endif

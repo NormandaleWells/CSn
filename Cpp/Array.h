@@ -1,6 +1,5 @@
 
-#ifndef ALGS4_ARRAY_H
-#define ALGS4_ARRAY_H
+#pragma once
 
 #include <algorithm>
 #include <initializer_list>
@@ -301,5 +300,3 @@ bool operator==(const Array<T> & lhs, const Array<T> & rhs)
 }
 
 }
-
-#endif

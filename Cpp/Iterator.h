@@ -1,6 +1,5 @@
 
-#ifndef ALGS4_ITERATOR_H
-#define ALGS4_ITERATOR_H
+#pragma once
 
 #include <memory>
 
@@ -86,5 +85,3 @@ public:
 };
 
 }
-
-#endif
