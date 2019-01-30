@@ -6,7 +6,7 @@ are implemented in a class called ```StdArray```.
 Here I'm using -- for lack of a better idea -- the
 convention used by Sedgewick and Wayne
 that classes comprised of static functions
-are given a ``Std``` prefix.
+are given a ```Std``` prefix.
 
 Each of the basic array algorithms
 is really a family of algorithms;
