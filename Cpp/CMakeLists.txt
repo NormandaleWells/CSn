@@ -8,5 +8,5 @@ endif()
 project (ArrayTest)
 add_executable(ArrayTest ArrayTest.cpp)
 
-project (RandomTest)
-add_executable(RandomTest RandomTest.cpp StdRandom.cpp)
+project (StdRandomTest)
+add_executable(StdRandomTest StdRandomTest.cpp StdRandom.cpp)
