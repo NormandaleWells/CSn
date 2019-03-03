@@ -19,7 +19,8 @@ will evaluate to the parameter;
 that is, `ret * ret = x`.
 (Note that we use `ret` to denote the return value.)
 
-Failure to meet a postcondition
+If a function's preconditions are satisfied,
+not satisfying a postcondition
 is a defect in the algorithm
 or its implementation.
 Postconditions are generally tested
