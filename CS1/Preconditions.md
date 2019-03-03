@@ -120,7 +120,7 @@ function as part of a larger calculation.
 Perhaps the biggest problem with using error codes
 is that the caller has to remember to check them,
 and far too often does not bother to.
-Have you ever C code that checks the value returned
+Have you ever seen C code that checks the value returned
 by `printf()`?
 (Did you even know that `printf()` returns a value?)
 
@@ -134,6 +134,9 @@ that can change the global error code.
 
 Also, in a multithreaded environment,
 each thread needs its own copy of the error code.
+This is difficult to do in a portable way
+unless the language itself supports it
+(as C++ does with `thread_local` storage).
 
 ### Option 4: throw an exception
 The last option, in languages that support it,
