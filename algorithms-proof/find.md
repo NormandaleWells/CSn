@@ -42,7 +42,7 @@ one of two things is true.
 * ```A[i] == v``` which, combined with the loop invariant
 and the return statement,
 establishes that ```A[lo,i) != v and A[i] == v```,
-which is exactly one operand of the disjunction
+which is exactly one part of the disjunction
 in the postcondition.
 * ```A[i] != v``` which, combined with the loop invariant,
 means that ```A[lo,i] != v``` (note the closed range).
@@ -53,8 +53,8 @@ invariant is re-established.
 If we exit the loop, we have ```i == hi```,
 and so our invariant becomes ```a[lo,hi) != v```,
 which, combined with the return statement,
-establishes one of the operands
-in the postcondition's disjunction.
+establishes the other part
+of the postcondition's disjunction.
 
 The fully annotated code for ```find``` is therefore: 
 ```
