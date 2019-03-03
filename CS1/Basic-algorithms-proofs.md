@@ -32,6 +32,15 @@ may include these preconditions
 Pre: A != null
 Pre: A[lo,hi) != null
 ```
+
+Remember that throughout this section,
+we use a shortcut notation `A[lo,hi)`
+to mean "all the elements of A in the
+half-open range `[lo,hi)`.
+For example, `A[lo,hi) = 0`
+is a shortcut for "all elements of A
+in the range `[lo,hi)` are equal to 0".
+
 Each specific basic algorithm is discussed
 on its own page below.
 
