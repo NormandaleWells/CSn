@@ -51,8 +51,7 @@ The fully annotated code for ```max_element``` is:
 ```
 index max_element(A, lo, hi)
     Pre: 0 <= lo < hi <= a.length
-    if hi - lo = 0
-        error "call to max_element with empty subrange"
+    Pre: hi - lo > 0
     index max_index = lo
     for i in [lo+1,hi)
         Inv: a[lo,max_index) < a[max_index] and a[max_index,i) <= a[max_index]
