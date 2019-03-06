@@ -153,7 +153,7 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [C++](cpp-rants.md)
 * * [Python](python-rants.md)
 * How not to code like a n00b
-* [That's not a bug...](Defects.md)
+* [That's not a bug...](defects.md)
 * Don't write your own date/time classes
 * Practice
 * Create a portfolio
