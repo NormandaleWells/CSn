@@ -232,7 +232,16 @@ Java folks will tell you that Java always
 passes objects by value,
 with the dodge that when you pass
 an object to a function,
-you're passing the value of the reference.
+you're passing the value of a reference.
+But for any non-primitive type,
+the only way to access an object of that type
+is to have a reference to it.
+To my mind,
+if the only way to pass an object
+to a function
+is to pass the value of a reference,
+then that's effectively (if not technically)
+pass-by-reference.
 
 By the definition I'm familiar with,
 if Java passed objects by value,
@@ -258,3 +267,6 @@ public class NotByValue {
 }
 ```
 would print ```0``` rather than ```1```.
+
+To be fair, here's [the opposing viewpoint](https://programming.guide/java/pass-by-value-or-pass-by-reference.html)
+from someone with, admittedly, more cred than me.
