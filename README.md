@@ -50,9 +50,9 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * [Exception guarantees](CS1/Exception-guarantees.md)
 * * [Basic algorithms revisited](CS1/Basic-algorithms-proofs.md)
 * * [Upper/lower bound (binary search)](CS1/Lower-upper-bound.md)
-* Simple sorts
-* * Selection sort
-* * Insertion sort
+* [Simple sorts](CS1/Simple-sorts.md)
+* * [Selection sort](CS1/Selection-sort.md)
+* * [Insertion sort](CS1/Insertion-sort.md)
 * Abstract Data Types and APIs
 * * Encapsulation
 * * Data hiding
@@ -82,11 +82,12 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * Priority queues
 * * Symbol tables
 ## CS2 (CSci 2002 at Normandale)
-* Algorithm complexity
-* * TwoSum and ThreeSum
-* * Maximum sub-array
-* * Basic algorithms
-* * Other common patterns
+* [Algorithm complexity](CS2/Algorithm-complexity.md)
+* * [Example 1: ThreeSum](CS2/ThreeSum.md)
+* * [Example 2: TwoSum](CS2/TwoSum.md)
+* * [Example 3: Maximum sub-array](CS2/Maximum-sub-array.md)
+* * [Basic algorithms](CS2/Basic-algorithms-complexity.md)
+* * [Other common patterns](CS2/Other-common-patterns.md)
 * Sorting
 * * Mergesort
 * * Quicksort
