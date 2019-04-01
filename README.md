@@ -94,9 +94,17 @@ Here is the breakdown of topics, by course.  Note that this is not a hard-and-fa
 * * * Partition
 * * * Nth Element
 * * * 3-way quicksort
+* * Other sorting-related algorithms
+* * * Partial Sort
+* * * Sort Subrange
+* * * Partition Subrange
 * * Heaps
 * * Priority queues
 * * Heapsort
+* * Non-comparison sorting
+* * * Radix sort
+* * * Key-indexed counting
+* * * LSD and MSD string sorts
 * Searching
 * * Set API
 * * Symbol table API
