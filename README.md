@@ -2,11 +2,32 @@
 
 Wiki and code repository for my CS0, CS1, and CS2 classes
 
-This repo contains my course notes and source code for the CS0, CS1, and CS2 classes I teach at Normandale Community College, in Bloomington, MN.  This is, and will probably forever remain, a work in progress.
+This repo contains my course notes and source code
+for the CS0, CS1, and CS2 classes I teach
+at Normandale Community College, in Bloomington, MN.
+This is, and will probably forever remain, a work in progress.
+
+Writing software is all about problem solveing,
+at two different levels.
+The first is the real-world problem to be solved,
+for example:
+
+- How can I keep track of the data for a youth baseball league?
+- How can I find the outlines of objects in a photograph?
+- How can I take this data representing a 3D object and create a triangular mesh for a 3D printer?
+
+The second level is the problem of how to take that real-world problem solution
+and implement it in a way that allows a computer to efficiently execute it.
+
+The CSn courses are all about that second level of problem solving.
 
 # Table of Contents
 
-Here is the breakdown of topics, by course.  Note that this is not a hard-and-fast breakdown; there are some semesters in which I may choose to incorporate some CS1 topics into CS0 or CS2, or introduce some CS2 topics into CS1.
+Here is the breakdown of topics, by course.
+Note that this is not a hard-and-fast breakdown;
+there are some semesters in which I may choose
+to incorporate some CS1 topics into CS0 or CS2,
+or introduce some CS2 topics into CS1.
 
 [Guiding principles](Guiding-principles.md)
 
