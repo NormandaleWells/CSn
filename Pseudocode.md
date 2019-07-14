@@ -1,42 +1,124 @@
 ## Pseudocode
 
-This page discusses the pseudocode used for code examples throughout the site.
+This page discusses the pseudocode
+used for code examples throughout the site.
 
-The pseudocode used here is not a formal language, but should be understandable to anyone with a semester or two of coursework
-that involved writing code.  The documentation here is really a set of conventions.
+The pseudocode used here is not a formal language,
+but should be understandable to anyone
+with a semester or two of coursework
+that involved writing code.
+
+Unlike most pseudocode languages,
+the one used here is strongly typed.
+I originally tried using a language
+that used implied or inferred types,
+with naming conventions to make the
+code easier to read, but I found that
+to be untenable once I started to
+write abstract data types.
+
+There is, however,
+one convention that is an important part
+of the type system used here:
+any type with a single-letter name
+is a type parameter of the given
+function or class;
+that is, it denotes a generic type.
+
+Requirements of type parameters
+(what C++ would call type traits or concepts)
+are implicit in the code.
+For example, if two items of type `T`
+are compared in a function,
+it can be inferred that items of type `T`
+must be comparable.
 
 ### Types
 
-Data types within collections will generally not be specified.  Any necessary functionality will be documented
-(e.g. "the elements of `A` must be comparable").  Collection types have a `.type` property that can be used to get
-the type of data stored in the collection.  All elements of a collection will have the same type.
+Scalar types used here
+include `integer`, `float`, `boolean`, and `string`,
+with the obvious meaning.
 
-Scalar types will, when appropriate, be typed as `integer`, `float`, `boolean`, or `string`, with the obvious meaning.
-There is also a scalar type `index` which can be used to indicate an array index.  The `index` type has a special value
-`invalid` which indicates an invalid index.  I would expect that most language implementations would use -1 as that
-special value.
+Arrays are indicated with `[]`
+after the type name, as in `int[]`
+or `T[]`, where the latter is an
+array of some generic type.
+The size of an array is fixed
+at the time it is created,
+and there is a `length`
+property that returns that size.
 
-### Variable names
+There is a special scalar type
+called `index` which is used for
+indexing arrays.
+This type has a special value
+`invalid` which indicates an
+invalild index.
 
-Variables whose names begin with an uppercase character are arrays or other collections, and those with names beginning
-with lowercase characters are scalars or aggregates.  Collections and aggregates may have properties, specified using dot
-notation, e.g. A.length or node.next.  The available properties for a type will be enumerated in the accompanying discussion
-of that type, along with their meaning.  Property names will begin with a lowercase letter.
+Abstract data types are defined
+using the keyword `class`,
+similar to Java or C++.
+Classes may have three
+types of members:
+data, functions, and nested classes.
+Data members and nested classes
+are assumed to be private;
+member functions are assumed to be public.
+Access to class members is done via
+the `.` operator, e.g. `obj.func()`.
 
-Arrays are indexed using `[]`.
+(Yes, I realize it is traditional
+to call member functions of a class "methods",
+but to paraphrase Shakespeare,
+a function by any name
+is still a function,
+so let's just call them that, shall we?)
 
-Variable names for aggregate types (e.g. the Node type used by linked lists) will begin with a lowercase character,
-mainly because these are often also used as properties of a collection type (e.g. List.first).
+The language also makes an explicit
+distinction between objects
+and pointers to objects,
+using & to denote a pointer.
+Accessing a class member through a pointer
+still uses the `.` operator,
+not the C/C++-style `->`.
+However, in order not to get bogged down
+in issues of memory management,
+we assume the presence of a garbage
+collector.
 
-Function names begin with a lowercase character.
+### Naming conventions
 
-Multiple words within a variable or function name will be separated by underscores (e.g. min_index).  The language-specific
-implementations will, of course, follow the standard conventions for that language (e.g. camelCase for names in Java code).
+In general, every "word" of a variable or function name
+begins with a lower-case letter,
+and the words are separated by underscores:
+e.g. `i`, `counter`, `num_items`.
+
+Class names are camel-cased,
+starting with upper-case characters.
+As noted above, single-character type names
+are a special case;
+they're used to denote
+type parameters.
+
+The language-specific code provided here
+uses the conventions generally used
+for that language.
 
 ### Operators
 
-The usual arithmetic operators are available: `+`, `-`, `/`, `*`, and `%` (where the last indicates a modulus operation).
+The usual arithmetic operators are available:
+`+`, `-`, `/`, `*`, and `%`
+(where the last indicates a modulus operation).
 Integer division rounds toward `-infinity`.
+
+Also, the usual comparison and logical
+operators are available:
+`=`, `!=`, `<`, `>`, `<=`, `>=`, `&&`, `||`, and `!`.
+
+At this writing, I foresee no need
+to use operator overloading,
+despite its occasional
+notational convenience.
 
 ### Statement blocks
 
@@ -44,34 +126,46 @@ Blocks of statements are delineated by indentation, rather than curly braces, `b
  
 ### Conditionals
 
-Conditional statements use the standard `if/elseif/else` keywords.
+Conditional statements use
+the standard `if/elseif/else` keywords.
 
 ### Loops
 
-Both `while` loops and `for` loops are supported.  There are two flavors of `for` loops; the traditional C-style loop with
-the initialization, condition, and increment sections separated by semi-colons, and the range-style, for which the `in`
-keyword is used to specify a range over which an index variable ranges.  The most common such loops are
+Both `while` loops and `for` loops are supported.
+There are two flavors of `for` loops;
+the traditional C-style loop with
+the initialization, condition, and increment sections
+separated by semi-colons,
+and the range-style, for which the `in`
+keyword is used to specify a range
+over which an index variable ranges.
+
+The most common such loops are
 ```
-for (node = List.first; node != null; node = node.next)
+for (Node node = List.first; node != null; node = node.next)
 ```
 and
 ```
-for (i in [0,a.length))
+for (index i in [0,a.length))
 ```
-Note the use of a half-open range in the latter example.  This is discussed in [half-open ranges](CS1/Half-open-ranges.md).
+Note the use of a half-open range in the latter example.
+This is discussed in [half-open ranges](CS1/Half-open-ranges.md).
+
+All ADTs defined here that are collection types
+are assumed to be iterable
+and may be used in a range-style
+for loop.
+The means of doing this is,
+of course,
+left to the specific implemenation language.
 
 ### Functions
 
-Functions are defined similarly to C++ and Java, except that argument types are often left out if they're obvious from the context.
-For example, in
-```
-index find(A, v)
-```
-it should obvious from the context that `A` is an array, and `v` is an object of the same type stored in the array.
+Functions are defined similarly to C++ and Java.
 
 Functions which return nothing simply leave out the return value in the first line of the function, like this:
 ```
-swap(A, idx1, idx2)
+swap(T[] a, index idx1, index idx2)
 ```
 Arrays are passed to functions by reference.
 
@@ -84,11 +178,13 @@ if hi-lo <= 0
     error "The subrange [lo,hi) cannot be empty."
 ```
 For most languages (e.g. Java, C++, Python),
-this will translate into throwing an exception.
+this would translate into throwing an exception.
 
 None of the code here will have any need to catch exceptions,
 so there is no syntax in this pseudocode
 for catching exceptions.
+We assume here that throwing an exception
+terminates the program.
 
 ### Assertions (preconditions, postconditions, and invariants)
 
@@ -106,8 +202,8 @@ that a given logical condition must always
 be true at that point in the function.
 
 Syntactically, an assertion is simply
-the word ```Pre:```,
-```Post:```, or ```Inv:```
+the word `Pre:`,
+`Post:`, or `Inv:`
 followed by the logical condition which should be true.
 For example
 ```
@@ -121,15 +217,15 @@ Assertions have a special syntax
 for asserting a condition that must be true
 for every element in a consecutive subrange
 of an array.
-The condition ```a[lo,hi) > 0```, for example,
-is equivalent to ```for all i in [lo,hi), a[i] > 0```.
+The condition `a[lo,hi) > 0` for example,
+is equivalent to `for all i in [lo,hi), a[i] > 0`.
 
 There is no similar syntax for
 an existential qualifier,
-but ```not a[lo,hi) == val```
+but `not a[lo,hi) == val`
 serves the same purpose,
 since it is equalivalent
-to ```for some i in [lo,hi), a[i] != val```.
+to `for some i in [lo,hi), a[i] != val`.
 
 ### Comments
 
