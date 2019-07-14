@@ -44,9 +44,9 @@ complexity, it's probably worthwhile to do so.
 
 For the pseudocode used here,
 failure to meet a precondition
-is flagged via an ```assert``` statement.
+is flagged via an `assert` statement.
 This causes the program to simply stop executing.
-That is, the ```sqrt``` function shown above would be:
+That is, the `sqrt` function shown above would be:
 ```
 real sqrt(real x)
   assert x >= 0

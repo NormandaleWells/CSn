@@ -1,13 +1,13 @@
-## `integer count(A, v)`
-`count` returns a count of the number of elements of array `A` that match `v`.
-`v` must be the same type of object as is stored in `A`.
+## `integer count(T[] a, T v)`
+
+`count` returns a count of the number of elements of array `a` that match `v`.
 
 Here is the full pseudocode for `count`:
 ```
-index count(A, v)
+index count(T[] a, T v)
     integer count = 0;
-    for i in [0,A.length)
-        if A[i] = v
+    for index i in [0,a.length)
+        if a[i] = v
             count = count + 1
     return count
 ```

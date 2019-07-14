@@ -16,39 +16,36 @@ When writing in, say, C++, you're advised to use the versions
 in the `<algorithms>` header rather than these.
 
 The algorithms we'll be studying are:
-* [`find(A, v)`](../algorithms/find.md) - find first occurrence of `v` in `A`
-* [`count(A, v)`](../algorithms/count.md) - count the number of items in `A` equal to `v`
-* [`min_element(A)`](../algorithms/min-element.md) - find the minimum element of `A`
-* [`max_element(A)`](../algorithms/max-element.md) - find the maximum element of `A`
-* [`swap(A, idx1, idx2)`](../algorithms/swap.md) - exchange `A[idx1]` and `A[idx2]`
-* [`rotate_left(A)`](../algorithms/rotate-left.md) - rotate elements of `A` one element to the left
-* [`rotate_right(A)`](../algorithms/rotate-right.md) - rotate elements of `A` one element to the right
-* [`copy(A, B)`](../algorithms/copy.md) - copy array `A` to array `B`
-
-Our initial versions will work only with arrays of integers; we'll create generic versions later on.
+* [`find(T[] a, T v)`](../algorithms/find.md) - find first occurrence of `v` in `a`
+* [`count(T[] a, T v)`](../algorithms/count.md) - count the number of items in `a` equal to `v`
+* [`min_element(T[] a)`](../algorithms/min-element.md) - find the minimum element of `a`
+* [`max_element(T[] a)`](../algorithms/max-element.md) - find the maximum element of `a`
+* [`swap(T[] a, index idx1, index idx2)`](../algorithms/swap.md) - exchange `a[idx1]` and `a[idx2]`
+* [`rotate_left(T[] a)`](../algorithms/rotate-left.md) - rotate elements of `a` one element to the left
+* [`rotate_right(T[] a)`](../algorithms/rotate-right.md) - rotate elements of `a` one element to the right
+* [`copy(T[] a, T[] b)`](../algorithms/copy.md) - copy array `a` to array `b`
 
 In later sections, we'll add these others:
-* `is_sorted(A)` - determine if array `A` is sorted (ascending)
-* `selection_sort(A)` - sort array `A` into ascending order
-* `insertion_sort(A)` - sort array `A` into ascending order
-* `lower_bound(A, v)` - find the first array element in `A` greater than or equal to `v`
-* `upper_bound(A, v)` - find the first array element in `A` strictly greater than `v`
+* `is_sorted(T[] a)` - determine if array `a` is sorted (ascending)
+* `selection_sort(T[] a)` - sort array `a` into ascending order
+* `insertion_sort(T[] a)` - sort array `a` into ascending order
+* `lower_bound(T[] a, T v)` - find the first array element in `a` greater than or equal to `v`
+* `upper_bound(T[] a, T v)` - find the first array element in `a` strictly greater than `v`
 
 We'll revisit these basic algorithms often, to do such things as:
 * Implement versions that operate on a subrange of the array
-* Create generic versions
 * Document preconditions
 * Document loop invariants
 * Work with other conditions (predicates) and comparisons
 
 Finally, these algorithms may be used as homework assignments:
-* `any_of(A, v)` - return `true` if 'A' contains at least one occurrence of `v`, `false` otherwise
-* `all_of(A, v)` - return `true` if every element of `A` is equal to `v`, false otherwise
-* `none_of(A, v)` - return `true` if no element of `A` is equal to `v`, false otherwise
-* `fill(A, v)` - fill `A` with copies of `v`
-* `accumulate(A)` - add all the elements of `A` and return the result
-* `reverse(A)` - reverse the elements of `A`
-* `rotate(A, lo, mid, hi)` - rotate elements of `A[lo,hi)` so that `A[mid]` moves to `A[lo]`
+* `any_of(T[] a, T v)` - return `true` if 'a' contains at least one occurrence of `v`, `false` otherwise
+* `all_of(T[] a, T v)` - return `true` if every element of `a` is equal to `v`, false otherwise
+* `none_of(T[] a, T v)` - return `true` if no element of `a` is equal to `v`, false otherwise
+* `fill(T[] a, T v)` - fill `a` with copies of `v`
+* `accumulate(T[] a)` - add all the elements of `a` and return the result
+* `reverse(T[] a)` - reverse the elements of `a`
+* `rotate(T[] a, index lo, index mid, index hi)` - rotate elements of `a[lo,hi)` so that `a[mid]` moves to `a[lo]`
 
 Note that among the first three (`any_of()`, `all_of()`, and `none_of()`),
 two are exact opposites of each other;

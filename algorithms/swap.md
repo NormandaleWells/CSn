@@ -1,12 +1,12 @@
-## `swap(A, idx1, idx2)`
-`swap` exchanges the values in `A[idx1]` and `A[idx2]`.  No other elements of `A` are affected.
+## `swap(T[] a, index idx1, index idx2)`
+`swap` exchanges the values in `a[idx1]` and `a[idx2]`.  No other elements of `a` are affected.
 
 Here is the full pseudocode for `swap`:
 ```
-swap(A, idx1, idx2)
-    A.type t = A[idx1]
-    A[idx1] = A[idx2]
-    A[idx2] = t
+swap(T[] a, index idx1, index idx2)
+    T t = a[idx1]
+    a[idx1] = a[idx2]
+    a[idx2] = t
 ```
 Note: If you search the web, you may find implementations of `swap()` that avoid the use of a temporary variable
 through some clever use of the `xor` function.

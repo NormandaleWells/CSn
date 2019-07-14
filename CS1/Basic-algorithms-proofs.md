@@ -10,13 +10,13 @@ is to see how the loop invariant naturally leads
 to the postconditions.
 
 Any algorithms which work
-with a half-open subrange of an array ```A```
+with a half-open subrange of an array `a`
 will have this precondition:
 ```
-Pre: 0 <= lo <= hi <= A.length
+Pre: 0 <= lo <= hi <= a.length
 ```
 In discussions of postconditions,
-I will use ```ret``` to represent
+I will use `ret` to represent
 the return value of the function.
 
 Some specific language implements have preconditions
@@ -27,27 +27,27 @@ types.
 For example, languages for which arrays
 and array elements are reference types
 may include these preconditions
-(assume ```A``` is an array):
+(assume `a` is an array):
 ```
-Pre: A != null
-Pre: A[lo,hi) != null
+Pre: a != null
+Pre: a[lo,hi) != null
 ```
 
 Remember that throughout this section,
-we use a shortcut notation `A[lo,hi)`
-to mean "all the elements of A in the
+we use a shortcut notation `a[lo,hi)`
+to mean "all the elements of a in the
 half-open range `[lo,hi)`.
-For example, `A[lo,hi) = 0`
-is a shortcut for "all elements of A
+For example, `a[lo,hi) = 0`
+is a shortcut for "all elements of a
 in the range `[lo,hi)` are equal to 0".
 
 Each specific basic algorithm is discussed
 on its own page below.
 
-* [`find(A, lo, hi, v)`](../algorithms-proof/find.md) - find first occurrence of `v` in `A[lo,hi)`
-* [`count(A, lo, hi, v)`](../algorithms-proof/count.md) - count the number of items in `A[lo,hi)` equal to `v`
-* [`min_element(A, lo, hi)`](../algorithms-proof/min-element.md) - find the minimum element of `A[lo,hi)`
-* [`max_element(A, lo, hi)`](../algorithms-proof/max-element.md) - find the maximum element of `A[lo,hi)`
-* [`rotate_left(A, lo, hi)`](../algorithms-proof/rotate-left.md) - rotate elements of `A[lo,hi)` one element to the left
-* [`rotate_right(A, lo, hi)`](../algorithms-proof/rotate-right.md) - rotate elements of `A[lo,hi)` one element to the right
-* [`copy(A, lo, hi, B, lo_dest)`](../algorithms-proof/copy.md) - copy `A[lo,hi)` to `B[lo_dest,lo_dest+(hi-lo))`
+* [`find(T[] a, index index lo, hi, T v)`](../algorithms-proof/find.md) - find first occurrence of `v` in `a[lo,hi)`
+* [`count(T[] a, index lo, index hi, T v)`](../algorithms-proof/count.md) - count the number of items in `a[lo,hi)` equal to `v`
+* [`min_element(T[] a, index lo, index hi)`](../algorithms-proof/min-element.md) - find the minimum element of `a[lo,hi)`
+* [`max_element(T[] a, index lo, index hi)`](../algorithms-proof/max-element.md) - find the maximum element of `a[lo,hi)`
+* [`rotate_left(T[] a, index lo, index hi)`](../algorithms-proof/rotate-left.md) - rotate elements of `a[lo,hi)` one element to the left
+* [`rotate_right(T[] a, index lo, index hi)`](../algorithms-proof/rotate-right.md) - rotate elements of `a[lo,hi)` one element to the right
+* [`copy(T[] a, index lo, index hi, T[] b, index lo_dest)`](../algorithms-proof/copy.md) - copy `a[lo,hi)` to `b[lo_dest,lo_dest+(hi-lo))`
