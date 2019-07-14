@@ -13,3 +13,8 @@ It is impossible to teach the entire language
 in a single semester,
 so it is necessary to pick a subset
 to teach.
+It would really great if the C++ community
+could agree on a standard subset
+that could be taught in a single
+semester, and maybe a second subset that
+a two-semester course could cover.
