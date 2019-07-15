@@ -34,7 +34,7 @@ The full sequence of swaps is:
 1 2 3 4 5 (swap 4 with itself)
 ```
 Note that the last step finds that
-4 is the smallest element in a[3,5),
+4 is the smallest element in `a[3,5)`,
 and so it swaps 4 with itself.
 (This could be optimized away,
 but the comparison need to determine
@@ -57,14 +57,14 @@ and the other to sort any arbitrary subrange.
 ```
 selection_sort(T[] a, index lo, index hi)
 	for (index i in [lo,hi-1))
-		**Inv:** is_sorted(a[lo,i))
-		**Inv:** max(a[lo,i)) <= min(a[i,hi))
+		Inv: is_sorted(a[lo,i))
+		Inv: max(a[lo,i)) <= min(a[i,hi))
 		index j = min_element(a, i, hi)
-		**Inv:** a[lo,i) <= a[j]
+		Inv: a[lo,i) <= a[j]
 		swap(a, i, j)
-		**Inv:** is_sorted(a[lo,i])
-		**Inv:** a[lo,i) <= a[i] <= a[i+1,hi)
-	**Post:** is_sorted(a[lo,hi))
+		Inv: is_sorted(a[lo,i])
+		Inv: a[lo,i) <= a[i] <= a[i+1,hi)
+	Post: is_sorted(a[lo,hi))
 
 selection_sort(T[] a)
 	selection_sort(a, 0, a.length)
@@ -124,5 +124,5 @@ As a function of the array size,
 how many comparisons and moves
 are performed by this algorithm?
 
-Our main loop uses the range a[lo,hi-1).
-Could we have used a[lo,hi) instead?
+Our main loop uses the range `a[lo,hi-1)`.
+Could we have used `a[lo,hi)` instead?
