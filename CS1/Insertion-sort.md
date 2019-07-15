@@ -2,7 +2,7 @@
 
 Insertion sort moves each element `a[i]`
 to its proper position
-with the subarray a[0,i),
+with the subarray `a[0,i)`,
 shifting other elements over
 as necessary.
 That is, after inserting `a[i]`
@@ -57,12 +57,13 @@ to make implementation fairly straight-forward:
 ```
 insertion_sort(T[] a, index lo, index hi)
 	for (index i in [lo+1,hi))
-		**Inv:** is_sorted(a[lo,i))
+		Inv: is_sorted(a[lo,i))
 		index j = upper_bound(a,lo,i)
-		**Inv:** a[lo,j) <= a[i];
-		**Inv:** a[i] < a[j+1,i)
+		Inv: a[lo,j) <= a[i];
+		Inv: a[i] < a[j+1,i)
 		rotate_right(a, j, i+1)
-		**Inv:** is_sorted(a[lo,i])
+		Inv: is_sorted(a[lo,i])
+	Post: is_sorted(a[lo,hi))
 ```
 
 
@@ -77,10 +78,10 @@ how many comparisons and moves
 are performed by this algorithm?
 
 What would happen if we looped
-over the range a[lo,hi)
-instead of a[lo+1,hi)?
+over the range `a[lo,hi)`
+instead of `a[lo+1,hi)`?
 
 How does this code handle the case where
-`a[i]` > a[lo,i)`?  (I.e, when `a[i]`
+`a[i] > a[lo,i)`?  (I.e, when `a[i]`
 is already in position and no movement
 is necessary.)
