@@ -84,14 +84,7 @@ or introduce some CS2 topics into CS1.
 * Inheritance
 * * Implementation inheritance
 * * Interface inheritance
-* Generics
-* * Generic functions
-* * Generic interfaces and classes
-* * Special interfaces
-* * * Comparable
-* * * Comparator
-* * * Iterator
-* * * Predicate
+* Predicates
 * * [Basic algorithms revisited](CS1/Basic-algorithms-generic.md)
 * * Linked lists revisited
 * * * Find min/max element
