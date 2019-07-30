@@ -103,7 +103,7 @@ or introduce some CS2 topics into CS1.
 * * [Basic algorithms](CS2/Basic-algorithms-complexity.md)
 * * [Other common patterns](CS2/Other-common-patterns.md)
 * Sorting
-* * Mergesort
+* * [Mergesort](CS2/Merge-sort.md)
 * * Quicksort
 * * * Partition
 * * * Nth Element

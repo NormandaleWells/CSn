@@ -2,9 +2,12 @@
 
 It is often useful to work with only a sub-range of an entire array.
 For example, search algorithms often work by narrowing down the portion of an array
-in which the sought-for element can be found,
+in which the sought-for element can be found
+(see [binary search](CS1/CS1/Lower-upper-bound.md),
 and sort algorithms often work by splitting the array
-in pieces and sorting the pieces separately.
+in pieces and sorting the pieces separately
+(see [Mergesort](CS2/Merge-sort.md).
+
 There are also times when we over-allocate an array
 so can add items without reallocating and copying the array every time,
 and in that case we need to be able to deal with
@@ -22,7 +25,6 @@ In this section,
 I hope to convince you that using half-open ranges
 is the most natural and least error-prone of the two techniques
 for working with sub-ranges of arrays.
-
 We will also [re-implement our basic algorithms](Basic-algorithms-subranges.md)
 so that they work with sub-ranges of arrays.
 
@@ -39,6 +41,25 @@ For example, `[2,5)` is the set `{ 2, 3, 4 }`, and `(2,5]` is the set `{ 3, 4, 5
 
 Note that some texts will refer to closed ranges as "symmetric" ranges,
 and half-open ranges as "asymmetric".
+
+### Diagrams
+
+When working with half-open ranges,
+it is natural to draw diagrams like this:
+
+![alt-text](on-boundary.png)
+
+Note that arrows indicating the `lo` and `hi` indices
+are placed at the boundary between two items.
+The convention is that we place the label
+at the left-hand boundary of the array element.
+So, for example, the following diagram
+shows the half-open range `[3,7)`:
+
+![alt-text](range-3-7.png)
+
+It is easy to see here that the given range `[lo,hi)`
+consists of the elements between the arrows.
 
 ### Usage
 
