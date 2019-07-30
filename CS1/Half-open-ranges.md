@@ -130,6 +130,7 @@ process(a, lo, hi)
     // combine results
 ```
 ![alt-text](lo-mid-hi-half-open.png)
+
 Here, the boundaries of the ranges are obvious;
 `mid` is the upper bound of the left-hand range
 (and is therefore not part of it),
@@ -165,6 +166,7 @@ process(a, lo, hi)
     // combine results
 ```
 ![alt-text](lo-mid1-mid2-hi-half-open.png)
+
 It's instructive to trace what happens when this code is called with 1-element, 2-element,
 and 3-element sub-ranges.
 
