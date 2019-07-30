@@ -69,15 +69,15 @@ In fact, you're probably already used to doing this in the most common case.
 
 Consider the canonical loop for processing all the elements of an array:
 ```
-for (int i = 0; i < A.length; i++)
+for (int i = 0; i < a.length; i++)
 ```
 ![alt-text](zero-to-length.png)
 
-Note that we're effectively thinking in terms of the half-open range `[0,A.length)`.
+Note that we're effectively thinking in terms of the half-open range `[0,a.length)`.
 No experienced programmer would ever use the equivalent closed range code:
 ```
 // No experienced programmer does this.
-for (int i = 0; i <= A.length-1; i++)
+for (int i = 0; i <= a.length-1; i++)
 ```
 ![alt-text](zero-to-length-minus-one.png)
 
@@ -103,29 +103,30 @@ Consider the common case of splitting an array in half and processing the two ha
 Using a closed range, we get:
 ```
 // Process [lo,hi] recursively in two parts
-process(A, lo, hi)
+process(a, lo, hi)
     // test for an empty or 1-element range
     if (hi - lo + 1) <= 1
         return
     index mid = lo + (hi - lo) / 2
-    process(A, lo, mid-1)  // process [lo,mid-1]
-    process(A, mid, hi)    // process [mid,hi]
+    process(a, lo, mid-1)  // process [lo,mid-1]
+    process(a, mid, hi)    // process [mid,hi]
     // combine results
 ```
 ![alt-text](lo-hi-mid-closed-range.png)
+
 Here, it is difficult to determine whether `a[mid]`
 is part of the left-hand or right-hand sub-range.
 
 Now consider the same algorithm using half-open ranges:
 ```
 // Process [lo,hi) recursively in two parts
-process(A, lo, hi)
+process(a, lo, hi)
     // test for an empty or 1-element range
     if (hi - lo) <= 1
         return
     index mid = lo + (hi - lo) / 2
-    process(A, lo, mid)    // process [lo,mid)
-    process(A, mid, hi)    // process [mid,hi)
+    process(a, lo, mid)    // process [lo,mid)
+    process(a, mid, hi)    // process [mid,hi)
     // combine results
 ```
 ![alt-text](lo-mid-hi-half-open.png)
@@ -152,15 +153,15 @@ This same pattern can be used when splitting the range in any number of sub-rang
 Consider the case of splitting into 3 sub-ranges:
 ```
 // Process [lo,hi) recursively in three parts
-process(A, lo, hi)
+process(a, lo, hi)
     // test for an empty or 1-element range
     if (hi - lo) <= 1
         return
     index mid1 = lo +  (hi - lo)      / 3
     index mid2 = lo + ((hi - lo) * 2) / 3
-    process(A, lo,   mid1)
-    process(A, mid1, mid2)
-    process(A, mid2, hi)
+    process(a, lo,   mid1)
+    process(a, mid1, mid2)
+    process(a, mid2, hi)
     // combine results
 ```
 ![alt-text](lo-mid1-mid2-hi-half-open.png)
