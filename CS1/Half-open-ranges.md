@@ -58,7 +58,7 @@ shows the half-open range `[3,7)`:
 
 ![alt-text](range-3-7.png)
 
-It is easy to see here that the given range `[lo,hi)`
+It is easy to see here that the given range `[3,7)`
 consists of the elements between the arrows.
 
 ### Usage
@@ -71,17 +71,27 @@ Consider the canonical loop for processing all the elements of an array:
 ```
 for (int i = 0; i < A.length; i++)
 ```
+![alt-text](zero-to-length.png)
+
 Note that we're effectively thinking in terms of the half-open range `[0,A.length)`.
 No experienced programmer would ever use the equivalent closed range code:
 ```
 // No experienced programmer does this.
 for (int i = 0; i <= A.length-1; i++)
 ```
+![alt-text](zero-to-length-minus-one.png)
+
+(When working with closed ranges,
+we'll draw the arrows pointing directly
+to the array elements rather than the boundaries.)
+
 However, many programmers (and programming texts) tend to process a sub-range of an array like this:
 ```
 // Process elements in [lo,hi] (a closed range)
 for (int i = lo; i <= hi; i++)
 ```
+![alt-text](lo-to-hi-closed-range.png)
+
 For some reason, when switching from processing a full array to processing a portion of an array,
 many programmers switch to thinking in terms of closed ranges.
 
@@ -102,6 +112,10 @@ process(A, lo, hi)
     process(A, mid, hi)    // process [mid,hi]
     // combine results
 ```
+![alt-text](lo-hi-mid-closed-range.png)
+Here, it is difficult to determine whether `a[mid]`
+is part of the left-hand or right-hand sub-range.
+
 Now consider the same algorithm using half-open ranges:
 ```
 // Process [lo,hi) recursively in two parts
@@ -114,7 +128,16 @@ process(A, lo, hi)
     process(A, mid, hi)    // process [mid,hi)
     // combine results
 ```
-The important difference is that the half-open range code does not have to adjust the ranges by 1 when
+![alt-text](lo-mid-hi-half-open.png)
+Here, the boundaries of the ranges are obvious;
+`mid` is the upper bound of the left-hand range
+(and is therefore not part of it),
+and the lower bound of the right-hand range
+(and is therefore part of that range).
+
+In terms of the code,
+the important difference is that
+the closed range code has to adjust the ranges by 1 when
 (1) calculating the length of the range (`hi - lo + 1`), and
 (2) making the recursive call (`mid-1`).
 It is extremely easy to make off-by-one errors in these calculations,
@@ -140,6 +163,7 @@ process(A, lo, hi)
     process(A, mid2, hi)
     // combine results
 ```
+![alt-text](lo-mid1-mid2-hi-half-open.png)
 It's instructive to trace what happens when this code is called with 1-element, 2-element,
 and 3-element sub-ranges.
 
