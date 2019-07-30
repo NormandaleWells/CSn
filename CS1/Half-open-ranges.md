@@ -3,10 +3,10 @@
 It is often useful to work with only a sub-range of an entire array.
 For example, search algorithms often work by narrowing down the portion of an array
 in which the sought-for element can be found
-(see [binary search](CS1/CS1/Lower-upper-bound.md),
+(see [binary search](Lower-upper-bound.md),
 and sort algorithms often work by splitting the array
 in pieces and sorting the pieces separately
-(see [Mergesort](CS2/Merge-sort.md).
+(see [Mergesort](../CS2/Merge-sort.md).
 
 There are also times when we over-allocate an array
 so can add items without reallocating and copying the array every time,
