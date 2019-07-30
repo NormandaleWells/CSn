@@ -140,8 +140,8 @@ and the lower bound of the right-hand range
 In terms of the code,
 the important difference is that
 the closed range code has to adjust the ranges by 1 when
-(1) calculating the length of the range (`hi - lo + 1`), and
-(2) making the recursive call (`mid-1`).
+1. calculating the length of the range (`hi - lo + 1`), and
+2. making the recursive call (`mid-1`).
 It is extremely easy to make off-by-one errors in these calculations,
 which are notably absent altogether in the code using half-open ranges.
 
