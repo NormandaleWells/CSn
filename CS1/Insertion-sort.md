@@ -46,6 +46,12 @@ position requires moving the 5:
 ```
 1 2 3 4 5
 ```
+in other words,
+given that `[0,i)` is sorted,
+we move `a[i]` into position
+so that `a[0,i]` (note the closed range)
+is sorted.
+
 All we need to do is to figure out
 1. how to find where an given
 element belongs in the already-sorted
