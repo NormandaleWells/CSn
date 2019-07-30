@@ -37,11 +37,11 @@ Note that the last step finds that
 4 is the smallest element in `a[3,5)`,
 and so it swaps 4 with itself.
 (This could be optimized away,
-but the comparison need to determine
+but the comparison needed to determine
 this is probably more expensive
 than the swap!)
 
-Each step of the algorithm requires is to
+Each step of the algorithm requires us to
 1. find the minimum element in the remainder of the array, and
 2. swap that element into position.
 
