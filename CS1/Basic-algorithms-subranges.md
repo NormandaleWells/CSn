@@ -11,11 +11,11 @@ index find(T[] a, index lo, index hi, v)
 ```
 For convenience, comments will use `a[lo:hi)` as a shortcut
 for "all the elements of a starting with `lo`
-up to but no including `hi`".
+up to but not including `hi`".
 
 For now, we will assume that `0 <= lo <= hi <= a.length`,
 and let the underlying language signal an error if not.
-Later on, we'll handle these errors explicitly - see the section on preconditions.
+Later on, we'll handle these errors explicitly - see the section on [preconditions](Preconditions.md).
 
 We'll keep the original versions for convenience,
 but they'll be modified to simply call the version that takes a sub-range,
@@ -33,12 +33,12 @@ Here are the new calling parameters:
 * [`rotate_right(T[] a, index lo, index hi)`](../algorithms-subrange/rotate-right.md) - rotate elements of `a[lo,hi)` one element to the right
 * [`copy(T[] a, index lo, index hi, T[] b, index lo_dest)`](../algorithms-subrange/copy.md) - copy `a[lo,hi)` to `b[lo_dest,lo_dest+(hi-lo))`
 
-Note that we don't create a sub-range version of swap,
-since swap does not operate on the entire array;
+Note that we don't create a sub-range version of `swap()`,
+since `swap()` does not operate on the entire array;
 it just modifies the elements at two specific indices.
 
-Note also that copy() does not necessarily copy from a
-to the corresponding range in b;
+Note also that `copy()` does not necessarily copy from `a`
+to the corresponding range in `b`;
 instead, we specify the start of a range to copy to.
 There is no need to specify the end of the range,
-since it can be calculated.
+since it can be calculated as `lo_dest + (hi - lo)`.
