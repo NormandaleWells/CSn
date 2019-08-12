@@ -11,35 +11,47 @@ into the proper place within `a[0,i)`,
 
 For example, say we start with the array
 ```
-5 1 3 2 4
+5 3 1 2 4
 ```
 Since `a[0,1)` is,
 by virtue of have a single element,
 sorted, we can start with `a[1]`,
 and see that the proper position
-for the 1 is before the 5,
+for the 3 is before the 5,
 so we shift the 5 over
-and place the 1 where it belongs:
+and place the 3 where it belongs:
 ```
-1 5 3 2 4
+3 5 1 2 4
 ```
-Now we look at `a[2]`,
-and see that the 3 belongs between
-the 1 and the 5. So we shift the
-5 over and place the 3 where it belongs:
+The subrange `[0,2)` is now sorted,
+so next we look at `a[2]`,
+and see that the 1 belongs before
+the 3. So we shift the 3 and the
+5 over and place the 1 where it belongs:
 ```
 1 3 5 2 4
 ```
+`[0,2)` is now sorted.
 To get the 2 in position,
 we shift the 3 and 5 over:
 ```
 1 2 3 5 4
 ```
-And finally, getting the 4 into
+`[0,3)` is now sorted,
+and in fact `[0,4)` is also sorted,
+so we don't have to move the 5.
+
+Finally, getting the 4 into
 position requires moving the 5:
 ```
 1 2 3 4 5
 ```
+in other words,
+given that `[0,i)` is sorted,
+we move `a[i]` into position
+so that `a[0,i]` (note the closed range)
+is sorted.
+
 All we need to do is to figure out
 1. how to find where an given
 element belongs in the already-sorted

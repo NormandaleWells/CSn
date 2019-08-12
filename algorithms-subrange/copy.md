@@ -10,7 +10,7 @@ We assume for now that `0 <= lo <= hi <= a.length`,
 and `0 <= lo_dest <= lo_dest+(hi-lo) <= b.length`.
 If this condition is violated,
 the runtime system will probably do something...bad.
-Later on (when we discuss preconditions),
+Later on (when we discuss [preconditions](../CS1/Preconditions.md)),
 we'll handle out-of-bound indices explicitly.
 
 Here is the full pseudocode for `copy`:
