@@ -8,7 +8,7 @@ See the License.txt files in the specific source directories for details.
 In plain English:
 
 Feel free to use the text of this site in any way you please,
-as you as I get attribution as the original author.
+as long as I get attribution as the original author.
 If you want to incorporate the text in content that you're selling,
 contact me; I want [a piece of the action](https://www.youtube.com/watch?v=FbBuNGVDNCM).
 
