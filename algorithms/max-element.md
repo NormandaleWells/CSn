@@ -19,4 +19,9 @@ Why is it better to return the index of the maximum element, rather than its val
 
 What should we do with an empty array?
 
+If there are multiple array entries with the minimum value,
+how does this code ensure that lowest index is returned?
+How could we change the code to return the highest index
+containing the minimum value?
+
 What are we assuming about the type `T`?
