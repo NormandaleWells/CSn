@@ -15,13 +15,13 @@ between two types of exceptions:
 
 A runtime exception indicates that the
 cause of the exception is external
-to the function iself.
+to the program itself.
 
 2. Logic exceptions
 
 A logic exception indicates that the
 cause of the exception is internal
-to the function or the class its in;
+to the program;
 that is, it's a coding error.
 
 ## Sources of errors
@@ -35,7 +35,7 @@ satisfying its postcondition:
 If the unmet precondition is due to an invalid
 function argument,
 this is an error on the part of the caller,
-and should be signalled by throwing a runtime
+and should be signalled by throwing a logic
 exception.
 
 If the unmet precondition is an invalid
@@ -57,7 +57,7 @@ by throwing a runtime exception.
 Any other failure to meet a postcondition is a defect
 in the function.
 In this case, you don't throw an exception:
-you fix the problem!
+you fix the code!
 
 ## The guarantees
 
@@ -110,6 +110,6 @@ TODO: examples
 
 ### That's all, folks.
 
-There is no weaker guartanee.
+There is no weaker guarantee.
 Code that cannot at least meet
 the basic guarantee is defective.
