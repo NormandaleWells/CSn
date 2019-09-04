@@ -84,8 +84,8 @@ we'll use `x < a[lo,hi)` as a shorthand for
 
 There are two loop invariants here:
 - The subrange `a[lo,i)` is sorted - that is,
-`a[i-1] <= a[i]` for all `i` in `[1,hi)`.
-- `max(a[lo,i)) < min(a[i,hi))` - that is,
+`a[j-1] <= a[j]` for all `j` in `[1,i)`.
+- `max(a[lo,i)) <= min(a[i,hi))` - that is,
 everything in `a[lo,i)` is less than or equal to
 everything in `a[i,hi)`.
 
