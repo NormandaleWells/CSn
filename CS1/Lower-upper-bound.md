@@ -116,6 +116,8 @@ in `a[lo,hi)` that is strictly greater than the key value.
 
 By "first element"
 we mean the one with the lowest index.
+The return value may be `hi`
+if all the elements are less than the key.
 
 The postcondition for `lower_bound()`
 is therefore `a[lo,ret) < key and a[ret,hi) >= key`.
@@ -224,3 +226,11 @@ How many loop iterations do
 `lower_bound()` and `upper_bound()`
 perform?
 Does it vary depending on the data?
+
+To find the number of elements equal to `key`,
+why is it better to compute
+`upper_bound(a,key) - lower_bound(a,key)`
+than to use `upper_bound()`
+to find the first element
+and then search linearly
+for the first non-matching element?
