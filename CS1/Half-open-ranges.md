@@ -6,7 +6,7 @@ in which the sought-for element can be found
 (see [binary search](Lower-upper-bound.md),
 and sort algorithms often work by splitting the array
 in pieces and sorting the pieces separately
-(see [Mergesort](../CS2/Merge-sort.md).
+(see [Mergesort](../CS2/Merge-sort.md)).
 
 There are also times when we over-allocate an array
 so can add items without reallocating and copying the array every time,
@@ -146,7 +146,7 @@ the closed range code has to adjust the ranges by 1 when
 It is extremely easy to make off-by-one errors in these calculations,
 which are notably absent altogether in the code using half-open ranges.
 
-In fact, did you even notice that there's a very serious bug in the code using closed ranges?
+In fact, did you even notice that there's a very serious defect in the code using closed ranges?
 I'll leave it to you to find it.
 
 Note that because `[lo,mid)` does not contain `mid`, and `[mid,hi)` does,
