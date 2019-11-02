@@ -7,7 +7,7 @@ for the CS0, CS1, and CS2 classes I teach
 at Normandale Community College, in Bloomington, MN.
 This is, and will probably forever remain, a work in progress.
 
-Writing software is all about problem solveing,
+Writing software is all about problem solving,
 at two different levels.
 The first is the real-world problem to be solved,
 for example:
