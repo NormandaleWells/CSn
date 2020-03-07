@@ -600,20 +600,20 @@ public class ArrayUtils {
 		// Note that due to the invariant that mid is in [lo,hi),
 		// we will never get lo > hi.
 		while (lo < hi) {
-			// for all j in [lo',lo) a[mid] < value
-			// for all j in [hi,hi') a[mid] >= value
+			// for all j in [lo',lo) a[j] < value
+			// for all j in [hi,hi') a[j] >= value
 			int mid = lo + (hi - lo) / 2;
 			// mid in [lo,hi)
 			if (c.compare(a[mid], value) < 0)
 				lo = mid + 1;
-			// for all j in [lo',lo) a[mid] < value
+			// for all j in [lo',lo) a[j] < value
 			// NOTE: mid + 1 is important to guarantee termination!
 			else
 				hi = mid;
-			// for all j in [hi,hi') a[mid] >= value
+			// for all j in [hi,hi') a[j] >= value
 		}
-		// for all j in [lo',hi) a[mid] < value
-		// for all j in [hi,hi') a[mid] >= value
+		// for all j in [lo',hi) a[j] < value
+		// for all j in [hi,hi') a[j] >= value
 		return hi;
 	}
 
@@ -685,19 +685,19 @@ public class ArrayUtils {
 		while (lo < hi) {
 			// In all invariants, lo' and hi' are the original values
 			// of lo and hi.
-			// for all j in [lo',lo) a[mid] <= value
-			// for all j in [hi,hi') a[mid] > value
+			// for all j in [lo',lo) a[j] <= value
+			// for all j in [hi,hi') a[j] > value
 			int mid = lo + (hi - lo) / 2;
 			// mid in [lo,hi)
 			if (c.compare(a[mid], value) <= 0)
 				lo = mid + 1;
-			// for all j in [lo',lo) a[mid] <= value
+			// for all j in [lo',lo) a[j] <= value
 			else
 				hi = mid;
-			// for all j in [hi,hi') a[mid] > value
+			// for all j in [hi,hi') a[j] > value
 		}
-		// for all j in [lo',hi) a[mid] <= value
-		// for all j in [hi,hi') a[mid] > value
+		// for all j in [lo',hi) a[j] <= value
+		// for all j in [hi,hi') a[j] > value
 		return hi;
 	}
 

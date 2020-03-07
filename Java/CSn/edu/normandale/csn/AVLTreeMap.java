@@ -80,7 +80,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 		return height(n.left) - height(n.right);
 	}
 
-	// rotateLeft - rotate a subtree left.
+	// rotateRight - rotate a subtree to the right.
 	// Returns the new root node of the subtree.
 	//    Before:      After:
 	//      n            l
@@ -99,7 +99,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 		return l;
 	}
 	
-	// rotateRight - rotate a subtree right.
+	// rotateLeft - rotate a subtree to the left.
 	// Returns the new root node of the subtree.
 	//   Before:      After:
 	//     n            r
