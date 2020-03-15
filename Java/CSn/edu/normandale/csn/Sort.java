@@ -244,7 +244,7 @@ public class Sort {
 
 	private static <T extends Comparable<T>> void nthElement(T[] a, int lo, int hi, int k) {
 		while (true) {
-			int idx = bentleyPartition(a, lo, hi);
+			int idx = partition(a, lo, hi);
 			if (idx > k)
 				hi = idx;
 			else if (idx < k)
@@ -254,6 +254,17 @@ public class Sort {
 		}
 	}
 
+	// nthElement() rearranges the array 'a' so that the k'th
+	// element is in the position it would be if the array was
+	// sorted.  As a side-effect, it also moves all elements
+	// less than that final k'th element to positions before
+	// k, and all elements greater than the final k'th element
+	// to positions after k.
+	// The position is
+	//		a[0,k) <= a[k]
+	//		a[k+1,N) >= a[k]
+	// where N is a.length.
+	// nthElement() runs in O(N) time, where N=a.length.
 	public static <T extends Comparable<T>> void nthElement(T[] a, int k) {
 		RandomUtils.shuffle(a);
 		nthElement(a, 0, a.length, k);
@@ -273,6 +284,7 @@ public class Sort {
 		// This would probably be slightly faster if we used a partitioning
 		// scheme like the one used for the normal quicksort algorithm,
 		// but I find this much easier to understand.
+		// partition() runs in O(N) time, where N=a.length.
 		int i = lo;
 		int n = lo;
 		while (n < hi) {
@@ -286,6 +298,14 @@ public class Sort {
 		return i;
 	}
 
+	// partition() rearranges the array so that everything
+	// for which the given predicate returns true comes
+	// before all the elements for which it returns false.
+	// In other words, the postcondition is:
+	//		p(a[0,ret)) == true
+	//		p(a[ret,N)) == false
+	// where 'ret' is the return value from partition,
+	// and 'N' is a.length.
 	public static <T> int partition(T[] a, Predicate<T> p) {
 		return partition(a, 0, a.length, p);
 	}
