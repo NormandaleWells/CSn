@@ -127,38 +127,6 @@ public class Sort {
 		return j;
 	}
 
-	// partitions the half-open range a[lo,hi) and returns k
-	// such that a[lo,k) < a[k,hi).
-	// NOTE: This code is not yet working.  It fails on a 2-element
-	// array where the elements are equal.
-	private static <T extends Comparable<T>> int partitionZyBooks(T[] a, int lo, int hi) {
-		
-		int mid = lo + (hi - lo) / 2;
-		T p = a[mid];
-
-		while (true) {
-			// invariant: a[lo',lo) <= p, a[hi,hi') >= p
-			while (less(a[lo], p))
-				lo += 1;
-			while (less(p, a[--hi]))
-				;
-			// We know here that a[lo] >= p, and a[hi] <= p
-			// Also, a[hi+1] > p - this is important!
-			if (hi <= lo)
-				break;
-			// Swap these values to re-establish the invariant.
-			ArrayUtils.swap(a, lo,  hi);
-			
-			// Increment lo to the next item
-			// Note that hi gets pre-decremented in the loop above
-			lo += 1;
-		}
-
-		// Since we know that a[hi+1] > p, combining that with
-		// our invariant we know that a[hi,hi') >= p
-		return hi;
-	}
-
 	private static <T extends Comparable<T>> void quicksort(T[] a, int lo, int hi) {
 //		System.out.printf("quicksort([%d,%d],%d,%d)", a[0], a[1], lo, hi);
 		if ((hi - lo) <= 1) {
@@ -172,8 +140,79 @@ public class Sort {
 	}
 
 	public static <T extends Comparable<T>> void quicksort(T[] a) {
-//		RandomUtils.shuffle(a);
+		RandomUtils.shuffle(a);
 		quicksort(a, 0, a.length);
+	}
+
+	// partitions the half-open range a[lo,hi) and returns k
+	// such that a[lo,k) < a[k,hi).
+	// This code was adapted from the zyBooks Data Structures
+	// and Algorithms book.  The main difference is that we're
+	// using half-open ranges instead of closed ranges.  This
+	// necessitated two main changes:
+	//		(1) hi is predecremented
+	//		(2) We return lo instead of hi.  This was a subtle
+	//		    issue to track down.  It boiled down to the
+	//		    difference between the midpoint on a 2-element
+	//		    array for a closed range (mid = lo) and a
+	//		    half-open range (mid = lo+1).
+	private static <T extends Comparable<T>> int partitionZyBooks(T[] a, int lo, int hi) {
+		
+		int mid = lo + (hi - lo) / 2;
+		T p = a[mid];
+
+		while (true) {
+			// invariant: a[lo',lo) <= p, a[hi,hi') >= p
+			while (less(a[lo], p))
+				lo += 1;
+			while (less(p, a[--hi]))
+				;
+			// We know here that a[lo] >= p, and a[hi] <= p.
+			// Also, a[hi+1] >= p and a[lo-1] <= p.
+			if (hi <= lo)
+				break;
+			// Swap these values to re-establish the invariant.
+			ArrayUtils.swap(a, lo,  hi);
+			
+			// Increment lo to the next item
+			// Note that hi gets pre-decremented in the loop above
+			lo += 1;
+		}
+
+		// Since we know that a[lo-1] <= p, combining that with
+		// our invariant we know that a[lo',lo) <= p.  Also,
+		// a[hi] <= p and hi <= lo.
+		return lo;
+	}
+
+	private static <T> void showArray(T[] a) {
+		System.out.print("[");
+		System.out.print(a[0]);
+		for (int i = 1; i < a.length; i++) {
+			System.out.print(",");
+			System.out.print(a[i]);
+		}
+		System.out.print("]");
+	}
+
+	private static <T extends Comparable<T>> void quicksortZyBooks(T[] a, int lo, int hi) {
+//		System.out.print("quicksortZyBooks(");
+//		showArray(a);
+//		System.out.printf("),%d,%d)", lo, hi);
+		if ((hi - lo) <= 1) {
+			System.out.println();
+			return;
+		}
+
+		int j = partitionZyBooks(a, lo, hi);
+//		System.out.printf(" -> %d\n", j);
+		quicksortZyBooks(a, lo, j);
+		quicksortZyBooks(a, j, hi);
+	}
+
+	public static <T extends Comparable<T>> void quicksortZyBooks(T[] a) {
+//		RandomUtils.shuffle(a);
+		quicksortZyBooks(a, 0, a.length);
 	}
 
 	private static <T extends Comparable<T>> int bentleyPartition(T[] a, int lo, int hi) {
@@ -317,9 +356,9 @@ public class Sort {
 
 	public static void main(String[] args) {
 		
-		Integer[] b = { 1, 0 };
-		quicksort(b);
-		System.exit(0);
+//		Integer[] b = { 4, 3, 2, 1 };
+//		quicksortZyBooks(b);
+//		System.exit(0);
 
 		Integer[] a = new Integer[31];
 		for (int i = 0; i < a.length; i++)
@@ -344,6 +383,10 @@ public class Sort {
 		RandomUtils.shuffle(a);
 		quicksort(a);
 		printArray("quickSort", a);
+
+		RandomUtils.shuffle(a);
+		quicksortZyBooks(a);
+		printArray("quickSortZyBooks", a);
 
 		RandomUtils.shuffle(a);
 		quicksortBentley(a);
