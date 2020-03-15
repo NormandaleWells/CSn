@@ -185,33 +185,19 @@ public class Sort {
 		return lo;
 	}
 
-	private static <T> void showArray(T[] a) {
-		System.out.print("[");
-		System.out.print(a[0]);
-		for (int i = 1; i < a.length; i++) {
-			System.out.print(",");
-			System.out.print(a[i]);
-		}
-		System.out.print("]");
-	}
-
 	private static <T extends Comparable<T>> void quicksortZyBooks(T[] a, int lo, int hi) {
-//		System.out.print("quicksortZyBooks(");
-//		showArray(a);
-//		System.out.printf("),%d,%d)", lo, hi);
 		if ((hi - lo) <= 1) {
 			System.out.println();
 			return;
 		}
 
 		int j = partitionZyBooks(a, lo, hi);
-//		System.out.printf(" -> %d\n", j);
 		quicksortZyBooks(a, lo, j);
 		quicksortZyBooks(a, j, hi);
 	}
 
 	public static <T extends Comparable<T>> void quicksortZyBooks(T[] a) {
-//		RandomUtils.shuffle(a);
+		RandomUtils.shuffle(a);
 		quicksortZyBooks(a, 0, a.length);
 	}
 
