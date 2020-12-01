@@ -19,7 +19,7 @@ For our purposes, we'll take a slightly less formal approach.
 The "proofs" presented here shuld probably be considered
 "correctness arguments" rather than actual proofs.
 Anywhere I use the word "proof" in this section,
-imagine quotes around word.
+imagine quotes around the word "proof".
 
 Briefly, a precondition is something
 that must be true of a function's inputs
