@@ -5,13 +5,20 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-// This program displays a graph described by a file
+// This program displays a grid graph described by a file
 // whose name is provided on the command line.  It
 // then reads pairs of vertices, and displays a
 // shortest path (computed using a breadth-first
 // search) between those vertices.
 
-// See IntGraph.createIntGraph for details on the
+// usage: DisplayIntPaths <filename> <x> <y>
+//
+//	where
+//		<filename> is the name of a file created by CreateGridGraph
+//		<x>        is the number of vertices in the x direction
+//		<y>        is the number of vertices in the y direction
+
+// See IndexedGraph.readIntGraph for details on the
 // format of the data file.
 
 // WARNING: This is NOT a good example of graphics
@@ -23,21 +30,27 @@ import javax.swing.JFrame;
 // This program has a known defect whereby it does
 // create the window large enough to show all the
 // vertices.
-public class DisplayIntPaths {
+
+public class DisplayGridPaths {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
+		if (args.length < 3) {
+			System.out.println("usage: CreateGridGraph <filename> <x> <y>");
+			return;
+		}
+		
 		String filename = args[0];
 		int xNumVerts = Integer.parseInt(args[1]);
 		int yNumVerts = Integer.parseInt(args[2]);
 
-		IntGraph g = IntGraph.createIntGraph(filename);
+		IndexedGraph g = IndexedGraph.readIndexedGraph(filename);
 		
 		JFrame frame = new JFrame();
 		frame.setTitle(filename);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		IntGraphPane gw = new IntGraphPane(g, xNumVerts, yNumVerts);
+		GridGraphPane gw = new GridGraphPane(g, xNumVerts, yNumVerts);
 		gw.adjustFrame(frame);
 
 		frame.add(gw);
@@ -47,7 +60,7 @@ public class DisplayIntPaths {
 		while (scan.hasNextInt()) {
 			int v = scan.nextInt();
 			int w = scan.nextInt();
-			IntBreadthFirstPaths bfp = new IntBreadthFirstPaths(g, v);
+			IndexedBreadthFirstPaths bfp = new IndexedBreadthFirstPaths(g, v);
 			gw.clearHighlights();
 			if (!bfp.hasPathTo(w))
 				System.out.println("No path");

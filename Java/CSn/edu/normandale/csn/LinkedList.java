@@ -70,7 +70,8 @@ public class LinkedList<T> implements Iterable<T> {
 	// This allows us to, for example, use a linked
 	// list of Key/Value pairs, but compare items
 	// based on just the Key type.  See LLSymbolTable
-	// for an exmaple of how this is used.
+	// for an example of how this is used.
+	@SuppressWarnings("unlikely-arg-type")
 	private <Key> Node findKey(Key key) {
 		for (Node n = front; n != null; n = n.next)
 			if (n.data.equals(key))
@@ -81,6 +82,7 @@ public class LinkedList<T> implements Iterable<T> {
 	// This is for demonstration purposes only.  Real
 	// code should use the non-recursive version of
 	// the remove() method.
+	@SuppressWarnings("unlikely-arg-type")
 	private <Key> Node removeRecursive(Node n, Key key) {
 		if (n == null)
 			return null;

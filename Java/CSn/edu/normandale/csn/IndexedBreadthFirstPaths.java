@@ -7,7 +7,7 @@ import java.util.Scanner;
 // of a given graph starting from a given vertex.  The
 // search is performed by the constructor, and the path
 // data is available by called other class methods.
-public class IntBreadthFirstPaths {
+public class IndexedBreadthFirstPaths {
 
 	// visited[v] is true if vertex v has been
 	// visited.
@@ -26,7 +26,7 @@ public class IntBreadthFirstPaths {
 	// The two constructors call this common function
 	// to initialize the arrays that track the paths
 	// and distances.
-	private void init(IntGraph g) {
+	private void init(IndexedGraph g) {
 		int n = g.numVertices();
 		visited = new boolean[n];
 		distance = new int[n];
@@ -41,7 +41,7 @@ public class IntBreadthFirstPaths {
 	// bfs is the work-horse function of the search.
 	// The two constructors set up the initial queue
 	// of visited vertices, and then calls bfs.
-	private void bfs(IntGraph g, Queue<Integer> q) {
+	private void bfs(IndexedGraph g, Queue<Integer> q) {
 
 		// Until the queue is empty, get the next
 		// vertex to process off the queue.
@@ -71,7 +71,7 @@ public class IntBreadthFirstPaths {
 
 	// Find the shortest path to each vertex from
 	// a single starting vertex.
-	public IntBreadthFirstPaths(IntGraph g, int s) {
+	public IndexedBreadthFirstPaths(IndexedGraph g, int s) {
 
 		init(g);
 		Queue<Integer> q = new RAQueue<Integer>();
@@ -89,7 +89,7 @@ public class IntBreadthFirstPaths {
 
 	// Find the shortest path to each vertex from
 	// any of a set of starting vertices.
-	public IntBreadthFirstPaths(IntGraph g, Iterable<Integer> s) {
+	public IndexedBreadthFirstPaths(IndexedGraph g, Iterable<Integer> s) {
 		
 		init(g);
 		Queue<Integer> q = new RAQueue<Integer>();
@@ -149,9 +149,9 @@ public class IntBreadthFirstPaths {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 
-		IntGraph g = IntGraph.createIntGraph(args[0]);
+		IndexedGraph g = IndexedGraph.readIndexedGraph(args[0]);
 		int s = Integer.parseInt(args[1]);
-		IntBreadthFirstPaths bfp = new IntBreadthFirstPaths(g, s);
+		IndexedBreadthFirstPaths bfp = new IndexedBreadthFirstPaths(g, s);
 
 		Scanner stdin = new Scanner(System.in);
 		while (stdin.hasNext()) {

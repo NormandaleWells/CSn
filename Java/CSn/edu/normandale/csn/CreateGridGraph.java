@@ -25,6 +25,9 @@ public class CreateGridGraph {
 	// 0 3
 	// 3 6
 	// 7 8
+	
+	// Note that the data is in the format expected by the
+	// IndexedGraph.readIndexedGraph function.
 
 	// There is no guarantee that the resulting graph will be connected.
 	

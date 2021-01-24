@@ -1,12 +1,12 @@
 package edu.normandale.csn;
 
-public class IntComponents {
+public class IndexedComponents {
 
 	private boolean[] visited;
 	private int[] component;
 	private int nComponents = 0;
 
-	private void dfs(IntGraph g, int v) {
+	private void dfs(IndexedGraph g, int v) {
 		visited[v] = true;
 		component[v] = nComponents;
 		for (int w : g.adjacent(v))
@@ -14,7 +14,7 @@ public class IntComponents {
 				dfs(g, w);
 	}
 
-	public IntComponents(IntGraph g) {
+	public IndexedComponents(IndexedGraph g) {
 		
 		int n = g.numVertices();
 		visited = new boolean[n];

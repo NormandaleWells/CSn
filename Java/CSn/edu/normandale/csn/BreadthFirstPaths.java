@@ -19,8 +19,9 @@ public class BreadthFirstPaths<T> {
 			// For every adjacent vertex, process
 			// every adjacent vertex we haven't
 			// yet visited.
-			for (T w : g.adjacent(v)) {
+			for (Graph<T>.Edge e : g.adjacent(v)) {
 				int d = distance.get(v);
+				T w = e.other(v);
 				if (!visited.contains(w)) {
 					
 					// To process a vertex, add  it

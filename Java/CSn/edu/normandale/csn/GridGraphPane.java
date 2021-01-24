@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class IntGraphPane extends JComponent {
+public class GridGraphPane extends JComponent {
 
 		private class EdgeHL {
 			int v;
@@ -30,7 +30,7 @@ public class IntGraphPane extends JComponent {
 		final static int vertexDiameter = 10;
 		final static int vertexSpacing = 20;
 
-		private IntGraph graph;
+		private IndexedGraph graph;
 		private int nx;
 		private int ny;
 
@@ -67,7 +67,7 @@ public class IntGraphPane extends JComponent {
 			g2d.draw(line);
 		}
 
-		IntGraphPane(IntGraph g, int nx, int ny) {
+		GridGraphPane(IndexedGraph g, int nx, int ny) {
 			this.graph = g;
 			this.nx = nx;
 			this.ny = ny;
@@ -75,7 +75,8 @@ public class IntGraphPane extends JComponent {
 		}
 
 		public void adjustFrame(JFrame frame) {
-			frame.setSize((nx + 1) * vertexSpacing, (ny + 1) * vertexSpacing);
+			// TODO: Figure out why I need ny+3 rather than ny+2 in this code.
+			frame.setSize((nx + 2) * vertexSpacing, (ny + 3) * vertexSpacing);
 		}
 
 		public void highlightEdge(int v, int w, int r, int g, int b) {

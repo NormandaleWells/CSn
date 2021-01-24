@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// IntGraph is a simple graph data structure with a fixed
+// IndexedGraph is a simple graph data structure with a fixed
 // number of vertices identified by integers by integers
 // in the half-open range [0..V), where V is the number
 // of vertices.  This handles both undirected and
@@ -26,7 +26,7 @@ import java.util.Scanner;
 //		    all the vertices are not known up front
 //		    (e.g. a web crawler).
 
-public class IntGraph {
+public class IndexedGraph {
 
 	// The graph is fully described by its adjacency
 	// list and whether it is directed or not.
@@ -34,7 +34,7 @@ public class IntGraph {
 	private boolean directed;
 
 	@SuppressWarnings("unchecked")
-	public IntGraph(int numVertices, boolean directed) {
+	public IndexedGraph(int numVertices, boolean directed) {
 
 		adjList = new ArrayList[numVertices];
 		for (int i = 0; i < numVertices; i++) {
@@ -73,7 +73,7 @@ public class IntGraph {
 	//		fromVertex to Vertex
 	// where the last two lines are repeated for
 	// each edge.
-	public static IntGraph createIntGraph(String filename) throws FileNotFoundException {
+	public static IndexedGraph readIndexedGraph(String filename) throws FileNotFoundException {
 
 		FileInputStream inFile = new FileInputStream(filename);
 
@@ -82,7 +82,7 @@ public class IntGraph {
 			int numVertices = scan.nextInt();
 			int numEdges    = scan.nextInt();
 			
-			IntGraph g = new IntGraph(numVertices, false);
+			IndexedGraph g = new IndexedGraph(numVertices, false);
 			for (int i = 0; i < numEdges; i++) {
 				int v = scan.nextInt();
 				int w = scan.nextInt();
