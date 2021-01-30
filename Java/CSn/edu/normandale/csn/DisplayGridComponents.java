@@ -2,7 +2,7 @@ package edu.normandale.csn;
 
 import java.awt.Color;
 
-public class DisplayComponents {
+public class DisplayGridComponents {
 
 	// These colors are from https://sashamaps.net/docs/resources/20-colors/
 	final private static Color[] colors = {
