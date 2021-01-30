@@ -1,20 +1,20 @@
 package edu.normandale.csn;
 
-public class IndexedComponents {
+public class ConnectedComponents {
 
 	private boolean[] visited;
 	private int[] component;
 	private int nComponents = 0;
 
-	private void dfs(IndexedGraph g, int v) {
+	private void dfs(Graph g, int v) {
 		visited[v] = true;
 		component[v] = nComponents;
-		for (int w : g.adjacent(v))
-			if (!visited[w])
-				dfs(g, w);
+		for (Graph.Edge e : g.adjacent(v))
+			if (!visited[e.to()])
+				dfs(g, e.to());
 	}
 
-	public IndexedComponents(IndexedGraph g) {
+	public ConnectedComponents(Graph g) {
 		
 		int n = g.numVertices();
 		visited = new boolean[n];

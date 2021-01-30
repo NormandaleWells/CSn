@@ -44,7 +44,7 @@ public class DisplayGridPaths {
 		int xNumVerts = Integer.parseInt(args[1]);
 		int yNumVerts = Integer.parseInt(args[2]);
 
-		IndexedGraph g = IndexedGraph.readIndexedGraph(filename);
+		Graph g = Graph.readGraph(filename, false, false);
 		
 		JFrame frame = new JFrame();
 		frame.setTitle(filename);
@@ -60,7 +60,7 @@ public class DisplayGridPaths {
 		while (scan.hasNextInt()) {
 			int v = scan.nextInt();
 			int w = scan.nextInt();
-			IndexedBreadthFirstPaths bfp = new IndexedBreadthFirstPaths(g, v);
+			BreadthFirstPaths bfp = new BreadthFirstPaths(g, v);
 			gw.clearHighlights();
 			if (!bfp.hasPathTo(w))
 				System.out.println("No path");

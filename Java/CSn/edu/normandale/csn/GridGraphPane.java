@@ -30,7 +30,7 @@ public class GridGraphPane extends JComponent {
 		final static int vertexDiameter = 10;
 		final static int vertexSpacing = 20;
 
-		private IndexedGraph graph;
+		private Graph graph;
 		private int nx;
 		private int ny;
 
@@ -67,7 +67,7 @@ public class GridGraphPane extends JComponent {
 			g2d.draw(line);
 		}
 
-		GridGraphPane(IndexedGraph g, int nx, int ny) {
+		GridGraphPane(Graph g, int nx, int ny) {
 			this.graph = g;
 			this.nx = nx;
 			this.ny = ny;
@@ -100,9 +100,9 @@ public class GridGraphPane extends JComponent {
 			}
 			
 			for (int v = 0; v < graph.numVertices(); v++) {
-				for (int w : graph.adjacent(v))
-					if (w > v)
-						drawEdge(g2d, v, w, null);
+				for (Graph.Edge e : graph.adjacent(v))
+					if (e.to() > e.from())
+						drawEdge(g2d, e.from(), e.to(), null);
 			}
 			
 			for (EdgeHL e : hlEdges) {
