@@ -1,6 +1,17 @@
 package edu.normandale.csn;
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+
+// DisplayGridComponents
+//
+// This program displays the individual components in a grid graph
+// as created by CreateGridGraph.
+//
+// Each unique component (up to 20) is displayed in a unique color.
 
 public class DisplayGridComponents {
 
@@ -29,4 +40,41 @@ public class DisplayGridComponents {
 //			new Color(255, 255, 255),		// white
 //			new Color(0,   0,   0)			// black
 	};
+
+	final static int NUM_COLORS = colors.length;
+	final static int NUM_BEST_COLORS = 6;		// a generally very useful subset
+
+	public static void main(String[] args) throws FileNotFoundException {
+
+		if (args.length < 3) {
+			System.out.println("usage: CreateGridComponents <filename> <x> <y>");
+			return;
+		}
+		
+		String filename = args[0];
+		int xNumVerts = Integer.parseInt(args[1]);
+		int yNumVerts = Integer.parseInt(args[2]);
+
+		Graph g = Graph.readGraph(filename, false, false);
+		System.out.printf("%d vertices\n", g.numVertices());
+
+		JFrame frame = new JFrame();
+		frame.setTitle(filename);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		GridGraphPane gw = new GridGraphPane(g, xNumVerts, yNumVerts);
+		gw.adjustFrame(frame);
+
+		frame.add(gw);
+		frame.setVisible(true);
+		
+		ConnectedComponents cc = new ConnectedComponents(g);
+		System.out.printf("%d components\n", cc.numComponents());
+		
+		for (int v = 0; v < g.numVertices(); v++) {
+			int component = cc.component(v);
+			gw.highlightVertex(v, colors[component % NUM_BEST_COLORS]);
+		}
+		gw.redraw();
+	}
 }

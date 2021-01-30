@@ -26,9 +26,10 @@ public class ConnectedComponents {
 		component = new int[n];
 
 		for (int v = 0; v < n; v++) {
-			if (!visited[n])
+			if (!visited[v]) {
 				dfs(g, v);
-			nComponents++;
+				nComponents++;
+			}
 		}
 	}
 	

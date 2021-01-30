@@ -25,6 +25,16 @@ public class GridGraphPane extends JComponent {
 			}
 		}
 
+		private class VertexHL {
+			int v;
+			Color c;
+			
+			VertexHL(int v, Color c) {
+				this.v = v;
+				this.c = c;
+			}
+		}
+
 		private static final long serialVersionUID = 1L;
 		
 		final static int vertexDiameter = 10;
@@ -34,7 +44,8 @@ public class GridGraphPane extends JComponent {
 		private int nx;
 		private int ny;
 
-		private ArrayList<EdgeHL> hlEdges;
+		private ArrayList<EdgeHL> hlEdges = new ArrayList<EdgeHL>();
+		private ArrayList<VertexHL> hlVertices = new ArrayList<VertexHL>();
 
 		private Point vertexCenter(int v) {
 			int x = v % nx;
@@ -42,19 +53,20 @@ public class GridGraphPane extends JComponent {
 			return new Point((x+1) * vertexSpacing, (y+1) * vertexSpacing);
 		}
 
-		private void drawVertex(Graphics2D g2d, Point p) {
+		private void drawVertex(Graphics2D g2d, Point p, Color color) {
 			int xul = p.x - vertexDiameter / 2;
 			int yul = p.y - vertexDiameter / 2;
-			Color color = new Color(0, 0, 0);
+			if (color == null)
+				color = new Color(0, 0, 0);
 			Ellipse2D.Double circle = new Ellipse2D.Double
 					(xul, yul, vertexDiameter, vertexDiameter);
 			g2d.setColor(color);
 			g2d.fill(circle);
 		}
 
-		private void drawVertex(Graphics2D g2d, int v) {
+		private void drawVertex(Graphics2D g2d, int v, Color color) {
 			Point p = vertexCenter(v);
-			drawVertex(g2d, p);
+			drawVertex(g2d, p, color);
 		}
 
 		private void drawEdge(Graphics2D g2d, int v, int w, Color color) {
@@ -67,11 +79,10 @@ public class GridGraphPane extends JComponent {
 			g2d.draw(line);
 		}
 
-		GridGraphPane(Graph g, int nx, int ny) {
+		public GridGraphPane(Graph g, int nx, int ny) {
 			this.graph = g;
 			this.nx = nx;
 			this.ny = ny;
-			hlEdges = new ArrayList<EdgeHL>();
 		}
 
 		public void adjustFrame(JFrame frame) {
@@ -83,8 +94,13 @@ public class GridGraphPane extends JComponent {
 			hlEdges.add(new EdgeHL(v, w, r, g, b));
 		}
 
+		public void highlightVertex(int v, Color c) {
+			hlVertices.add(new VertexHL(v, c));
+		}
+
 		public void clearHighlights() {
 			hlEdges.clear();
+			hlVertices.clear();
 		}
 
 		public void redraw() {
@@ -96,7 +112,7 @@ public class GridGraphPane extends JComponent {
 			Graphics2D g2d = (Graphics2D)g;
 
 			for (int v = 0; v < graph.numVertices(); v++) {
-				drawVertex(g2d, v);
+				drawVertex(g2d, v, null);
 			}
 			
 			for (int v = 0; v < graph.numVertices(); v++) {
@@ -107,6 +123,10 @@ public class GridGraphPane extends JComponent {
 			
 			for (EdgeHL e : hlEdges) {
 				drawEdge(g2d, e.v, e.w, e.c);
+			}
+			
+			for (VertexHL vhl : hlVertices) {
+				drawVertex(g2d, vhl.v, vhl.c);
 			}
 		}
 	}
