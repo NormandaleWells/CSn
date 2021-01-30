@@ -1,5 +1,10 @@
 package edu.normandale.csn;
 
+// This class is patterned after the CC class in Sedgewick and Wayne,
+// section 4.1.  Except the the names and the fact that I opted to
+// not have separate edge-weighted and non-edge-weighted Graph
+// classes, they're probably nearly identical.
+
 public class ConnectedComponents {
 
 	private boolean[] visited;

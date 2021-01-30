@@ -27,10 +27,6 @@ import javax.swing.JFrame;
 // while watching a football game.  I'm sure given
 // a bit more time I would design this better.
 
-// This program has a known defect whereby it does
-// create the window large enough to show all the
-// vertices.
-
 public class DisplayGridPaths {
 
 	public static void main(String[] args) throws FileNotFoundException {
