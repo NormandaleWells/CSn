@@ -2,11 +2,10 @@
 
 Because Java requires all code to be in a class,
 the basic array algorithms (```find```, ```count```, etc.)
-are implemented in a class called ```StdArray```.
-Here I'm using -- for lack of a better idea -- the
-convention used by Sedgewick and Wayne
-that classes comprised of static functions
-are given a ```Std``` prefix.
+are implemented in a class called ```ArrayUtils```.
+Yes, I'm using a utility class in Java;
+sometimes a function is just a function.
+Send complaints to /dev/null.
 
 Each of the basic array algorithms
 is really a family of algorithms;
