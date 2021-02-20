@@ -65,6 +65,7 @@ public class RASet<T> implements Set<T> {
 		if (idx == -1) return;
 
 		ArrayUtils.rotateLeft(set, idx, numItems);
+		set[--numItems] = null;
 	}
 
 	@Override
