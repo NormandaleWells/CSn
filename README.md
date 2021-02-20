@@ -81,6 +81,7 @@ or introduce some CS2 topics into CS1.
 * Linked lists
 * * Basic structure
 * * Insertion and removal
+* * Performance issues
 * Inheritance
 * * Implementation inheritance
 * * Interface inheritance
