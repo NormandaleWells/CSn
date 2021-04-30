@@ -27,7 +27,7 @@ public class TestBag {
 
 	@Test
 	public void testRABag() {
-		Bag<String> b = new RABag<String>();
+		Bag<String> b = new ArrayBag<String>();
 		testBag(b);
 	}
 

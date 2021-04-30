@@ -3,7 +3,7 @@ package edu.normandale.csn;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class RAMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
+public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	@SuppressWarnings("unchecked")
 	private T[] q = (T[]) new Comparable[4];
@@ -61,7 +61,7 @@ public class RAMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	public static void main(String[] args) {
 
-		RAMaxPQ<Integer> pq = new RAMaxPQ<Integer>();
+		ArrayMaxPQ<Integer> pq = new ArrayMaxPQ<Integer>();
 
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNext()) {

@@ -132,7 +132,7 @@ public class TestMaxPQ {
 
 	@Test
 	public void testRAMaxPQ() {
-		MaxPQ<Integer> pq = new RAMaxPQ<Integer>();
+		MaxPQ<Integer> pq = new ArrayMaxPQ<Integer>();
 		testOnePQ(pq);
 	}
 

@@ -44,7 +44,7 @@ public class ComparePQs {
 		pq = new LinkedMaxPQ<Integer>();
 		runOnePQ("Linked List", numbers, keep, pq);
 		
-		pq = new RAMaxPQ<Integer>();
+		pq = new ArrayMaxPQ<Integer>();
 		runOnePQ("Ordered Array", numbers, keep, pq);
 		
 		pq = new HeapMaxPQ<Integer>(1);

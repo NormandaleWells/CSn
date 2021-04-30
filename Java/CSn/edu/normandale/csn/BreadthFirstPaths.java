@@ -75,7 +75,7 @@ public class BreadthFirstPaths {
 	public BreadthFirstPaths(Graph g, int s) {
 
 		init(g);
-		Queue<Integer> q = new RAQueue<Integer>();
+		Queue<Integer> q = new ArrayQueue<Integer>();
 
 		// Add our starting vertex to the queue,
 		// mark it as visited, and set its distance
@@ -93,7 +93,7 @@ public class BreadthFirstPaths {
 	public BreadthFirstPaths(Graph g, Iterable<Integer> s) {
 		
 		init(g);
-		Queue<Integer> q = new RAQueue<Integer>();
+		Queue<Integer> q = new ArrayQueue<Integer>();
 		
 		// For each starting vertex, add it to the
 		// queue, mark it as visited, and set its
@@ -134,7 +134,7 @@ public class BreadthFirstPaths {
 		// We're going to generate the vertices in the
 		// path in reverse order, so we'll use a Stack<T>
 		// to return them.
-		Stack<Integer> path = new RAStack<>();
+		Stack<Integer> path = new ArrayStack<>();
 
 		// We need to follow the edgeFrom values from
 		// this vertex path to a source.  We know we're

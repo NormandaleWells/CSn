@@ -2,20 +2,20 @@ package edu.normandale.csn;
 
 import java.util.Iterator;
 
-public class RABag<T> implements Bag<T> {
+public class ArrayBag<T> implements Bag<T> {
 
 	T[] bag;
 	int nItems;
 
 	@SuppressWarnings("unchecked")
-	public RABag(int initSize) {
+	public ArrayBag(int initSize) {
 		if (initSize == 0)
 			initSize = 1;
 		bag = (T[]) new Object[initSize];
 		nItems = 0;
 	}
 
-	public RABag() {
+	public ArrayBag() {
 		this(1);
 	}
 
@@ -65,7 +65,7 @@ public class RABag<T> implements Bag<T> {
 	}
 
 	public static void main(String[] args) {
-		Bag<String> bag = new RABag<String>(1);
+		Bag<String> bag = new ArrayBag<String>(1);
 		TestCollectionUtilities.testBag(bag);
 	}
 }

@@ -3,19 +3,19 @@ package edu.normandale.csn;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class RAStack<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T> {
 
 	T[] stack = null;
 	int top = 0;
 
 	@SuppressWarnings("unchecked")
-	public RAStack(int initSize) {
+	public ArrayStack(int initSize) {
 		if (initSize == 0)
 			initSize = 1;
 		stack = (T[]) new Object[initSize];
 	}
 
-	public RAStack() {
+	public ArrayStack() {
 		this(1);
 	}
 
@@ -99,7 +99,7 @@ public class RAStack<T> implements Stack<T> {
 	}
 
 	public static void main(String[] args) {
-		Stack<String> stack = new RAStack<String>(1);
+		Stack<String> stack = new ArrayStack<String>(1);
 		TestCollectionUtilities.testStack(stack);
 	}
 }

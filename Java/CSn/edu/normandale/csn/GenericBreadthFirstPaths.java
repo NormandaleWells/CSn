@@ -42,7 +42,7 @@ public class GenericBreadthFirstPaths<T> {
 	// a single starting vertex.
 	public GenericBreadthFirstPaths(GenericGraph<T> g, T s) {
 
-		Queue<T> q = new RAQueue<T>();
+		Queue<T> q = new ArrayQueue<T>();
 
 		// Add our starting vertex to the queue,
 		// mark it as visited, and set its distance
@@ -59,7 +59,7 @@ public class GenericBreadthFirstPaths<T> {
 	// any of a set of starting vertices.
 	public GenericBreadthFirstPaths(GenericGraph<T> g, Iterable<T> s) {
 		
-		Queue<T> q = new RAQueue<T>();
+		Queue<T> q = new ArrayQueue<T>();
 		
 		// For each starting vertex, add it to the
 		// queue, mark it as visited, and set its
@@ -91,7 +91,7 @@ public class GenericBreadthFirstPaths<T> {
 		// We're going to generate the vertices in the
 		// path in reverse order, so we'll use a Stack<T>
 		// to return them.
-		Stack<T> path = new RAStack<>();
+		Stack<T> path = new ArrayStack<>();
 
 		// We need to follow the edgeFrom values from
 		// this vertex path to a source.  We know we're

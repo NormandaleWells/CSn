@@ -45,7 +45,7 @@ public class TestStack {
 
 	@Test
 	public void testRAStack() {
-		Stack<String> b = new RAStack<String>();
+		Stack<String> b = new ArrayStack<String>();
 		testStack(b);
 	}
 

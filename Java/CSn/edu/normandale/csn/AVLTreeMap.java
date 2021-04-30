@@ -261,7 +261,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 		
 		// Okay, we have the non-trivial case.
 		else {
-			Stack<Node> stk = new RAStack<Node>();
+			Stack<Node> stk = new ArrayStack<Node>();
 			Node x = next(n, stk);
 			// Since we know what n.right != null,
 			// we know that next() cannot return
@@ -306,7 +306,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 
 	private class TreeIterator implements Iterator<Key> {
 
-		RAStack<Node> stk = new RAStack<Node>();
+		ArrayStack<Node> stk = new ArrayStack<Node>();
 		Node next;
 
 		public TreeIterator() {

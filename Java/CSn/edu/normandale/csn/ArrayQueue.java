@@ -22,14 +22,14 @@ import java.util.NoSuchElementException;
  *
  * @param <T>
  */
-public class RAQueue<T> implements Queue<T> {
+public class ArrayQueue<T> implements Queue<T> {
 
 	T[] queue = null;
 	int head;
 	int tail;
 
 	@SuppressWarnings("unchecked")
-	public RAQueue(int initSize) {
+	public ArrayQueue(int initSize) {
 		if (initSize == 0)
 			initSize = 1;
 		queue = (T[]) new Object[initSize];
@@ -37,7 +37,7 @@ public class RAQueue<T> implements Queue<T> {
 		tail = 0;
 	}
 
-	public RAQueue() {
+	public ArrayQueue() {
 		this(1);
 	}
 
@@ -137,7 +137,7 @@ public class RAQueue<T> implements Queue<T> {
 	}
 
 	public static void main(String[] args) {
-		Queue<String> queue = new RAQueue<String>(1);
+		Queue<String> queue = new ArrayQueue<String>(1);
 		TestCollectionUtilities.testQueue(queue);
 	}
 }

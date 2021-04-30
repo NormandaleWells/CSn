@@ -45,7 +45,7 @@ public class TestQueue {
 
 	@Test
 	public void testRAQueue() {
-		Queue<String> b = new RAQueue<String>();
+		Queue<String> b = new ArrayQueue<String>();
 		testQueue(b);
 	}
 
