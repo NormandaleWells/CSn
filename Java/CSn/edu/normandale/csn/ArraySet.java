@@ -3,7 +3,7 @@ package edu.normandale.csn;
 import java.util.Iterator;
 
 /**
- * RASet is a simple implementation of the Set API using
+ * ArraySet is a simple implementation of the Set API using
  * mostly functions provided by ArrayUtils.  The items
  * in the set are stored in an unsorted array.
  * 
