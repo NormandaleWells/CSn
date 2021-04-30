@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * RAQueue implements the Queue interface using a resizeable array. The array is
- * treated in a circular manner; that is, when we reach the end of the array, we
- * wrap around to the beginning. <br>
+ * ArrayQueue implements the Queue interface using a resizeable array. The array
+ * is treated in a circular manner; that is, when we reach the end of the array,
+ * we wrap around to the beginning. <br>
  * <br>
  * We need track of two indices; the head and tail. Items are added to the tail,
  * and removed from the head. Note that because the indices wrap, we may have
@@ -106,9 +106,9 @@ public class ArrayQueue<T> implements Queue<T> {
 
 	@Override
 	public int size() {
-		// Note that this is written so that if head == tail,
-		// we return a size of 0 rather than q.length.
-		return head <= tail ? tail - head : (queue.length - head) + tail;
+		// Note that enqueue() is written so that if head == tail,
+		// we must have an empty queue.
+		return head <= tail ? tail - head : queue.length - (head - tail);
 	}
 
 	public class ArrayIterator implements Iterator<T> {
