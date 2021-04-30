@@ -1,6 +1,6 @@
 package edu.normandale.csn;
 
-public class LLMap<Key, Value> implements Map<Key, Value> {
+public class LinkedMap<Key, Value> implements Map<Key, Value> {
 
 	LinkedList<KV> ll = new LinkedList<>();
 
@@ -17,7 +17,7 @@ public class LLMap<Key, Value> implements Map<Key, Value> {
 			if (this == obj) return true;
 			if (obj.getClass().equals(key.getClass()))
 				return obj.equals(key);
-			if (obj instanceof LLMap.KV)
+			if (obj instanceof LinkedMap.KV)
 				return ((KV) obj).key.equals(key);
 			return false;
 		}
@@ -71,7 +71,7 @@ public class LLMap<Key, Value> implements Map<Key, Value> {
 	// affecting the overall asymptotic behavior.
 	@Override
 	public Iterable<Key> keys() {
-		LLQueue<Key> q = new LLQueue<>();
+		LinkedQueue<Key> q = new LinkedQueue<>();
 		for (KV kv : ll) {
 			q.enqueue(kv.key);
 		}

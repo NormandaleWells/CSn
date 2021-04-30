@@ -33,7 +33,7 @@ public class TestBag {
 
 	@Test
 	public void testLLBag() {
-		Bag<String> b = new LLBag<String>();
+		Bag<String> b = new LinkedBag<String>();
 		testBag(b);
 	}
 }

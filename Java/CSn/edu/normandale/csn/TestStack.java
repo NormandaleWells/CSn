@@ -51,7 +51,7 @@ public class TestStack {
 
 	@Test
 	public void testLLStack() {
-		Stack<String> b = new LLStack<String>();
+		Stack<String> b = new LinkedStack<String>();
 		testStack(b);
 	}
 }

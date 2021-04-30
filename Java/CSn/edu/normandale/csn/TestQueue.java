@@ -51,7 +51,7 @@ public class TestQueue {
 
 	@Test
 	public void testLLQueue() {
-		Queue<String> b = new LLQueue<String>();
+		Queue<String> b = new LinkedQueue<String>();
 		testQueue(b);
 	}
 }

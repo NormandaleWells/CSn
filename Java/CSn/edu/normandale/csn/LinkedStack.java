@@ -2,7 +2,7 @@ package edu.normandale.csn;
 
 import java.util.Iterator;
 
-public class LLStack<T> implements Stack<T> {
+public class LinkedStack<T> implements Stack<T> {
 
 	LinkedList<T> stk = new LinkedList<>();
 

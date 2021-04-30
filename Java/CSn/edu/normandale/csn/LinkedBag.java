@@ -2,7 +2,7 @@ package edu.normandale.csn;
 
 import java.util.Iterator;
 
-public class LLBag<T> implements Bag<T> {
+public class LinkedBag<T> implements Bag<T> {
 
 	private class Node {
 		T item;
@@ -57,7 +57,7 @@ public class LLBag<T> implements Bag<T> {
 	}
 	
 	public static void main(String[] args) {
-		Bag<String> bag = new LLBag<String>();
+		Bag<String> bag = new LinkedBag<String>();
 		TestCollectionUtilities.testBag(bag);
 	}
 }

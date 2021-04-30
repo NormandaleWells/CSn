@@ -126,7 +126,7 @@ public class TestMaxPQ {
 
 	@Test
 	public void testLLMaxPQ() {
-		MaxPQ<Integer> pq = new LLMaxPQ<Integer>();
+		MaxPQ<Integer> pq = new LinkedMaxPQ<Integer>();
 		testOnePQ(pq);
 	}
 

@@ -60,7 +60,7 @@ public class TestSymbolTable {
 
 	@Test
 	public void testLLSymbolTable() {
-		LLMap<String,Integer> llst = new LLMap<String,Integer>();
+		LinkedMap<String,Integer> llst = new LinkedMap<String,Integer>();
 		testSymbolTable(llst);
 	}
 

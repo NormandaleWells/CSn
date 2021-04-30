@@ -2,7 +2,7 @@ package edu.normandale.csn;
 
 import java.util.Iterator;
 
-public class LLQueue<T> implements Queue<T> {
+public class LinkedQueue<T> implements Queue<T> {
 
 	LinkedList<T> q = new LinkedList<>();
 
@@ -32,7 +32,7 @@ public class LLQueue<T> implements Queue<T> {
 	}
 
 	public static void main(String[] args) {
-		Queue<String> queue = new LLQueue<String>();
+		Queue<String> queue = new LinkedQueue<String>();
 		TestCollectionUtilities.testQueue(queue);
 	}
 }

@@ -15,7 +15,7 @@ import java.util.Scanner;
 // is hundreds of times slower (!) than the array version,
 // it's just not worth the time.
 
-public class LLMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
+public class LinkedMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	LinkedList<T> q = new LinkedList<T>();
 	Comparator<T> comp = new WrapComparable<T>();
@@ -60,7 +60,7 @@ public class LLMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	public static void main(String[] args) {
 
-		LLMaxPQ<Integer> pq = new LLMaxPQ<Integer>();
+		LinkedMaxPQ<Integer> pq = new LinkedMaxPQ<Integer>();
 		
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNext()) {
