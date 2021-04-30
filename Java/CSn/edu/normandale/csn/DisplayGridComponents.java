@@ -2,7 +2,6 @@ package edu.normandale.csn;
 
 import java.awt.Color;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import javax.swing.JFrame;
 
