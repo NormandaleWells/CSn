@@ -27,7 +27,7 @@ public class ArrayBag<T> implements Bag<T> {
 		// resize the array to make it twice as big.
 		if (nItems == bag.length) {
 			T[] newBag = (T[]) new Object[bag.length * 2];
-			ArrayUtils.copy(bag, newBag, 0, nItems);
+			ArrayUtils.move(bag, newBag, 0, nItems);
 			bag = newBag;
 		}
 

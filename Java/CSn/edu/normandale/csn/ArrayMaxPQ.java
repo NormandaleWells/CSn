@@ -13,7 +13,7 @@ public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T
 	private void resize(int newSize) {
 		assert(newSize >= count);
 		T[] newQ = (T[]) new Comparable[newSize];
-		ArrayUtils.copy(q, newQ, 0, count);
+		ArrayUtils.move(q, newQ, 0, count);
 		q = newQ;
 	}
 
