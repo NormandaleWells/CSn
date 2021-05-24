@@ -99,7 +99,7 @@ public class Graph {
 	// Return the list of vertices adjacent to
 	// vertex v.
 	public Iterable<Edge> adjacent(int v) {
-		return adjList[v];
+		return new ArrayList<Edge>(adjList[v]);
 	}
 
 	// createIntGraph is a convenience function that
