@@ -1,6 +1,10 @@
 package edu.normandale.csn;
 
-public class HeapUtils {
+public final class HeapUtils {
+
+	// Don't allow an object of this type to be created.
+	private HeapUtils() {
+	}
 
 	private static <Key extends Comparable<Key>> boolean less(Key a, Key b) {
 		return a.compareTo(b) < 0;

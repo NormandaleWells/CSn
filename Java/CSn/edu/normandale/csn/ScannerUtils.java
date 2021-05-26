@@ -3,7 +3,11 @@ package edu.normandale.csn;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ScannerUtils {
+public final class ScannerUtils {
+
+	// Don't allow an object of this type to be created.
+	private ScannerUtils() {
+	}
 
 	public static Integer[] readAllIntegers(Scanner scanner) {
 		ArrayList<Integer> a = new ArrayList<Integer>();

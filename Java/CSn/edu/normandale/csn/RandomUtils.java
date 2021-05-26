@@ -5,7 +5,11 @@ import java.util.Random;
 
 // RandomUtils - based on Sedgewick and Wayne's StdRandom class
 
-public class RandomUtils {
+public final class RandomUtils {
+
+	// Don't allow an object of this type to be created.
+	private RandomUtils() {
+	}
 
 	static Random rand = new Random();
 
