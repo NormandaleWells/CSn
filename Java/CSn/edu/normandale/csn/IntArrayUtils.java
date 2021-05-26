@@ -2,7 +2,11 @@ package edu.normandale.csn;
 
 import java.util.function.Predicate;
 
-public class IntArrayUtils {
+public final class IntArrayUtils {
+
+	// Don't allow an object of this type to be created.
+	private IntArrayUtils() {
+	}
 
 	// All methods here have a precondition that no array passed
 	// in as an argument many be null, and for all methods that

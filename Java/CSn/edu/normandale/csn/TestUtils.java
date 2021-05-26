@@ -1,6 +1,10 @@
 package edu.normandale.csn;
 
-public class TestUtils {
+public final class TestUtils {
+
+	// Don't allow an object of this type to be created.
+	private TestUtils() {
+	}
 
 	public static String[] iterToArray(Iterable<String> iter, int nExpected) {
 

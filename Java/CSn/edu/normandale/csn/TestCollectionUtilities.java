@@ -2,7 +2,11 @@ package edu.normandale.csn;
 
 import java.util.Scanner;
 
-public class TestCollectionUtilities {
+public final class TestCollectionUtilities {
+
+	// Don't allow an object of this type to be created.
+	private TestCollectionUtilities() {
+	}
 
 	private static void printCollection(String colType, Iterable<String> collection) {
 		System.out.printf("\nFinal %s:\n", colType);
