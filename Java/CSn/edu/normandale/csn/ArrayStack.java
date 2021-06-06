@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayStack<T> implements Stack<T> {
 
-	T[] stack = null;
+	T[] stack;
 	int top = 0;
 
 	@SuppressWarnings("unchecked")
@@ -99,7 +99,7 @@ public class ArrayStack<T> implements Stack<T> {
 	}
 
 	public static void main(String[] args) {
-		Stack<String> stack = new ArrayStack<String>(1);
+		ArrayStack<String> stack = new ArrayStack<>(1);
 		TestCollectionUtilities.testStack(stack);
 	}
 }

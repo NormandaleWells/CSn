@@ -13,13 +13,16 @@ public class TestStack {
 		stk.push("A");
 		assertFalse(stk.isEmpty());
 		assertEquals(stk.size(), 1);
+		assertEquals(stk.peek(), "A");
 
 		assertEquals(stk.pop(), "A");
 		assertTrue(stk.isEmpty());
 		assertEquals(stk.size(), 0);
 		
 		stk.push("B");
+		assertEquals(stk.peek(), "B");
 		stk.push("C");
+		assertEquals(stk.peek(), "C");
 		assertFalse(stk.isEmpty());
 		assertEquals(stk.size(), 2);
 		
@@ -35,6 +38,7 @@ public class TestStack {
 		stk.push("E");
 		stk.push("F");
 		stk.push(stk.pop());
+		assertEquals(stk.peek(), "F");
 		stk.push("G");
 		assertEquals(stk.size(), 4);
 		
@@ -45,13 +49,13 @@ public class TestStack {
 
 	@Test
 	public void testRAStack() {
-		Stack<String> b = new ArrayStack<String>();
+		ArrayStack<String> b = new ArrayStack<>();
 		testStack(b);
 	}
 
 	@Test
 	public void testLLStack() {
-		Stack<String> b = new LinkedStack<String>();
+		LinkedStack<String> b = new LinkedStack<>();
 		testStack(b);
 	}
 }

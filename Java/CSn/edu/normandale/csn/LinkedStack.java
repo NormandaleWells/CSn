@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class LinkedStack<T> implements Stack<T> {
 
-	LinkedList<T> stk = new LinkedList<>();
+	LinkedList<T> stk = new LinkedList<T>();
 
 	@Override
 	public void push(T item) {
