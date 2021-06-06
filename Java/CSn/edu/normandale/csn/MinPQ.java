@@ -1,9 +1,9 @@
 package edu.normandale.csn;
 
 public interface MinPQ<T extends Comparable<T>> {
-	public void insert(T value);
-	public T min();
-	public T delMin();
-	public boolean isEmpty();
-	public int size();
+	void insert(T value);
+	T min();
+	T delMin();
+	boolean isEmpty();
+	int size();
 }
