@@ -40,6 +40,9 @@ bld/
 .project
 *.jar
 
+# For Java development (IntelliJ)
+.idea/
+*.iml
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
