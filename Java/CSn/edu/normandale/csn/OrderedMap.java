@@ -27,7 +27,7 @@ package edu.normandale.csn;
  * @param <Key>	The type used for the keys in the table.
  * @param <Value> The type used for the values in the table.
  */
-public interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key, Value> {
+interface OrderedMap<Key extends Comparable<Key>, Value> extends Map<Key, Value> {
 	/**
 	 * Returns the minimum key in the table, or <tt>null</tt> if the table is empty.
 	 * 

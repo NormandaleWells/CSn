@@ -18,7 +18,7 @@ package edu.normandale.csn;
  *
  * @param <T>	The type of object to store in the stack.
  */
-public interface Queue<T> extends Iterable<T> {
+interface Queue<T> extends Iterable<T> {
 
 	/**
 	 * Adds an item to the tail of the queue.

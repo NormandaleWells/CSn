@@ -18,7 +18,7 @@ package edu.normandale.csn;
  * @param <Key>	The type used for the keys in the table.
  * @param <Value> The type used for the values in the table.
  */
-public interface Map<Key,Value> {
+interface Map<Key,Value> {
 
 	/**
 	 * Adds or updates an entry to the symbol table.  If

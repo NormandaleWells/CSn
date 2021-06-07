@@ -13,7 +13,7 @@ package edu.normandale.csn;
  *
  * @param <T>	The type of object to store in the stack.
  */
-public interface Bag<T> extends Iterable<T> {
+interface Bag<T> extends Iterable<T> {
 
 	/**
 	 * Adds an item to the top of the stack.

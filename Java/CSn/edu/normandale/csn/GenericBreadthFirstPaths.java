@@ -5,9 +5,9 @@ import java.util.HashSet;
 
 public class GenericBreadthFirstPaths<T> {
 
-	private HashSet<T> visited = new HashSet<>();
-	private HashMap<T,Integer> distance = new HashMap<>();
-	private HashMap<T,T> edgeFrom = new HashMap<>();
+	private final HashSet<T> visited = new HashSet<>();
+	private final HashMap<T,Integer> distance = new HashMap<>();
+	private final HashMap<T,T> edgeFrom = new HashMap<>();
 
 	private void bfs(GenericGraph<T> g, Queue<T> q) {
 
@@ -58,7 +58,7 @@ public class GenericBreadthFirstPaths<T> {
 	// Find the shortest path to each vertex from
 	// any of a set of starting vertices.
 	public GenericBreadthFirstPaths(GenericGraph<T> g, Iterable<T> s) {
-		
+
 		Queue<T> q = new ArrayQueue<T>();
 		
 		// For each starting vertex, add it to the

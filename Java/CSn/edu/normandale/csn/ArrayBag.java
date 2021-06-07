@@ -65,7 +65,7 @@ public class ArrayBag<T> implements Bag<T> {
 	}
 
 	public static void main(String[] args) {
-		Bag<String> bag = new ArrayBag<String>(1);
+		Bag<String> bag = new ArrayBag<>(1);
 		TestCollectionUtilities.testBag(bag);
 	}
 }

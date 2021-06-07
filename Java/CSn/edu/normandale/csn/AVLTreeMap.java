@@ -33,7 +33,7 @@ import java.util.Scanner;
 
 public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMap<Key, Value> {
 
-	private class Node {
+	class Node {
 		Key key;
 		Value value;
 		Node left;
@@ -261,7 +261,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 		
 		// Okay, we have the non-trivial case.
 		else {
-			Stack<Node> stk = new ArrayStack<Node>();
+			Stack<Node> stk = new ArrayStack<>();
 			Node x = next(n, stk);
 			// Since we know what n.right != null,
 			// we know that next() cannot return
@@ -306,7 +306,7 @@ public class AVLTreeMap<Key extends Comparable<Key>, Value> implements OrderedMa
 
 	private class TreeIterator implements Iterator<Key> {
 
-		ArrayStack<Node> stk = new ArrayStack<Node>();
+		ArrayStack<Node> stk = new ArrayStack<>();
 		Node next;
 
 		public TreeIterator() {
