@@ -27,13 +27,13 @@ public class TestBag {
 
 	@Test
 	public void testRABag() {
-		Bag<String> b = new ArrayBag<String>();
+		Bag<String> b = new ArrayBag<>();
 		testBag(b);
 	}
 
 	@Test
 	public void testLLBag() {
-		Bag<String> b = new LinkedBag<String>();
+		Bag<String> b = new LinkedBag<>();
 		testBag(b);
 	}
 }

@@ -126,19 +126,19 @@ public class TestMaxPQ {
 
 	@Test
 	public void testLLMaxPQ() {
-		MaxPQ<Integer> pq = new LinkedMaxPQ<Integer>();
+		MaxPQ<Integer> pq = new LinkedMaxPQ<>();
 		testOnePQ(pq);
 	}
 
 	@Test
 	public void testRAMaxPQ() {
-		MaxPQ<Integer> pq = new ArrayMaxPQ<Integer>();
+		MaxPQ<Integer> pq = new ArrayMaxPQ<>();
 		testOnePQ(pq);
 	}
 
 	@Test
 	public void testHeapMaxPQ() {
-		MaxPQ<Integer> pq = new HeapMaxPQ<Integer>(1);
+		MaxPQ<Integer> pq = new HeapMaxPQ<>(1);
 		testOnePQ(pq);
 	}
 

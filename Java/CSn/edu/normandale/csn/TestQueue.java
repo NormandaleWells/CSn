@@ -45,13 +45,13 @@ public class TestQueue {
 
 	@Test
 	public void testRAQueue() {
-		Queue<String> b = new ArrayQueue<String>();
+		Queue<String> b = new ArrayQueue<>();
 		testQueue(b);
 	}
 
 	@Test
 	public void testLLQueue() {
-		Queue<String> b = new LinkedQueue<String>();
+		Queue<String> b = new LinkedQueue<>();
 		testQueue(b);
 	}
 }

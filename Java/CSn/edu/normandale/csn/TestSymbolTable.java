@@ -7,9 +7,9 @@ import org.junit.Test;
 public class TestSymbolTable {
 
 	private void testOrderedST(OrderedMap<String,Integer> st) {
-		
-		assertEquals(st.min(), null);
-		assertEquals(st.max(), null);
+
+		assertNull(st.min());
+		assertNull(st.max());
 
 		st.put("C", 3);
 		assertEquals(st.min(), "C");
@@ -60,31 +60,31 @@ public class TestSymbolTable {
 
 	@Test
 	public void testLLSymbolTable() {
-		LinkedMap<String,Integer> llst = new LinkedMap<String,Integer>();
+		Map<String,Integer> llst = new LinkedMap<>();
 		testSymbolTable(llst);
 	}
 
 	@Test
 	public void testOrderedArrayST() {
-		OrderedArrayMap<String,Integer> oast = new OrderedArrayMap<String,Integer>();
+		OrderedMap<String,Integer> oast = new OrderedArrayMap<>();
 		testSymbolTable(oast);
 
-		oast = new OrderedArrayMap<String,Integer>();
+		oast = new OrderedArrayMap<>();
 		testOrderedST(oast);
 	}
 
 	@Test
 	public void testUnorderedArrayST() {
-		UnorderedArrayMap<String,Integer> uast = new UnorderedArrayMap<String,Integer>();
+		Map<String,Integer> uast = new UnorderedArrayMap<>();
 		testSymbolTable(uast);
 	}
 
 	@Test
 	public void testBinaryTreeST() {
-		AVLTreeMap<String,Integer> btst = new AVLTreeMap<String,Integer>();
+		OrderedMap<String,Integer> btst = new AVLTreeMap<>();
 		testSymbolTable(btst);
 
-		btst = new AVLTreeMap<String,Integer>();
+		btst = new AVLTreeMap<>();
 		testOrderedST(btst);
 	}
 }
