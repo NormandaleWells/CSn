@@ -17,17 +17,21 @@ public class Sort {
 
 	// selectionSort and variants
 
-	public static <T extends Comparable<T>> void selectionSort(T[] a) {
+	public static <T> void selectionSort(T[] a, Comparator<T> comp) {
 		for (int i = 0; i < a.length; i++) {
 			// invariants:
 			//		a[0,i) is sorted
 			//		for all j in [i,a.length) a[j] >= a[i-1]
-			int idx = ArrayUtils.minElement(a, i, a.length);
+			int idx = ArrayUtils.minElement(a, i, a.length, comp);
 			ArrayUtils.swap(a, i, idx);
 		}
 	}
 
-	// insertionSort and variants
+	public static <T extends Comparable<T>> void selectionSort(T[] a) {
+		selectionSort(a, new WrapComparable<T>());
+	}
+
+		// insertionSort and variants
 
 	public static <T> void insertionSort(T[] a, int lo, int hi, Comparator<T> comp) {
 		for (int i = lo+1; i < hi; i++) {

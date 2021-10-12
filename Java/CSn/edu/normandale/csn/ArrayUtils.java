@@ -681,7 +681,7 @@ public final class ArrayUtils {
 	// for i in [r,hi) a[i] > value
 	public static <T> int upperBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a, lo, hi, c));
+//		assert (isSorted(a, lo, hi, c));
 		// In all invariants, lo' and hi' are the original values
 		// of lo and hi.
 		// Note that due to the invariant that mid is in [lo,hi),
