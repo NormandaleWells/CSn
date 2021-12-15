@@ -16,7 +16,7 @@ def find(a, value, lo=0, hi=-1):
     Return the index of the first element of list 'a' which is equal
     to 'value'.
 
-    Keyword argumens:
+    Keyword arguments:
     lo -- the lo end of the subrange to search
     hi -- the hi end of the subrange to search (exclusive)
     """
@@ -34,7 +34,7 @@ def find_if(a, pred, lo=0, hi=-1):
     Return the index of the first element of list 'a' for which 'pred'
     returns True.
 
-    Keyword argumens:
+    Keyword arguments:
     lo -- the lo end of the subrange to search
     hi -- the hi end of the subrange to search (exclusive)
     """
@@ -73,7 +73,7 @@ def count_if(a, pred, lo=0, hi=-1):
     Return the number of elements of list 'a' for which 'pred'
     returns True.
 
-    Keyword argumens:
+    Keyword arguments:
     lo -- the lo end of the subrange to search
     hi -- the hi end of the subrange to search (exclusive)
     """
