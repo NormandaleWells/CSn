@@ -11,6 +11,7 @@ these algorithms use keyword arguments for lo and hi.  The use of hi=-1
 is a kludge due to the fact that Python won't allow hi=len(a).
 """
 
+
 def find(a, value, lo=0, hi=-1):
     """
     Return the index of the first element of list 'a' which is equal
@@ -21,13 +22,15 @@ def find(a, value, lo=0, hi=-1):
     hi -- the hi end of the subrange to search (exclusive)
     """
 
-    if hi == -1: hi = len(a)
+    if hi == -1:
+        hi = len(a)
 
-    assert type(a) == type([])
+    assert isinstance(a, type([]))
     assert 0 <= lo <= hi <= len(a)
-    assert len(a) == 0 or type(value) == type(a[0])
+    assert len(a) == 0 or isinstance(value, type(a[0]))
 
-    return find_if(a, lambda a : a == value, lo=lo, hi=hi)
+    return find_if(a, lambda b: b == value, lo=lo, hi=hi)
+
 
 def find_if(a, pred, lo=0, hi=-1):
     """
@@ -39,9 +42,10 @@ def find_if(a, pred, lo=0, hi=-1):
     hi -- the hi end of the subrange to search (exclusive)
     """
 
-    if hi == -1: hi = len(a)
+    if hi == -1:
+        hi = len(a)
 
-    assert type(a) == type([])
+    assert isinstance(a, type([]))
     assert type(lo) == type(hi) == type(0)
     assert 0 <= lo <= hi <= len(a)
 
@@ -50,23 +54,26 @@ def find_if(a, pred, lo=0, hi=-1):
             return i
     return -1
 
+
 def count(a, value, lo=0, hi=-1):
     """
     Return the number of elements of list 'a' which are equal
     to 'value'.
 
-    Keyword argumens:
+    Keyword arguments:
     lo -- the lo end of the subrange to search
     hi -- the hi end of the subrange to search (exclusive)
     """
 
-    if hi == -1: hi = len(a)
+    if hi == -1:
+        hi = len(a)
 
-    assert type(a) == type([])
+    assert isinstance(a, type([]))
     assert 0 <= lo <= hi <= len(a)
-    assert len(a) == 0 or type(value) == type(a[0])
+    assert len(a) == 0 or isinstance(value, type(a[0]))
 
-    return count_if(a, lambda a : a == value, lo=lo, hi=hi)
+    return count_if(a, lambda b: b == value, lo=lo, hi=hi)
+
 
 def count_if(a, pred, lo=0, hi=-1):
     """
@@ -78,9 +85,10 @@ def count_if(a, pred, lo=0, hi=-1):
     hi -- the hi end of the subrange to search (exclusive)
     """
 
-    if hi == -1: hi = len(a)
+    if hi == -1:
+        hi = len(a)
 
-    assert type(a) == type([])
+    assert isinstance(a, type([]))
     assert type(lo) == type(hi) == type(0)
     assert 0 <= lo <= hi <= len(a)
 
