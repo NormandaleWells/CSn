@@ -561,7 +561,7 @@ public final class ArrayUtils {
 		transform(s1, 0, s1.length, s2, 0, d, 0, f);
 	}
 
-	// isOrdered returns true if the given array is ordered according
+	// isSorted returns true if the given array is ordered according
 	// to the given Comparator, and false otherwise.
 	public static <T> boolean isSorted(T[] a, int lo, int hi, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
@@ -585,195 +585,28 @@ public final class ArrayUtils {
 		return isSorted(a, new WrapComparable<T>());
 	}
 
-	// lowerBound returns the index of the first (lowest-index)
-	// element of sub-array a[lo,hi) that is greater than or equal
-	// to the given value.
-	// Preconditions:
-	// 		a != null
-	// 		0 <= lo <= a.length
-	// 		0 <= hi <= a.length
-	// 		hi - lo > 0
-	// Postconditions (let r be the return value):
-	// 		for i in [lo,r) a[i] < value
-	// 		for i in [r,hi) a[i] >= value
-	public static <T> int lowerBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
-		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a, lo, hi, c));
-		// In all invariants, lo' and hi' are the original values
-		// of lo and hi.
-		// Note that due to the invariant that mid is in [lo,hi),
-		// we will never get lo > hi.
-		while (lo < hi) {
-			// for all j in [lo',lo) a[j] < value
-			// for all j in [hi,hi') a[j] >= value
-			int mid = lo + (hi - lo) / 2;
-			// mid in [lo,hi)
-			if (c.compare(a[mid], value) < 0)
-				lo = mid + 1;
-			// for all j in [lo',lo) a[j] < value
-			// NOTE: mid + 1 is important to guarantee termination!
-			else
-				hi = mid;
-			// for all j in [hi,hi') a[j] >= value
-		}
-		// for all j in [lo',hi) a[j] < value
-		// for all j in [hi,hi') a[j] >= value
-		return hi;
-	}
-
-	// lowerBound returns the index of the first (lowest-index)
-	// element of array 'a' that is greater than or equal to the
-	// given value.
-	// Preconditions:
-	// a != null
-	// a.length > 0
-	// Postconditions (let r be the return value):
-	// for i in [0,r) a[i] < value
-	// for i in [r,a.length) a[i] >= value
-	public static <T> int lowerBound(T[] a, T value, Comparator<T> c) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a, c));
-		return lowerBound(a, 0, a.length, value, c);
-	}
-
-	// lowerBound returns the index of the first (lowest-index)
-	// element of sub-array a[lo,hi) that is greater than or equal
-	// to the given value.
-	// Preconditions:
-	// 		a != null
-	// 		0 <= lo <= a.length
-	// 		0 <= hi <= a.length
-	// 		hi - lo > 0
-	// Postconditions (let r be the return value):
-	// 		for i in [lo,r) a[i] < value
-	// 		for i in [r,hi) a[i] >= value
-	public static <T extends Comparable<T>> int lowerBound(T[] a, int lo, int hi, T value) {
-		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a, lo, hi));
-		return lowerBound(a, lo, hi, value, new WrapComparable<T>());
-	}
-
-	// lowerBound returns the index of the first (lowest-index)
-	// element of array 'a' that is greater than or equal to the
-	// given value.
-	// Preconditions:
-	// a != null
-	// a.length > 0
-	// Postconditions (let r be the return value):
-	// for i in [0,r) a[i] < value
-	// for i in [r,a.length) a[i] >= value
-	public static <T extends Comparable<T>> int lowerBound(T[] a, T value) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a));
-		return lowerBound(a, 0, a.length, value);
-	}
-
-	// upperBound returns the index of the first (lowest-index)
-	// element of sub-array a[lo,hi) that is strictly greater than
-	// the given value.
-	// Preconditions:
-	// a != null
-	// 0 <= lo <= a.length
-	// 0 <= hi <= a.length
-	// hi - lo > 0
-	// Postconditions (let r be the return value):
-	// for i in [lo,r) a[i] <= value
-	// for i in [r,hi) a[i] > value
-	public static <T> int upperBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
-		assert (checkArguments(a, lo, hi, true));
-//		assert (isSorted(a, lo, hi, c));
-		// In all invariants, lo' and hi' are the original values
-		// of lo and hi.
-		// Note that due to the invariant that mid is in [lo,hi),
-		// we will never get lo > hi.
-		while (lo < hi) {
-			// In all invariants, lo' and hi' are the original values
-			// of lo and hi.
-			// for all j in [lo',lo) a[j] <= value
-			// for all j in [hi,hi') a[j] > value
-			int mid = lo + (hi - lo) / 2;
-			// mid in [lo,hi)
-			if (c.compare(a[mid], value) <= 0)
-				lo = mid + 1;
-			// for all j in [lo',lo) a[j] <= value
-			else
-				hi = mid;
-			// for all j in [hi,hi') a[j] > value
-		}
-		// for all j in [lo',hi) a[j] <= value
-		// for all j in [hi,hi') a[j] > value
-		return hi;
-	}
-
-	// upperBound returns the index of the first (lowest-index)
-	// element of array 'a' that is strictly greater than the
-	// given value.
-	// Preconditions:
-	// a != null
-	// a.length > 0
-	// Postconditions (let r be the return value):
-	// for i in [0,r) a[i] <= value
-	// for i in [r,a.length) a[i] > value
-	public static <T> int upperBound(T[] a, T value, Comparator<T> c) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a, c));
-		return upperBound(a, 0, a.length, value, c);
-	}
-
-	// upperBound returns the index of the first (lowest-index)
-	// element of sub-array a[lo,hi) that is strictly greater than
-	// the given value.
-	// Preconditions:
-	// a != null
-	// 0 <= lo <= a.length
-	// 0 <= hi <= a.length
-	// hi - lo > 0
-	// Postconditions (let r be the return value):
-	// for i in [lo,r) a[i] <= value
-	// for i in [r,hi) a[i] > value
-	public static <T extends Comparable<T>> int upperBound(T[] a, int lo, int hi, T value) {
-		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a, lo, hi));
-		return upperBound(a, lo, hi, value, new WrapComparable<T>());
-	}
-
-	// upperBound returns the index of the first (lowest-index)
-	// element of array 'a' that is strictly greater than the
-	// given value.
-	// Preconditions:
-	// a != null
-	// a.length > 0
-	// Postconditions (let r be the return value):
-	// for i in [0,r) a[i] <= value
-	// for i in [r,a.length) a[i] > value
-	public static <T extends Comparable<T>> int upperBound(T[] a, T value) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a));
-		return upperBound(a, 0, a.length, value);
-	}
-
 	public static <T> int countOrdered(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		assert (checkArguments(a, lo, hi, true));
 		assert (isSorted(a, c));
-		return upperBound(a, lo, hi, value, c) - lowerBound(a, lo, hi, value, c);
+		return BinarySearch.upperBound(a, lo, hi, value, c) - BinarySearch.lowerBound(a, lo, hi, value, c);
 	}
 
 	public static <T> int countOrdered(T[] a, T value, Comparator<T> c) {
 		assert (checkArguments(a, true));
 		assert (isSorted(a, c));
-		return upperBound(a, value, c) - lowerBound(a, value, c);
+		return BinarySearch.upperBound(a, value, c) - BinarySearch.lowerBound(a, value, c);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, int lo, int hi, T value) {
 		assert (checkArguments(a, lo, hi, true));
 		assert (isSorted(a));
-		return upperBound(a, lo, hi, value) - lowerBound(a, lo, hi, value);
+		return BinarySearch.upperBound(a, lo, hi, value) - BinarySearch.lowerBound(a, lo, hi, value);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, T value) {
 		assert (checkArguments(a, true));
 		assert (isSorted(a));
-		return upperBound(a, value) - lowerBound(a, value);
+		return BinarySearch.upperBound(a, value) - BinarySearch.lowerBound(a, value);
 	}
 
 	// ForwardIterator creates an Iterator for iterating

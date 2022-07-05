@@ -20,7 +20,7 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 		
 		// Look for this key.  If found, just update
 		// the value
-		int idx = ArrayUtils.lowerBound(keys, 0, numItems, k);
+		int idx = BinarySearch.lowerBound(keys, 0, numItems, k);
 		if ((idx != numItems) && (keys[idx].compareTo(k) == 0))
 			values[idx] = v;
 		
@@ -51,7 +51,7 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 
 	@Override
 	public Value get(Key k) {
-		int idx = ArrayUtils.lowerBound(keys, 0, numItems, k);
+		int idx = BinarySearch.lowerBound(keys, 0, numItems, k);
 		if (idx == numItems)
 			return null;
 		return keys[idx].compareTo(k) == 0 ? values[idx] : null;
@@ -66,7 +66,7 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 	public void delete(Key k) {
 		
 		// Look for this key.  If we don't find it, do nothing.
-		int idx = ArrayUtils.lowerBound(keys, 0, numItems, k);
+		int idx = BinarySearch.lowerBound(keys, 0, numItems, k);
 		if ((idx == numItems) || (keys[idx].compareTo(k) != 0))
 			return;
 
@@ -108,13 +108,13 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 
 	@Override
 	public Key lowerBound(Key k) {
-		int idx = ArrayUtils.lowerBound(keys, 0, numItems, k);
+		int idx = BinarySearch.lowerBound(keys, 0, numItems, k);
 		return idx == numItems ? null : keys[idx];
 	}
 
 	@Override
 	public Key upperBound(Key k) {
-		int idx = ArrayUtils.upperBound(keys, 0, numItems, k);
+		int idx = BinarySearch.upperBound(keys, 0, numItems, k);
 		return idx == numItems ? null : keys[idx];
 	}
 
@@ -129,8 +129,8 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 
 		@Override
 		public Iterator<Key> iterator() {
-			int idxLo = ArrayUtils.lowerBound(keys, 0, numItems, lo);
-			int idxHi = ArrayUtils.upperBound(keys, 0, numItems, hi);
+			int idxLo = BinarySearch.lowerBound(keys, 0, numItems, lo);
+			int idxHi = BinarySearch.upperBound(keys, 0, numItems, hi);
 			return ArrayUtils.getForwardIterator(keys, idxLo, idxHi);
 		}
 	}

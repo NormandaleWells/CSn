@@ -36,7 +36,7 @@ public class Sort {
 	public static <T> void insertionSort(T[] a, int lo, int hi, Comparator<T> comp) {
 		for (int i = lo+1; i < hi; i++) {
 			// invariant: a[lo,i) is sorted
-			int idx = ArrayUtils.upperBound(a, lo, i, a[i], comp);
+			int idx = BinarySearch.upperBound(a, lo, i, a[i], comp);
 			ArrayUtils.rotateRight(a, idx, i+1);
 		}
 	}

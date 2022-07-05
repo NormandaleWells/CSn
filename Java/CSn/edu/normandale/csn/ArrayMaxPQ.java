@@ -21,7 +21,7 @@ public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T
 	public void insert(T value) {
 		if (count == q.length)
 			resize(q.length * 2);
-		int idx = ArrayUtils.upperBound(q, 0, count, value);
+		int idx = BinarySearch.upperBound(q, 0, count, value);
 		q[count++] = value;
 		ArrayUtils.rotateRight(q, idx, count);
 	}

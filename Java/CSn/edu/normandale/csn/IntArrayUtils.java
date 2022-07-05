@@ -212,72 +212,18 @@ public final class IntArrayUtils {
 		return true;
 	}
 
-	// lowerBound() returns the index of the first element
-	// of a[lo,hi) that is greater than or equal to 'value'.
-	public static int lowerBound(int[] a, int lo, int hi, int value) {
-		assert(checkArguments(a, lo, hi, false));
-		while (lo < hi) {
-			// In all invariants, lo' and hi' are the original values
-			// of lo and hi.
-			// for all j in [lo',lo) a[mid] < value
-			// for all j in [hi,hi') a[mid] >= value
-			int mid = lo + (hi - lo) / 2;
-			if (a[mid] < value)
-				lo = mid + 1;
-			else
-				hi = mid;
-		}
-		// for all j in [lo',hi) a[mid] < value
-		// for all j in [hi,hi') a[mid] >= value
-		return hi;
-	}
-
-	// lowerBound() returns the index of the first element of
-	// array 'a' that is greater than or equal to 'value'.
-	public static int lowerBound(int[] a, int value) {
-		assert(checkArguments(a, false));
-		return lowerBound(a, 0, a.length, value);
-	}
-
-	// upperBound() returns the index of the first element
-	// of a[lo,hi) that is strictly greater than 'value'.
-	public static int upperBound(int[] a, int lo, int hi, int value) {
-		assert(checkArguments(a, lo, hi, false));
-		while (lo < hi) {
-			// In all invariants, lo' and hi' are the original values
-			// of lo and hi.
-			// for all j in [lo',lo) a[mid] <= value
-			// for all j in [hi,hi') a[mid] > value
-			int mid = lo + (hi - lo) / 2;
-			if (a[mid] <= value)
-				lo = mid + 1;
-			else
-				hi = mid;
-		}
-		// for all j in [lo',hi) a[mid] <= value
-		// for all j in [hi,hi') a[mid] > value
-		return hi;
-	}
-
-	// upperBound() returns the index of the first element
-	// of array 'a' that is strictly greater than 'value'.
-	public static int upperBound(int[] a, int value) {
-		assert(checkArguments(a, false));
-		return upperBound(a, 0, a.length, value);
-	}
-
 	// countOrdered() returns the number of elements of the
 	// sorted range a[lo,hi) that are equal to the given value.
 	public static int countOrdered(int[] a, int lo, int hi, int value) {
 		assert(checkArguments(a, lo, hi, true));
-		return upperBound(a, lo, hi, value) - lowerBound(a, lo, hi, value);
+		return IntBinarySearch.upperBound(a, lo, hi, value) - IntBinarySearch.lowerBound(a, lo, hi, value);
 	}
 
 	// countOrdered() returns the number of elements of the
 	// sorted array 'a' that are equal to the given value.
 	public static int countOrdered(int[] a, int value) {
 		assert(checkArguments(a, false));
-		return upperBound(a, value) - lowerBound(a, value);
+		return IntBinarySearch.upperBound(a, value) - IntBinarySearch.lowerBound(a, value);
 	}
 
 	public static void selectionSort(int[] a) {
@@ -289,7 +235,7 @@ public final class IntArrayUtils {
 
 	public static void insertionSort(int[] a) {
 		for (int i = 1; i < a.length; i++) {
-			int idx = upperBound(a, 0, i, a[i]);
+			int idx = IntBinarySearch.upperBound(a, 0, i, a[i]);
 			rotateRight(a, idx, i + 1);
 		}
 	}
@@ -312,7 +258,5 @@ public final class IntArrayUtils {
 		assert count(a2, 7) == 3;
 		assert minElement(a1, 1, 5) == 4;
 		assert maxElement(a1, 1, 5) == 3;
-		assert lowerBound(a2, 7) == 4;
-		assert upperBound(a2, 7) == 7; 
 	}
 }
