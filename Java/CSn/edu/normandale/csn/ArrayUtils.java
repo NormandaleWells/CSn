@@ -26,8 +26,8 @@ public final class ArrayUtils {
 	// checkArguments() is used to check for preconditions; it checks to
 	// make sure the array is not null.
 	private static <T> boolean checkArguments(T[] a, boolean allowEmpty) {
-		assert (a != null);
-		assert (allowEmpty || a.length > 0);
+		assert a != null;
+		assert allowEmpty || a.length > 0;
 		return true;
 	}
 
@@ -35,10 +35,10 @@ public final class ArrayUtils {
 	// make sure the array is not null, and that 'lo' and 'hi' are within
 	// the bounds of the array.
 	private static <T> boolean checkArguments(T[] a, int lo, int hi, boolean allowEmpty) {
-		assert (a != null);
-		assert ((lo >= 0) && (lo <= a.length));
-		assert ((hi >= 0) && (hi <= a.length));
-		assert (allowEmpty || hi - lo > 0);
+		assert a != null;
+		assert (lo >= 0) && (lo <= a.length);
+		assert (hi >= 0) && (hi <= a.length);
+		assert allowEmpty || hi - lo > 0;
 		return true;
 	}
 
@@ -55,7 +55,7 @@ public final class ArrayUtils {
 	//			or
 	//		(r != -1) and lo <= r < hi and (p(a[r])) and !p(a[lo,r)))
 	public static <T> int find(T[] a, int lo, int hi, Predicate<T> p) {
-		assert (checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		for (int i = lo; i < hi; i++)
 			// !p(a[lo,i))
 			if (p.test(a[i]))
@@ -77,7 +77,7 @@ public final class ArrayUtils {
 	//			or
 	//		(r != -1) and 0 <= r < a.length and (p(a[r])) and !p(a[0,r)))
 	public static <T> int find(T[] a, Predicate<T> p) {
-		assert (checkArguments(a, true));
+		checkArguments(a, true);
 		return find(a, 0, a.length, p);
 	}
 
@@ -93,7 +93,7 @@ public final class ArrayUtils {
 	//			or
 	//		(r != -1) and 0 <= r < a.length and (a[r] == value) and a[lo,r) != value)
 	public static <T> int find(T[] a, int lo, int hi, T value) {
-		assert (checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		return find(a, lo, hi, new IsEqual<T>(value));
 	}
 
@@ -108,7 +108,7 @@ public final class ArrayUtils {
 	//			or
 	//		(r != -1) and 0 <= r < a.length and (a[r] == value) and (a[0,r) != value)
 	public static <T> int find(T[] a, T value) {
-		assert (checkArguments(a, true));
+		checkArguments(a, true);
 		return find(a, 0, a.length, value);
 	}
 
@@ -122,7 +122,7 @@ public final class ArrayUtils {
 	// Postconditions (let 'r' be the return value):
 	//		p(a[i] is true for r values in [lo,hi)
 	public static <T> int count(T[] a, int lo, int hi, Predicate<T> p) {
-		assert (checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		int count = 0;
 		for (int i = lo; i < hi; i++)
 			// p(a[j]) is true for 'count' items in a[lo,i)
@@ -140,7 +140,7 @@ public final class ArrayUtils {
 	// Postconditions (let 'r' be the return value):
 	//		p(a[i] is true for r values in [0,a.length)
 	public static <T> int count(T[] a, Predicate<T> p) {
-		assert (checkArguments(a, true));
+		checkArguments(a, true);
 		return count(a, 0, a.length, p);
 	}
 
@@ -153,7 +153,7 @@ public final class ArrayUtils {
 	// Postconditions (let 'r' be the return value):
 	//		value occurs r times in the a[lo,hi)
 	public static <T> int count(T[] a, int lo, int hi, T value) {
-		assert (checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		return count(a, lo, hi, new IsEqual<T>(value));
 	}
 
@@ -165,7 +165,7 @@ public final class ArrayUtils {
 	// Postconditions (let 'r' be the return value):
 	//		value occurs r times in the array
 	public static <T> int count(T[] a, T value) {
-		assert (checkArguments(a, true));
+		checkArguments(a, true);
 		return count(a, 0, a.length, value);
 	}
 
@@ -185,7 +185,7 @@ public final class ArrayUtils {
 	//		a[lo,r) > a[r]
 	//		a[r,hi) >= a[r]
 	public static <T> int minElement(T[] a, int lo, int hi, Comparator<T> c) {
-		assert (checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		int idxMin = lo;
 		for (int i = lo + 1; i < hi; i++)
 			// for i in [0,idxMin) a[i] > a[idxMin]
@@ -212,7 +212,7 @@ public final class ArrayUtils {
 	//		for i in [0,r) a[i] > a[r]
 	//		for i in [r,a.length) a[i] >= a[r]
 	public static <T> int minElement(T[] a, Comparator<T> c) {
-		assert (checkArguments(a, false));
+		checkArguments(a, false);
 		return minElement(a, 0, a.length, c);
 	}
 
@@ -230,7 +230,7 @@ public final class ArrayUtils {
 	// for i in [lo,r) a[i] > a[r]
 	// for i in [r,hi) a[i] >= a[r]
 	public static <T extends Comparable<T>> int minElement(T[] a, int lo, int hi) {
-		assert (checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		return minElement(a, lo, hi, new WrapComparable<T>());
 	}
 
@@ -246,7 +246,7 @@ public final class ArrayUtils {
 	// for i in [0,r) a[i] > a[r]
 	// for i in [r,a.length) a[i] >= a[r]
 	public static <T extends Comparable<T>> int minElement(T[] a) {
-		assert (checkArguments(a, false));
+		checkArguments(a, false);
 		return minElement(a, 0, a.length);
 	}
 
@@ -264,7 +264,7 @@ public final class ArrayUtils {
 	// for i in [lo,r) a[i] < a[r]
 	// for i in [r,hi) a[i] <= a[r]
 	public static <T> int maxElement(T[] a, int lo, int hi, Comparator<T> c) {
-		assert (checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		int idxMax = lo;
 		for (int i = lo + 1; i < hi; i++)
 			// for i in [0,idxMin) a[i] < a[idxMax]
@@ -290,7 +290,7 @@ public final class ArrayUtils {
 	// for i in [0,r) a[i] < a[r]
 	// for i in [r,a.length) a[i] <= a[r]
 	public static <T> int maxElement(T[] a, Comparator<T> c) {
-		assert (checkArguments(a, false));
+		checkArguments(a, false);
 		return maxElement(a, 0, a.length, c);
 	}
 
@@ -308,7 +308,7 @@ public final class ArrayUtils {
 	// for i in [lo,r) a[i] < a[r]
 	// for i in [r,hi) a[i] <= a[r]
 	public static <T extends Comparable<T>> int maxElement(T[] a, int lo, int hi) {
-		assert (checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		return maxElement(a, lo, hi, new WrapComparable<T>());
 	}
 
@@ -324,7 +324,7 @@ public final class ArrayUtils {
 	// for i in [0,r) a[i] < a[r]
 	// for i in [r,a.length) a[i] <= a[r]
 	public static <T extends Comparable<T>> int maxElement(T[] a) {
-		assert (checkArguments(a, false));
+		checkArguments(a, false);
 		return maxElement(a, 0, a.length);
 	}
 
@@ -341,7 +341,7 @@ public final class ArrayUtils {
 	// a[idx1] = a'[idx2]
 	// a[idx2] = a'[idx1]
 	public static <T> void swap(T[] a, int idx1, int idx2) {
-		assert (checkArguments(a, false));
+		checkArguments(a, false);
 		T t = a[idx1];
 		a[idx1] = a[idx2];
 		a[idx2] = t;
@@ -360,8 +360,8 @@ public final class ArrayUtils {
 	//		for i in [lo,hi) aTo[i] = aFrom[i]
 	//		for i in [hi,aTo.length) aTo[i] = aTo'[i]
 	public static <T> void copy(T[] aFrom, T[] aTo, int lo, int hi) {
-		assert (checkArguments(aFrom, lo, hi, true));
-		assert (checkArguments(aTo, lo, hi, true));
+		checkArguments(aFrom, lo, hi, true);
+		checkArguments(aTo, lo, hi, true);
 		for (int i = lo; i < hi; i++)
 			aTo[i] = aFrom[i];
 	}
@@ -382,8 +382,8 @@ public final class ArrayUtils {
 	//		for i in [loTo,hiTo) aTo[i] = aFrom[i]
 	//		for i in [hiTo,aTo.length) aTo[i] = aTo'[i]
 	public static <T> void copy(T[] aFrom, int loFrom, int hiFrom, T[] aTo, int loTo) {
-		assert (checkArguments(aFrom, loFrom, hiFrom, true));
-		assert (checkArguments(aTo, loTo, loTo + (hiFrom - loFrom), true));
+		checkArguments(aFrom, loFrom, hiFrom, true);
+		checkArguments(aTo, loTo, loTo + (hiFrom - loFrom), true);
 		for (int iFrom = loFrom, iTo = loTo; iFrom < hiFrom; iFrom++, iTo++) {
 			aTo[iTo] = aFrom[iFrom];
 		}
@@ -586,26 +586,26 @@ public final class ArrayUtils {
 	}
 
 	public static <T> int countOrdered(T[] a, int lo, int hi, T value, Comparator<T> c) {
-		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a, c));
+		checkArguments(a, lo, hi, true);
+		assert isSorted(a, c);
 		return BinarySearch.upperBound(a, lo, hi, value, c) - BinarySearch.lowerBound(a, lo, hi, value, c);
 	}
 
 	public static <T> int countOrdered(T[] a, T value, Comparator<T> c) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a, c));
+		checkArguments(a, true);
+		assert isSorted(a, c);
 		return BinarySearch.upperBound(a, value, c) - BinarySearch.lowerBound(a, value, c);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, int lo, int hi, T value) {
-		assert (checkArguments(a, lo, hi, true));
-		assert (isSorted(a));
+		checkArguments(a, lo, hi, true);
+		assert isSorted(a);
 		return BinarySearch.upperBound(a, lo, hi, value) - BinarySearch.lowerBound(a, lo, hi, value);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, T value) {
-		assert (checkArguments(a, true));
-		assert (isSorted(a));
+		checkArguments(a, true);
+		assert isSorted(a);
 		return BinarySearch.upperBound(a, value) - BinarySearch.lowerBound(a, value);
 	}
 

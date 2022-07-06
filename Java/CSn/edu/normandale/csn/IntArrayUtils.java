@@ -16,8 +16,8 @@ public final class IntArrayUtils {
 	// checkArgument() is used to check that an array argument
 	// is non-null
 	private static boolean checkArguments(int[] a, boolean canBeEmpty) {
-		assert(a != null);
-		assert(canBeEmpty || a.length != 0);
+		assert a != null;
+		assert canBeEmpty || a.length != 0;
 		return true;
 	}
 
@@ -26,10 +26,10 @@ public final class IntArrayUtils {
 	// within range.  If canBeEmpty is false, it also checks
 	// that the given range is not empty.
 	private static boolean checkArguments(int[] a, int lo, int hi, boolean canBeEmpty) {
-		assert(a != null);
-		assert(!canBeEmpty || hi - lo > 0);
-		assert(lo >= 0 && lo <= a.length);
-		assert(hi >= 0 && hi <= a.length);
+		assert a != null;
+		assert !canBeEmpty || hi - lo > 0;
+		assert lo >= 0 && lo <= a.length;
+		assert hi >= 0 && hi <= a.length;
 		return true;
 	}
 
@@ -51,7 +51,7 @@ public final class IntArrayUtils {
 	// find() returns the index of the first element of a[lo,hi) for
 	// which the predicate 'p' returns true;
 	public static int find(int[] a, int lo, int hi, Predicate<Integer> p) {
-		assert(checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		for (int i = lo; i < hi; i++)
 			if (p.test(a[i]))
 				return i;
@@ -61,28 +61,28 @@ public final class IntArrayUtils {
 	// find() returns the index of the first element of array 'a'
 	// for which the predicate 'p' returns true.
 	public static int find(int[] a, Predicate<Integer> p) {
-		assert(checkArguments(a, true));
+		checkArguments(a, true);
 		return find(a, 0, a.length, p);
 	}
 
 	// find() returns the index of the first element of a[lo,hi)
 	// which matches the given value.
 	public static int find(int[] a, int lo, int hi, int value) {
-		assert(checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		return find(a, lo, hi, new IsEqual(value));
 	}
 
 	// find() returns the index of the first element of array 'a'
 	// which matches the given value.
 	public static int find(int[] a, int value) {
-		assert(checkArguments(a, true));
+		checkArguments(a, true);
 		return find(a, 0, a.length, value);
 	}
 
 	// count() returns the number of elements of a[lo,hi) for
 	// which the predicate 'p' returns true.
 	public static int count(int[] a, int lo, int hi, Predicate<Integer> p) {
-		assert(checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		int count = 0;
 		for (int i = lo; i < hi; i++)
 			if (p.test(a[i]))
@@ -93,21 +93,21 @@ public final class IntArrayUtils {
 	// count() returns the number of elements of array 'a'
 	// for which the predicate 'p' returns true;
 	public static int count(int[] a, Predicate<Integer> p) {
-		assert(checkArguments(a, true));
+		checkArguments(a, true);
 		return count(a, 0, a.length, p);
 	}
 
 	// count() returns the number of elements of a[lo,hi) that
 	// are equal to 'value'.
 	public static int count(int[] a, int lo, int hi, int value) {
-		assert(checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		return count(a, lo, hi, new IsEqual(value));
 	}
 
 	// count returns the number of elements of array 'a' that
 	// are equal to 'value'.
 	public static int count(int[] a, int value) {
-		assert(checkArguments(a, true));
+		checkArguments(a, true);
 		return count(a, 0, a.length, value);
 	}
 
@@ -115,7 +115,7 @@ public final class IntArrayUtils {
 	// of a[lo,hi).  If there are multiple minimum elements,
 	// the first one (lowest index) is returned.
 	public static int minElement(int[] a, int lo, int hi) {
-		assert(checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		int minIndex = lo;
 		for (int i = lo+1; i < hi; i++)
 			if (a[i] < a[minIndex])
@@ -127,7 +127,7 @@ public final class IntArrayUtils {
 	// of array 'a'.  If there are multiple minimum elements,
 	// the first one (lowest index) is returned.
 	public static int minElement(int[] a) {
-		assert(checkArguments(a, false));
+		checkArguments(a, false);
 		return minElement(a, 0, a.length);
 	}
 
@@ -135,7 +135,7 @@ public final class IntArrayUtils {
 	// of a[lo,hi).  If there are multiple maximum elements,
 	// the first one (lowest index) is returned.
 	public static int maxElement(int[] a, int lo, int hi) {
-		assert(checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		int maxIndex = lo;
 		for (int i = lo+1; i < hi; i++)
 			if (a[i] > a[maxIndex])
@@ -147,14 +147,14 @@ public final class IntArrayUtils {
 	// of array 'a'.  If there are multiple maximum elements,
 	// the first one (lowest index) is returned.
 	public static int maxElement(int[] a) {
-		assert(checkArguments(a, false));
+		checkArguments(a, false);
 		return maxElement(a, 0, a.length);
 	}
 
 	// swap swaps the values at indices 'idx1' and 'idx2' in
 	// the array 'a'.
 	public static void swap(int[] a, int idx1, int idx2) {
-		assert(checkArguments(a, idx1, idx2, true));
+		checkArguments(a, idx1, idx2, true);
 		int t = a[idx1];
 		a[idx1] = a[idx2];
 		a[idx2] = t;
@@ -163,8 +163,8 @@ public final class IntArrayUtils {
 	// copy copies the subrange aFrom[lo,hi) to aTo[lo,hi).  All
 	// other elements of aTo are untouched.
 	public static void copy(int[] aFrom, int[] aTo, int lo, int hi) {
-		assert(checkArguments(aFrom, lo, hi, true));
-		assert(checkArguments(aTo, lo, hi, true));
+		checkArguments(aFrom, lo, hi, true);
+		checkArguments(aTo, lo, hi, true);
 		for (int i = lo; i < hi; i++)
 			aTo[i] = aFrom[i];
 	}
@@ -173,8 +173,8 @@ public final class IntArrayUtils {
 	// aTo[aTo,aTo+(hiFrom-loFrom)).  All other elements
 	// of aTo are untouched.
 	public static void copy(int[] aFrom, int loFrom, int hiFrom, int[] aTo, int loTo) {
-		assert(checkArguments(aFrom, loFrom, hiFrom, true));
-		assert(checkArguments(aTo, loTo, loTo + (hiFrom-loFrom), true));
+		checkArguments(aFrom, loFrom, hiFrom, true);
+		checkArguments(aTo, loTo, loTo + (hiFrom-loFrom), true);
 		for (int iFrom = loFrom, iTo = loTo; iFrom < hiFrom; iFrom++, iTo++) {
 			aTo[iTo] = aFrom[iFrom];
 		}
@@ -183,7 +183,7 @@ public final class IntArrayUtils {
 	// rotateRight() rotates all elements of a[lo,hi) one position
 	// to the right.
 	public static void rotateRight(int[] a, int lo, int hi) {
-		assert(checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		if (hi - lo < 2) return;
 		int t = a[hi-1];
 		for (int i = hi-2; i >= lo; i--)
@@ -194,7 +194,7 @@ public final class IntArrayUtils {
 	// rotateLeft() rotates all elements of a[lo,hi) one position
 	// to the left.
 	public static void rotateLeft(int[] a, int lo, int hi) {
-		assert(checkArguments(a, lo, hi, false));
+		checkArguments(a, lo, hi, false);
 		if (hi - lo < 2) return;
 		int t = a[lo];
 		for (int i = lo+1; i < hi; i++)
@@ -215,14 +215,14 @@ public final class IntArrayUtils {
 	// countOrdered() returns the number of elements of the
 	// sorted range a[lo,hi) that are equal to the given value.
 	public static int countOrdered(int[] a, int lo, int hi, int value) {
-		assert(checkArguments(a, lo, hi, true));
+		checkArguments(a, lo, hi, true);
 		return IntBinarySearch.upperBound(a, lo, hi, value) - IntBinarySearch.lowerBound(a, lo, hi, value);
 	}
 
 	// countOrdered() returns the number of elements of the
 	// sorted array 'a' that are equal to the given value.
 	public static int countOrdered(int[] a, int value) {
-		assert(checkArguments(a, false));
+		checkArguments(a, false);
 		return IntBinarySearch.upperBound(a, value) - IntBinarySearch.lowerBound(a, value);
 	}
 

@@ -14,8 +14,8 @@ public final class IntBinarySearch {
 	// checkArgument() is used to check that an array argument
 	// is non-null
 	private static boolean checkArguments(int[] a, boolean canBeEmpty) {
-		assert(a != null);
-		assert(canBeEmpty || a.length != 0);
+		assert a != null;
+		assert canBeEmpty || a.length != 0;
 		return true;
 	}
 
@@ -24,10 +24,10 @@ public final class IntBinarySearch {
 	// within range.  If canBeEmpty is false, it also checks
 	// that the given range is not empty.
 	private static boolean checkArguments(int[] a, int lo, int hi, boolean canBeEmpty) {
-		assert(a != null);
-		assert(!canBeEmpty || hi - lo > 0);
-		assert(lo >= 0 && lo <= a.length);
-		assert(hi >= 0 && hi <= a.length);
+		assert a != null;
+		assert !canBeEmpty || hi - lo > 0;
+		assert lo >= 0 && lo <= a.length;
+		assert hi >= 0 && hi <= a.length;
 		return true;
 	}
 

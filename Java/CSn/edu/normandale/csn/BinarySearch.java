@@ -24,8 +24,8 @@ public final class BinarySearch {
 	// checkArguments() is used to check for preconditions; it checks to
 	// make sure the array is not null.
 	private static <T> boolean checkArguments(T[] a, boolean allowEmpty) {
-		assert (a != null);
-		assert (allowEmpty || a.length > 0);
+		assert a != null;
+		assert allowEmpty || a.length > 0;
 		return true;
 	}
 
@@ -33,10 +33,10 @@ public final class BinarySearch {
 	// make sure the array is not null, and that 'lo' and 'hi' are within
 	// the bounds of the array.
 	private static <T> boolean checkArguments(T[] a, int lo, int hi, boolean allowEmpty) {
-		assert (a != null);
-		assert ((lo >= 0) && (lo <= a.length));
-		assert ((hi >= 0) && (hi <= a.length));
-		assert (allowEmpty || hi - lo > 0);
+		assert a != null;
+		assert (lo >= 0) && (lo <= a.length);
+		assert (hi >= 0) && (hi <= a.length);
+		assert allowEmpty || hi - lo > 0;
 		return true;
 	}
 
@@ -53,7 +53,7 @@ public final class BinarySearch {
 	// 		for i in [r,hi) a[i] >= value
 	public static <T> int lowerBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
-		assert (ArrayUtils.isSorted(a, lo, hi, c));
+		assert ArrayUtils.isSorted(a, lo, hi, c);
 		// In all invariants, lo' and hi' are the original values
 		// of lo and hi.
 		// Note that due to the invariant that mid is in [lo,hi),
@@ -87,7 +87,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] >= value
 	public static <T> int lowerBound(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert (ArrayUtils.isSorted(a, c));
+		assert ArrayUtils.isSorted(a, c);
 		return lowerBound(a, 0, a.length, value, c);
 	}
 
@@ -104,7 +104,7 @@ public final class BinarySearch {
 	// 		for i in [r,hi) a[i] >= value
 	public static <T extends Comparable<T>> int lowerBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert (ArrayUtils.isSorted(a, lo, hi));
+		assert ArrayUtils.isSorted(a, lo, hi);
 		return lowerBound(a, lo, hi, value, new WrapComparable<T>());
 	}
 
@@ -119,7 +119,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] >= value
 	public static <T extends Comparable<T>> int lowerBound(T[] a, T value) {
 		checkArguments(a, true);
-		assert (ArrayUtils.isSorted(a));
+		assert ArrayUtils.isSorted(a);
 		return lowerBound(a, 0, a.length, value);
 	}
 
@@ -136,7 +136,7 @@ public final class BinarySearch {
 	// for i in [r,hi) a[i] > value
 	public static <T> int upperBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
-		assert (ArrayUtils.isSorted(a, lo, hi, c));
+		assert ArrayUtils.isSorted(a, lo, hi, c);
 		// In all invariants, lo' and hi' are the original values
 		// of lo and hi.
 		// Note that due to the invariant that mid is in [lo,hi),
@@ -171,7 +171,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] > value
 	public static <T> int upperBound(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert (ArrayUtils.isSorted(a, c));
+		assert ArrayUtils.isSorted(a, c);
 		return upperBound(a, 0, a.length, value, c);
 	}
 
@@ -188,7 +188,7 @@ public final class BinarySearch {
 	// for i in [r,hi) a[i] > value
 	public static <T extends Comparable<T>> int upperBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert (ArrayUtils.isSorted(a, lo, hi));
+		assert ArrayUtils.isSorted(a, lo, hi);
 		return upperBound(a, lo, hi, value, new WrapComparable<T>());
 	}
 
@@ -203,7 +203,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] > value
 	public static <T extends Comparable<T>> int upperBound(T[] a, T value) {
 		checkArguments(a, true);
-		assert (ArrayUtils.isSorted(a));
+		assert ArrayUtils.isSorted(a);
 		return upperBound(a, 0, a.length, value);
 	}
 }
