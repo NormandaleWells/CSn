@@ -6,13 +6,13 @@ public class ThreeSumTimed {
 		int count = 0;
 		for (int i = 0; i < N; i++)
 		{
-//			int ai = a[i];
+			int ai = a[i];
 			for (int j = i + 1; j < N; j++)
 			{
-//				int aj = a[j];
+				int aj = a[j];
 				for (int k = j + 1; k < N; k++)
-//					if (ai + aj + a[k] == 0)
-					if (a[i] + a[j] + a[k] == 0)
+					if (ai + aj + a[k] == 0)
+//					if (a[i] + a[j] + a[k] == 0)
 						count++;
 			}
 		}
