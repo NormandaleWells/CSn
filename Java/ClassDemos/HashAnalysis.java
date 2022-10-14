@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 import edu.normandale.csn.Point2d;
-import edu.normandale.csn.RandomUtils;
 import edu.normandale.csn.ScannerUtils;
 import edu.normandale.csn.Timer;
 
