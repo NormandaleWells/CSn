@@ -50,6 +50,18 @@ public class CompareSorts {
 		System.out.printf("Mergesort : %d, %7.3f\n", n, elapsed);
 	}
 	
+	private static void timeHeapsort(int[] a, int n) {
+		Integer[] aInt = new Integer[n];
+		for (int i = 0; i < n; i++)
+			aInt[i] = a[i];
+		Timer sw = new Timer();
+		Sort.heapSort(aInt);
+		double elapsed = sw.elapsed();
+		if (!ArrayUtils.isSorted(aInt))
+			System.out.println("Sort failure!\n");
+		System.out.printf("Heapsort : %d, %7.3f\n", n, elapsed);
+	}
+	
 	public static void main(String[] args) {
 
 		if (args.length < 3) {
@@ -61,6 +73,7 @@ public class CompareSorts {
 			System.out.println("        i - insertion sort");
 			System.out.println("        m - merge sort");
 			System.out.println("        q - quicksort");
+			System.out.println("        h - heapsort");
 			System.exit(0);
 		}
 		// Get n and m from the command line, and allocate the array.
@@ -88,6 +101,9 @@ public class CompareSorts {
 		if (sorts.contains("q"))
 			for (int i = 0; i < repeat; i++)
 				timeQuicksort(a, n);
-		System.out.println("Done");
+		if (sorts.contains("h"))
+			for (int i = 0; i < repeat; i++)
+				timeHeapsort(a, n);
+			System.out.println("Done");
 	}
 }
