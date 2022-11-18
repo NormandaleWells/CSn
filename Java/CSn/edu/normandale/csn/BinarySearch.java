@@ -206,4 +206,28 @@ public final class BinarySearch {
 		assert ArrayUtils.isSorted(a);
 		return upperBound(a, 0, a.length, value);
 	}
+
+	public static <T> int countOrdered(T[] a, int lo, int hi, T value, Comparator<T> c) {
+		checkArguments(a, lo, hi, true);
+		assert ArrayUtils.isSorted(a, c);
+		return BinarySearch.upperBound(a, lo, hi, value, c) - BinarySearch.lowerBound(a, lo, hi, value, c);
+	}
+
+	public static <T> int countOrdered(T[] a, T value, Comparator<T> c) {
+		checkArguments(a, true);
+		assert ArrayUtils.isSorted(a, c);
+		return BinarySearch.upperBound(a, value, c) - BinarySearch.lowerBound(a, value, c);
+	}
+
+	public static <T extends Comparable<T>> int countOrdered(T[] a, int lo, int hi, T value) {
+		checkArguments(a, lo, hi, true);
+		assert ArrayUtils.isSorted(a);
+		return BinarySearch.upperBound(a, lo, hi, value) - BinarySearch.lowerBound(a, lo, hi, value);
+	}
+
+	public static <T extends Comparable<T>> int countOrdered(T[] a, T value) {
+		checkArguments(a, true);
+		assert ArrayUtils.isSorted(a);
+		return BinarySearch.upperBound(a, value) - BinarySearch.lowerBound(a, value);
+	}
 }

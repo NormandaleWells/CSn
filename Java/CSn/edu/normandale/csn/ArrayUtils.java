@@ -585,30 +585,6 @@ public final class ArrayUtils {
 		return isSorted(a, new WrapComparable<T>());
 	}
 
-	public static <T> int countOrdered(T[] a, int lo, int hi, T value, Comparator<T> c) {
-		checkArguments(a, lo, hi, true);
-		assert isSorted(a, c);
-		return BinarySearch.upperBound(a, lo, hi, value, c) - BinarySearch.lowerBound(a, lo, hi, value, c);
-	}
-
-	public static <T> int countOrdered(T[] a, T value, Comparator<T> c) {
-		checkArguments(a, true);
-		assert isSorted(a, c);
-		return BinarySearch.upperBound(a, value, c) - BinarySearch.lowerBound(a, value, c);
-	}
-
-	public static <T extends Comparable<T>> int countOrdered(T[] a, int lo, int hi, T value) {
-		checkArguments(a, lo, hi, true);
-		assert isSorted(a);
-		return BinarySearch.upperBound(a, lo, hi, value) - BinarySearch.lowerBound(a, lo, hi, value);
-	}
-
-	public static <T extends Comparable<T>> int countOrdered(T[] a, T value) {
-		checkArguments(a, true);
-		assert isSorted(a);
-		return BinarySearch.upperBound(a, value) - BinarySearch.lowerBound(a, value);
-	}
-
 	// ForwardIterator creates an Iterator for iterating
 	// forward through the [lo,hi) range of the given array.
 	private static class ForwardIterator<T> implements Iterator<T> {
