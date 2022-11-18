@@ -585,6 +585,15 @@ public final class ArrayUtils {
 		return isSorted(a, new WrapComparable<T>());
 	}
 
+	public static <T> String toString(T[] a) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[ ");
+		for (T item : a) {
+			sb.append(String.format(" %s", item));
+		}
+		return sb.toString();
+	}
+
 	// ForwardIterator creates an Iterator for iterating
 	// forward through the [lo,hi) range of the given array.
 	private static class ForwardIterator<T> implements Iterator<T> {
