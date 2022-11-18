@@ -7,11 +7,15 @@ public class Sort {
 
 	// Useful functions
 
+	private static int numCompares = 0;
+
 	private static <T> boolean less(T a, T b, Comparator<T> comp) {
+		numCompares++;
 		return comp.compare(a, b) < 0;
 	}
 
 	private static <T extends Comparable<T>> boolean less(T a, T b) {
+		numCompares++;
 		return a.compareTo(b) < 0;
 	}
 
@@ -364,8 +368,20 @@ public class Sort {
 		System.out.println();
 	}
 
+	// Count compares - see S&W exercise 2.3.4.
+	private static<T>  void sw2p3p4(int n) {
+		String[] a = new String[n];
+		for (int i = 0; i < n; i++)
+			a[i] = "a";
+		quicksort(a);
+		System.out.printf("Quicksort with %d identical elements: %d compares\n", n, numCompares);
+		numCompares = 0;
+	}
+
 	public static void main(String[] args) {
 		
+		sw2p3p4(1000);
+
 //		Integer[] b = { 4, 3, 2, 1 };
 //		quicksortZyBooks(b);
 //		System.exit(0);
