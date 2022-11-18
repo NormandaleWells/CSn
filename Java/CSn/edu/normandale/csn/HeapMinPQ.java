@@ -11,7 +11,7 @@ public class HeapMinPQ<Key extends Comparable<Key>> implements MinPQ<Key> {
 	Key[] pq;
 
 	@SuppressWarnings("unchecked")
-	HeapMinPQ(int max) {
+	public HeapMinPQ(int max) {
 
 		numItems = 0;
 		pq = (Key[]) new Comparable[max];
