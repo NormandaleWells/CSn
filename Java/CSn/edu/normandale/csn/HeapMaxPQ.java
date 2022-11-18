@@ -1,5 +1,7 @@
 package edu.normandale.csn;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -76,18 +78,40 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 		return numItems;
 	}
 
-	public static void main(String[] args) {
-		int m = Integer.parseInt(args[0]);
-		HeapMaxPQ<Integer> pq = new HeapMaxPQ<Integer>(m+1);
+	@Override
+	public String toString() {
+		return ArrayUtils.toString(pq);
+	}
+
+	// Test client to read integers and keep the first N of them.
+	public static void main(String[] args) throws FileNotFoundException {
+
+		if (args.length == 0) {
+			System.out.println("usage: <N> [<file>]\n");
+			System.out.println("    <N> is the number of smallest integers to keep.");
+			System.out.println("    If <file> is not specified, stdin is used.");
+			System.out.println("    A file cannot be used with specifying <N>.");
+			System.exit(1);
+		}
+
+		int nToKeep = Integer.parseInt(args[0]);
+		HeapMaxPQ<Integer> pq = new HeapMaxPQ<Integer>(nToKeep+1);
 		
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner;
+		if (args.length >= 2) {
+			FileInputStream fs = new FileInputStream(args[1]);
+			scanner = new Scanner(fs);
+		} else {
+			scanner = new Scanner(System.in);
+		}
 		Integer[] numbers = ScannerUtils.readAllIntegers(scanner);
+		scanner.close();
 
 		Timer sw = new Timer();
 		for (int i : numbers)
 		{
 			pq.insert(i);
-			if (pq.size() > m)
+			if (pq.size() > nToKeep)
 				pq.delMax();
 		}
 		double elapsed = sw.elapsed();
