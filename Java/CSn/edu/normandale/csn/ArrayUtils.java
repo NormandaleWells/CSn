@@ -585,13 +585,18 @@ public final class ArrayUtils {
 		return isSorted(a, new WrapComparable<T>());
 	}
 
-	public static <T> String toString(T[] a) {
+	public static <T> String toString(T[] a, int lo, int hi) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[ ");
-		for (T item : a) {
-			sb.append(String.format(" %s", item));
+		for (int i = lo; i < hi; i++) {
+			sb.append(String.format("%s ", a[i]));
 		}
+		sb.append("]");
 		return sb.toString();
+	}
+
+	public static <T> String toString(T[] a) {
+		return toString(a, 0, a.length);
 	}
 
 	// ForwardIterator creates an Iterator for iterating
