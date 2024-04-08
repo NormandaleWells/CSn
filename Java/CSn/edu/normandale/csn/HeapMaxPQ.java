@@ -11,7 +11,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 	Key[] pq;
 
 	@SuppressWarnings("unchecked")
-	HeapMaxPQ(int initialSize) {
+	public HeapMaxPQ(int initialSize) {
 
 		numItems = 0;
 		pq = (Key[]) new Comparable[initialSize];
@@ -80,7 +80,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 
 	@Override
 	public String toString() {
-		return ArrayUtils.toString(pq);
+		return ArrayUtils.toString(pq, 0, numItems);
 	}
 
 	// Test client to read integers and keep the first N of them.
