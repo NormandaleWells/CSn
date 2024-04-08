@@ -80,7 +80,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 
 	@Override
 	public String toString() {
-		return ArrayUtils.toString(pq);
+		return ArrayUtils.toString(pq, 0, numItems);
 	}
 
 	// Test client to read integers and keep the first N of them.
