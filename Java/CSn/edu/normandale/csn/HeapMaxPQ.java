@@ -11,7 +11,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 	Key[] pq;
 
 	@SuppressWarnings("unchecked")
-	HeapMaxPQ(int initialSize) {
+	public HeapMaxPQ(int initialSize) {
 
 		numItems = 0;
 		pq = (Key[]) new Comparable[initialSize];
