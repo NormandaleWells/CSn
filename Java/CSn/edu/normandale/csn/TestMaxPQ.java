@@ -131,8 +131,14 @@ public class TestMaxPQ {
 	}
 
 	@Test
-	public void testRAMaxPQ() {
-		MaxPQ<Integer> pq = new ArrayMaxPQ<>();
+	public void testUAMaxPQ() {
+		MaxPQ<Integer> pq = new UnorderedArrayMaxPQ<>();
+		testOnePQ(pq);
+	}
+
+	@Test
+	public void testOAMaxPQ() {
+		MaxPQ<Integer> pq = new OrderedArrayMaxPQ<>();
 		testOnePQ(pq);
 	}
 

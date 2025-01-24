@@ -40,39 +40,59 @@ public class ComparePQs {
 	private static void runOnePQ(String name, int total, int[] numbers, int keep[], MaxPQ<Integer> pq) {
 
 		for (int k : keep) {
-			System.out.printf("%s,%d", name, k);
+			System.out.printf("%s,%d,%d", name, total, k);
 			runOneSize(total, numbers, k, pq);
 			System.out.println();
 		}
 	}
 
-	private static void runTests(int total, int[] numbers, int[] keep) {
+	private static void runTests(String impls, int total, int[] numbers, int[] keep) {
 		
 		MaxPQ<Integer> pq;
 
-		pq = new LinkedMaxPQ<Integer>();
-		runOnePQ("Linked List", total, numbers, keep, pq);
+		if (impls.indexOf('l') != -1) {
+			pq = new LinkedMaxPQ<Integer>();
+			runOnePQ("Linked List", total, numbers, keep, pq);
+		}
 		
-		pq = new ArrayMaxPQ<Integer>();
-		runOnePQ("Ordered Array", total, numbers, keep, pq);
+		if (impls.indexOf('u') != -1) {
+			pq = new UnorderedArrayMaxPQ<Integer>();
+			runOnePQ("Unordered Array", total, numbers, keep, pq);
+		}
 		
-		pq = new HeapMaxPQ<Integer>(1);
-		runOnePQ("Heap", total, numbers, keep, pq);
+		if (impls.indexOf('o') != -1) {
+			pq = new OrderedArrayMaxPQ<Integer>();
+			runOnePQ("Ordered Array", total, numbers, keep, pq);
+		}
+		
+		if (impls.indexOf('h') != -1) {
+			pq = new HeapMaxPQ<Integer>(1);
+			runOnePQ("Heap", total, numbers, keep, pq);
+		}
 	}
 
 	public static void main(String[] args) {
 
 		if (args.length < 2) {
-			System.out.println("usage: ComparePQs <total> <keep>...");
-			System.out.println("Times <total> insert() and delMax() operations on PQs of size <keep>");
+			System.out.println("usage: ComparePQs <impls> <total> <keep>...");
+			System.out.println("    <impl> - list of PQ types to test");
+			System.out.println("        l = linked list");
+			System.out.println("        u = unordered array");
+			System.out.println("        o = ordered array");
+			System.out.println("        h = heap");
+			System.out.println("    <total> - size of PQ to test");
+			System.out.println("    <keep> - number of elements to keep with each test");
+			System.out.println("<keep> items are added to the queue, then <total> inserts and deletes are performed.");
 			return;
 		}
 
-		int total = Integer.parseInt(args[0]);
+		String impls = args[0];
 
-		int[] keep = new int[args.length-1];
-		for (int i = 1; i < args.length; i++)
-			keep[i-1] = Integer.parseInt(args[i]);
+		int total = Integer.parseInt(args[1]);
+
+		int[] keep = new int[args.length-2];
+		for (int i = 2; i < args.length; i++)
+			keep[i-2] = Integer.parseInt(args[i]);
 
 		// We need enough numbers for us to be able to add "keep" numbers
 		// to the queue before we start the time, then time "total"
@@ -84,6 +104,6 @@ public class ComparePQs {
 		for (int i = 0; i < numbers.length; i++)
 			numbers[i] = RandomUtils.uniform(-total *2, total * 2);
 
-		runTests(total, numbers, keep);
+		runTests(impls, total, numbers, keep);
 	}
 }

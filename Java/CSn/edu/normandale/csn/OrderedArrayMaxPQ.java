@@ -3,7 +3,7 @@ package edu.normandale.csn;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
+public class OrderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	@SuppressWarnings("unchecked")
 	private T[] q = (T[]) new Comparable[4];
@@ -29,14 +29,14 @@ public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T
 	@Override
 	public T max() {
 		if (count == 0)
-			throw new RuntimeException("OrderedMaxPQ underflow");
+			throw new RuntimeException("OrderedArrayMaxPQ underflow");
 		return q[count-1];
 	}
 
 	@Override
 	public T delMax() {
 		if (count == 0)
-			throw new RuntimeException("OrderedMaxPQ underflow");
+			throw new RuntimeException("OrderedArrayMaxPQ underflow");
 		T max = q[--count];
 		if (q.length > 4 && count <= q.length / 4) {
 			resize(q.length / 2);
@@ -61,7 +61,7 @@ public class ArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T
 
 	public static void main(String[] args) {
 
-		ArrayMaxPQ<Integer> pq = new ArrayMaxPQ<Integer>();
+		OrderedArrayMaxPQ<Integer> pq = new OrderedArrayMaxPQ<Integer>();
 
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNext()) {
