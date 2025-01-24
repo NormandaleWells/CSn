@@ -2,7 +2,7 @@ package edu.normandale.csn;
 
 public class LinkedMap<Key, Value> implements Map<Key, Value> {
 
-	LinkedList<KV> ll = new LinkedList<>();
+	private LinkedList<KV> ll = new LinkedList<>();
 
 	private class KV {
 		final Key key;
