@@ -18,9 +18,7 @@ public class LinkedStack<T> implements Stack<T> {
 
 	@Override
 	public T peek() {
-		T t = stk.removeFront();
-		stk.addFront(t);
-		return t;
+		return stk.getFront();
 	}
 
 	@Override
@@ -36,5 +34,10 @@ public class LinkedStack<T> implements Stack<T> {
 	@Override
 	public Iterator<T> iterator() {
 		return stk.iterator();
+	}
+
+	public static void main(String[] args) {
+		Stack<String> queue = new LinkedStack<String>();
+		TestCollectionUtilities.testStack(queue);
 	}
 }
