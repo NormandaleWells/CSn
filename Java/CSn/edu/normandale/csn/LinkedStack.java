@@ -38,6 +38,6 @@ public class LinkedStack<T> implements Stack<T> {
 
 	public static void main(String[] args) {
 		Stack<String> queue = new LinkedStack<String>();
-		TestCollectionUtilities.testStack(queue);
+		InteractiveCollectionTests.testStack(queue);
 	}
 }

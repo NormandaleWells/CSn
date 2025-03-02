@@ -33,6 +33,6 @@ public class LinkedQueue<T> implements Queue<T> {
 
 	public static void main(String[] args) {
 		Queue<String> queue = new LinkedQueue<String>();
-		TestCollectionUtilities.testQueue(queue);
+		InteractiveCollectionTests.testQueue(queue);
 	}
 }

@@ -87,6 +87,6 @@ public class LinkedSet<T> implements Set<T> {
 	
 	public static void main(String[] args) {
 		Set<String> bag = new LinkedSet<String>();
-		TestCollectionUtilities.testSet(bag);
+		InteractiveCollectionTests.testSet(bag);
 	}
 }

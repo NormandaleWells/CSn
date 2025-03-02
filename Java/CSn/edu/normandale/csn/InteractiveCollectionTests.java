@@ -2,10 +2,10 @@ package edu.normandale.csn;
 
 import java.util.Scanner;
 
-public final class TestCollectionUtilities {
+public final class InteractiveCollectionTests {
 
 	// Don't allow an object of this type to be created.
-	private TestCollectionUtilities() {
+	private InteractiveCollectionTests() {
 	}
 
 	private static void printCollection(String colType, Iterable<String> collection) {

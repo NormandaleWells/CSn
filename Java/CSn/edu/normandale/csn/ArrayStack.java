@@ -100,6 +100,6 @@ public class ArrayStack<T> implements Stack<T> {
 
 	public static void main(String[] args) {
 		ArrayStack<String> stack = new ArrayStack<>(1);
-		TestCollectionUtilities.testStack(stack);
+		InteractiveCollectionTests.testStack(stack);
 	}
 }

@@ -138,6 +138,6 @@ public class ArrayQueue<T> implements Queue<T> {
 
 	public static void main(String[] args) {
 		Queue<String> queue = new ArrayQueue<String>(1);
-		TestCollectionUtilities.testQueue(queue);
+		InteractiveCollectionTests.testQueue(queue);
 	}
 }
