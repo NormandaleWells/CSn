@@ -113,6 +113,24 @@ public class LinkedList<T> implements Iterable<T> {
 		numItems += 1;
 	}
 
+	// getFront() returns the item at the front of
+	// the list without removing it.
+	public T getFront() {
+		if (front == null) {
+			throw new NoSuchElementException();
+		}
+		return front.data;
+	}
+
+	// getBack() returns the item at the back of
+	// the list without removing it.
+	public T getBack() {
+		if (back == null) {
+			throw new NoSuchElementException();
+		}
+		return back.data;
+	}
+
 	// removeFront() removes an item from the front
 	// of the list.
 	// NOTE: Because of the nature of a linked list,
