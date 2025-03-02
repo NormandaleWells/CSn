@@ -79,4 +79,10 @@ public class TestSet {
 		Set<String> b = new LinkedSet<>();
 		testSet(b);
 	}
+
+	@Test
+	public void testOrderedArraySet() {
+		Set<String> b = new OrderedArraySet<>();
+		testSet(b);
+	}
 }
