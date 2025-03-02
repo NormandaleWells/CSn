@@ -15,12 +15,13 @@ public class LinkedSet<T> implements Set<T> {
 	}
 
 	private Node first = null;
-	private int count = 0;
+	private int numItems = 0;
 
 	@Override
 	public void add(T item) {
+		if (contains(item)) return;
 		first = new Node(item, first);
-		count++;
+		numItems++;
 	}
 
 	@Override
@@ -41,10 +42,12 @@ public class LinkedSet<T> implements Set<T> {
 				// than try to remove this node, we'll
 				// just copy the first item to this
 				// node, and unlink the first node.
+				Node oldFirst = first;
 				n.item = first.item;
 				first = first.next;
-				first.item = null;
-				first.next = null;
+				oldFirst.item = null;
+				oldFirst.next = null;
+				numItems -= 1;
 			}
 		}
 	}
@@ -56,7 +59,7 @@ public class LinkedSet<T> implements Set<T> {
 
 	@Override
 	public int size() {
-		return count;
+		return numItems;
 	}
 
 	private class LinkedSetIterator implements Iterator<T>
