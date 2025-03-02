@@ -1,8 +1,8 @@
 package edu.normandale.csn;
 
 /**
- * The OrderedST interface defines the API for an ordered
- * symbol table.  This API is based on the ST API defined
+ * The OrderedMap interface defines the API for an ordered
+ * map.  This API is based on the ST API defined
  * by Sedgewick and Wayne in _Algorithms, 4th edition_.
  * <br><br>
  * A symbol is a collection of key/value pairs that allows
