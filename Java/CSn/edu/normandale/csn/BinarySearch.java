@@ -40,6 +40,47 @@ public final class BinarySearch {
 		return true;
 	}
 
+	// index returns the index of any element of sub-array a[lo,hi)
+	// that is equal to the given value.  If there are multiple
+	// elements equal to the given value, the index of any one
+	// of them may be returned.
+	public static <T> int index(T[] a, int lo, int hi, T value, Comparator<T> comp) {
+		checkArguments(a, lo, hi, true);
+		assert ArrayUtils.isSorted(a, lo, hi, comp);
+
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            int c = comp.compare(a[mid], value);
+
+            if (c < 0)
+                lo = mid + 1;
+            else if (c > 0)
+                hi = mid;
+            else
+                return mid;
+        }
+
+        return -1;
+	}
+
+	public static <T> int index(T[] a, T value, Comparator<T> c) {
+		checkArguments(a, true);
+		assert ArrayUtils.isSorted(a, c);
+		return index(a, 0, a.length, value, c);
+	}
+
+	public static <T extends Comparable<T>> int index(T[] a, int lo, int hi, T value) {
+		checkArguments(a, lo, hi, true);
+		assert ArrayUtils.isSorted(a, lo, hi);
+		return index(a, lo, hi, value, new WrapComparable<T>());
+	}
+
+	public static <T extends Comparable<T>> int index(T[] a, T value) {
+		checkArguments(a, true);
+		assert ArrayUtils.isSorted(a);
+		return index(a, 0, a.length, value);
+	}
+
 	// lowerBound returns the index of the first (lowest-index)
 	// element of sub-array a[lo,hi) that is greater than or equal
 	// to the given value.
