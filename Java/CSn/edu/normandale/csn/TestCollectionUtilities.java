@@ -42,7 +42,7 @@ public final class TestCollectionUtilities {
 		printCollection("stack", stack);
 	}
 
-	public static void testBag(Bag<String> bag) {
+	public static void testSet(Set<String> bag) {
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNext()) {
 			String s = scanner.next();

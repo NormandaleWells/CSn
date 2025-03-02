@@ -19,7 +19,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class ArraySet<T> implements Set<T> {
+public class UnorderedArraySet<T> implements Set<T> {
 
 	private T[] set;
 	private int numItems = 0;
@@ -27,7 +27,7 @@ public class ArraySet<T> implements Set<T> {
 	final private int minSize = 4;
 
 	@SuppressWarnings("unchecked")
-	public ArraySet() {
+	public UnorderedArraySet() {
 		set = (T[]) new Object[minSize];
 	}
 

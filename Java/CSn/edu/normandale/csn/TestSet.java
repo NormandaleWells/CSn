@@ -4,9 +4,9 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class TestBag {
+public class TestSet {
 
-	private void testBag(Bag<String> b) {
+	private void testBag(Set<String> b) {
 		assertTrue(b.isEmpty());
 		assertEquals(b.size(), 0);
 
@@ -26,14 +26,14 @@ public class TestBag {
 	}
 
 	@Test
-	public void testRABag() {
-		Bag<String> b = new ArrayBag<>();
+	public void testUnorderedArraySet() {
+		Set<String> b = new UnorderedArraySet<>();
 		testBag(b);
 	}
 
 	@Test
-	public void testLLBag() {
-		Bag<String> b = new LinkedBag<>();
+	public void testLinkedSet() {
+		Set<String> b = new LinkedSet<>();
 		testBag(b);
 	}
 }
