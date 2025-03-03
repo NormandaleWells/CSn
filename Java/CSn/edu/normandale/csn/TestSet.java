@@ -85,4 +85,10 @@ public class TestSet {
 		Set<String> b = new OrderedArraySet<>();
 		testSet(b);
 	}
+
+	@Test
+	public void testBSTSet() {
+		Set<String> b = new BSTSet<>();
+		testSet(b);
+	}
 }
