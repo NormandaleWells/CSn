@@ -76,16 +76,6 @@ public class BSTSet<T extends Comparable<T>> implements OrderedSet<T> {
         return n;
     }
 
-    // The removal code here closely follows that found in
-    //       https://mathcenter.oxford.emory.edu/site/cs171/hibbardDeletion/
-    // This may actually be Sedgewick and Wayne's algorithm;
-    // I haven't bothered to check yet.
-    // I was going to use the algorithm from Goodrich, but
-    // that doesn't make it easy to fix up the sizes and
-    // heights of the nodes running down the left branch
-    // of the right-hand child of the node being deleted,
-    // as is done here in deleteMin().
-
     private Node deleteMin(Node n) {
 
         // If the left-hand child is null, then
@@ -103,6 +93,16 @@ public class BSTSet<T extends Comparable<T>> implements OrderedSet<T> {
 
         return n;
     }
+
+    // The removal code here closely follows that found in
+    //       https://mathcenter.oxford.emory.edu/site/cs171/hibbardDeletion/
+    // This may actually be Sedgewick and Wayne's algorithm;
+    // I haven't bothered to check yet.
+    // I was going to use the algorithm from Goodrich, but
+    // that doesn't make it easy to fix up the sizes and
+    // heights of the nodes running down the left branch
+    // of the right-hand child of the node being deleted,
+    // as is done here in deleteMin().
 
     // Remove works similarly to add(), in that it attempts
     // to delete 'item' from the tree rooted at 'n'.  It
