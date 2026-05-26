@@ -34,7 +34,7 @@ public class UnorderedArraySet<T> implements Set<T> {
 	@SuppressWarnings("unchecked")
 	private void resizeArray(int newSize) {
 		T[] newSet = (T[]) new Object[newSize];
-		ArrayUtils.move(set, newSet, 0, numItems);
+		ArrayLib.move(set, newSet, 0, numItems);
 		set = newSet;
 	}
 	
@@ -42,7 +42,7 @@ public class UnorderedArraySet<T> implements Set<T> {
 	public void add(T item) {
 		
 		// If the item is already present, do nothing.
-		int idx = ArrayUtils.find(set, 0, numItems, item);
+		int idx = ArrayLib.find(set, 0, numItems, item);
 		if (idx != -1) return;
 		
 		// Otherwise, resize the array if necessary,
@@ -54,17 +54,17 @@ public class UnorderedArraySet<T> implements Set<T> {
 
 	@Override
 	public boolean contains(T item) {
-		return ArrayUtils.find(set, 0, numItems, item) != -1;
+		return ArrayLib.find(set, 0, numItems, item) != -1;
 	}
 
 	@Override
 	public void remove(T item) {
 
 		// If the item not present in the set, do nothing.
-		int idx = ArrayUtils.find(set, 0, numItems, item);
+		int idx = ArrayLib.find(set, 0, numItems, item);
 		if (idx == -1) return;
 
-		ArrayUtils.swap(set, idx, numItems-1);
+		ArrayLib.swap(set, idx, numItems-1);
 		set[--numItems] = null;
 	}
 
@@ -80,7 +80,7 @@ public class UnorderedArraySet<T> implements Set<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		return ArrayUtils.getForwardIterator(set, 0, numItems);
+		return ArrayLib.getForwardIterator(set, 0, numItems);
 	}
 	
 	public static void main(String[] args) {

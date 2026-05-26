@@ -13,7 +13,7 @@ public class OrderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Ite
 	private void resize(int newSize) {
 		assert(newSize >= count);
 		T[] newQ = (T[]) new Comparable[newSize];
-		ArrayUtils.move(q, newQ, 0, count);
+		ArrayLib.move(q, newQ, 0, count);
 		q = newQ;
 	}
 
@@ -23,7 +23,7 @@ public class OrderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Ite
 			resize(q.length * 2);
 		int idx = BinarySearch.upperBound(q, 0, count, value);
 		q[count++] = value;
-		ArrayUtils.rotateRight(q, idx, count);
+		ArrayLib.rotateRight(q, idx, count);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class OrderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Ite
 
 	@Override
 	public Iterator<T> iterator() {
-		return ArrayUtils.getBackwardIterator(q, 0, count);
+		return ArrayLib.getBackwardIterator(q, 0, count);
 	}
 
 	public static void main(String[] args) {

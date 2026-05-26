@@ -46,7 +46,7 @@ public final class BinarySearch {
 	// of them may be returned.
 	public static <T> int index(T[] a, int lo, int hi, T value, Comparator<T> comp) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi, comp);
+		assert ArrayLib.isSorted(a, lo, hi, comp);
 
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
@@ -65,19 +65,19 @@ public final class BinarySearch {
 
 	public static <T> int index(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a, c);
+		assert ArrayLib.isSorted(a, c);
 		return index(a, 0, a.length, value, c);
 	}
 
 	public static <T extends Comparable<T>> int index(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi);
+		assert ArrayLib.isSorted(a, lo, hi);
 		return index(a, lo, hi, value, new WrapComparable<T>());
 	}
 
 	public static <T extends Comparable<T>> int index(T[] a, T value) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a);
+		assert ArrayLib.isSorted(a);
 		return index(a, 0, a.length, value);
 	}
 
@@ -94,7 +94,7 @@ public final class BinarySearch {
 	// 		for i in [r,hi) a[i] >= value
 	public static <T> int lowerBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi, c);
+		assert ArrayLib.isSorted(a, lo, hi, c);
 		// In all invariants, lo' and hi' are the original values
 		// of lo and hi.
 		// Note that due to the invariant that mid is in [lo,hi),
@@ -128,7 +128,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] >= value
 	public static <T> int lowerBound(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a, c);
+		assert ArrayLib.isSorted(a, c);
 		return lowerBound(a, 0, a.length, value, c);
 	}
 
@@ -145,7 +145,7 @@ public final class BinarySearch {
 	// 		for i in [r,hi) a[i] >= value
 	public static <T extends Comparable<T>> int lowerBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi);
+		assert ArrayLib.isSorted(a, lo, hi);
 		return lowerBound(a, lo, hi, value, new WrapComparable<T>());
 	}
 
@@ -160,7 +160,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] >= value
 	public static <T extends Comparable<T>> int lowerBound(T[] a, T value) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a);
+		assert ArrayLib.isSorted(a);
 		return lowerBound(a, 0, a.length, value);
 	}
 
@@ -177,7 +177,7 @@ public final class BinarySearch {
 	// for i in [r,hi) a[i] > value
 	public static <T> int upperBound(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi, c);
+		assert ArrayLib.isSorted(a, lo, hi, c);
 		// In all invariants, lo' and hi' are the original values
 		// of lo and hi.
 		// Note that due to the invariant that mid is in [lo,hi),
@@ -212,7 +212,7 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] > value
 	public static <T> int upperBound(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a, c);
+		assert ArrayLib.isSorted(a, c);
 		return upperBound(a, 0, a.length, value, c);
 	}
 
@@ -229,7 +229,7 @@ public final class BinarySearch {
 	// for i in [r,hi) a[i] > value
 	public static <T extends Comparable<T>> int upperBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, lo, hi);
+		assert ArrayLib.isSorted(a, lo, hi);
 		return upperBound(a, lo, hi, value, new WrapComparable<T>());
 	}
 
@@ -244,31 +244,31 @@ public final class BinarySearch {
 	// for i in [r,a.length) a[i] > value
 	public static <T extends Comparable<T>> int upperBound(T[] a, T value) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a);
+		assert ArrayLib.isSorted(a);
 		return upperBound(a, 0, a.length, value);
 	}
 
 	public static <T> int countOrdered(T[] a, int lo, int hi, T value, Comparator<T> c) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a, c);
+		assert ArrayLib.isSorted(a, c);
 		return BinarySearch.upperBound(a, lo, hi, value, c) - BinarySearch.lowerBound(a, lo, hi, value, c);
 	}
 
 	public static <T> int countOrdered(T[] a, T value, Comparator<T> c) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a, c);
+		assert ArrayLib.isSorted(a, c);
 		return BinarySearch.upperBound(a, value, c) - BinarySearch.lowerBound(a, value, c);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
-		assert ArrayUtils.isSorted(a);
+		assert ArrayLib.isSorted(a);
 		return BinarySearch.upperBound(a, lo, hi, value) - BinarySearch.lowerBound(a, lo, hi, value);
 	}
 
 	public static <T extends Comparable<T>> int countOrdered(T[] a, T value) {
 		checkArguments(a, true);
-		assert ArrayUtils.isSorted(a);
+		assert ArrayLib.isSorted(a);
 		return BinarySearch.upperBound(a, value) - BinarySearch.lowerBound(a, value);
 	}
 }

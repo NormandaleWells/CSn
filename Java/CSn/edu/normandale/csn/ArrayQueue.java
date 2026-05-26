@@ -57,8 +57,8 @@ public class ArrayQueue<T> implements Queue<T> {
 		// to start at 0.
 		if (tail == head) {
 			T[] newQ = (T[]) new Object[queue.length * 2];
-			ArrayUtils.move(queue, head, queue.length, newQ, 0);
-			ArrayUtils.move(queue, 0, tail, newQ, queue.length - head);
+			ArrayLib.move(queue, head, queue.length, newQ, 0);
+			ArrayLib.move(queue, 0, tail, newQ, queue.length - head);
 			head = 0;
 			tail = queue.length;
 			queue = newQ;
@@ -86,10 +86,10 @@ public class ArrayQueue<T> implements Queue<T> {
 		if (queue.length >= 4 && size() < queue.length / 4) {
 			T[] newQ = (T[]) new Object[queue.length / 2];
 			if (head <= tail) {
-				ArrayUtils.move(queue, head, tail, newQ, 0);
+				ArrayLib.move(queue, head, tail, newQ, 0);
 			} else {
-				ArrayUtils.move(queue, head, queue.length, newQ, 0);
-				ArrayUtils.move(queue, 0, tail, newQ, queue.length - head);
+				ArrayLib.move(queue, head, queue.length, newQ, 0);
+				ArrayLib.move(queue, 0, tail, newQ, queue.length - head);
 			}
 			tail = size();
 			head = 0;

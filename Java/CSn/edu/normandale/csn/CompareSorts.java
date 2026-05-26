@@ -11,7 +11,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.insertionSort(aInt);
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Insertion sort: %d, %7.3f\n", n, elapsed);
 	}
@@ -23,7 +23,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.selectionSort(aInt);
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Selection sort: %d, %7.3f\n", n, elapsed);
 	}
@@ -35,7 +35,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.quicksort(aInt);
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Quicksort : %d, %7.3f\n", n, elapsed);
 	}
@@ -47,7 +47,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.mergeSort(aInt);
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Mergesort : %d, %7.3f\n", n, elapsed);
 	}
@@ -86,7 +86,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.mergeSortGoodrich(aInt, new DefaultComparator<Integer>());
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Mergesort (Goodrich) : %d, %7.3f\n", n, elapsed);
 	}
@@ -98,7 +98,7 @@ public class CompareSorts {
 		Timer sw = new Timer();
 		Sort.heapSort(aInt);
 		double elapsed = sw.elapsed();
-		if (!ArrayUtils.isSorted(aInt))
+		if (!ArrayLib.isSorted(aInt))
 			System.out.println("Sort failure!\n");
 		System.out.printf("Heapsort : %d, %7.3f\n", n, elapsed);
 	}

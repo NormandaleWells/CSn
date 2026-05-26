@@ -25,7 +25,7 @@ public final class HeapUtils {
 	public static <T extends Comparable<T>> void swimMax(T[] a, int k) {
 		int p = parent(k);
 		while (k > 0 && less(a[p], a[k])) {
-			ArrayUtils.swap(a, p, k);
+			ArrayLib.swap(a, p, k);
 			k = p;
 			p = parent(k);
 		}
@@ -38,7 +38,7 @@ public final class HeapUtils {
 			if (other < n && less(a[child], a[other]))
 				child = other;
 			if (!less(a[k], a[child])) break;
-			ArrayUtils.swap(a, k, child);
+			ArrayLib.swap(a, k, child);
 			k = child;
 			child = leftChild(k);
 		}
@@ -47,7 +47,7 @@ public final class HeapUtils {
 	public static <T extends Comparable<T>> void swimMin(T[] a, int k) {
 		int p = parent(k);
 		while (k > 0 && greater(a[p], a[k])) {
-			ArrayUtils.swap(a, p, k);
+			ArrayLib.swap(a, p, k);
 			k = p;
 			p = parent(k);
 		}
@@ -60,7 +60,7 @@ public final class HeapUtils {
 			if (other < n && greater(a[child], a[other]))
 				child = other;
 			if (!greater(a[k], a[child])) break;
-			ArrayUtils.swap(a, k, child);
+			ArrayLib.swap(a, k, child);
 			k = child;
 			child = leftChild(k);
 		}

@@ -35,7 +35,7 @@ public class OrderedArraySet<T extends Comparable<T>> implements OrderedSet<T> {
 	@SuppressWarnings("unchecked")
 	private void resizeArray(int newSize) {
 		T[] newSet = (T[]) new Comparable[newSize];
-		ArrayUtils.move(set, newSet, 0, numItems);
+		ArrayLib.move(set, newSet, 0, numItems);
 		set = newSet;
 	}
 	
@@ -54,7 +54,7 @@ public class OrderedArraySet<T extends Comparable<T>> implements OrderedSet<T> {
 		if (numItems == set.length)
 			resizeArray(set.length * 2);
 		set[numItems++] = item;
-        ArrayUtils.rotateRight(set, idx, numItems);
+        ArrayLib.rotateRight(set, idx, numItems);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class OrderedArraySet<T extends Comparable<T>> implements OrderedSet<T> {
             return;
         }
 
-		ArrayUtils.rotateLeft(set, idx, numItems);
+		ArrayLib.rotateLeft(set, idx, numItems);
 		set[--numItems] = null;
 	}
 
@@ -130,12 +130,12 @@ public class OrderedArraySet<T extends Comparable<T>> implements OrderedSet<T> {
     public Iterator<T> items(T lo, T hi) {
         int loIdx = BinarySearch.lowerBound(set, 0, numItems, lo);
         int hiIdx = BinarySearch.upperBound(set, 0, numItems, hi);
-        return ArrayUtils.getForwardIterator(set, loIdx, hiIdx);
+        return ArrayLib.getForwardIterator(set, loIdx, hiIdx);
     }
 
 	@Override
 	public Iterator<T> iterator() {
-		return ArrayUtils.getForwardIterator(set, 0, numItems);
+		return ArrayLib.getForwardIterator(set, 0, numItems);
 	}
 	
 	public static void main(String[] args) {

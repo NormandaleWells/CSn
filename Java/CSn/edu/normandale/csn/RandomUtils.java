@@ -47,8 +47,8 @@ public final class RandomUtils {
 		Integer[] a1 = new Integer[test.length];
 		Integer[] a2 = new Integer[test.length];
 
-		ArrayUtils.copy(test, a1, 0, test.length);
-		ArrayUtils.copy(test, a2, 0, test.length);
+		ArrayLib.copy(test, a1, 0, test.length);
+		ArrayLib.copy(test, a2, 0, test.length);
 		
 		setSeed(0);
 		shuffle(a1);

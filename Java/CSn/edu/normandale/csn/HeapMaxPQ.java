@@ -21,7 +21,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 	private void resize(int newSize) {
 
 		Key[] newPQ = (Key[]) new Comparable[newSize];
-		ArrayUtils.copy(pq, newPQ, 0, numItems);
+		ArrayLib.copy(pq, newPQ, 0, numItems);
 		pq = newPQ;
 	}
 
@@ -80,7 +80,7 @@ public class HeapMaxPQ<Key extends Comparable<Key>> implements MaxPQ<Key> {
 
 	@Override
 	public String toString() {
-		return ArrayUtils.toString(pq, 0, numItems);
+		return ArrayLib.toString(pq, 0, numItems);
 	}
 
 	// Test client to read integers and keep the first N of them.

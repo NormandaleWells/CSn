@@ -21,7 +21,7 @@ public class HeapMinPQ<Key extends Comparable<Key>> implements MinPQ<Key> {
 	private void resize(int newSize) {
 
 		Key[] newPQ = (Key[]) new Comparable[newSize];
-		ArrayUtils.copy(pq, newPQ, 0, numItems);
+		ArrayLib.copy(pq, newPQ, 0, numItems);
 		pq = newPQ;
 	}
 

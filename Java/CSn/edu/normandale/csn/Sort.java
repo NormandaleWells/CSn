@@ -27,8 +27,8 @@ public class Sort {
 			// invariants:
 			//		a[0,i) is sorted
 			//		for all j in [i,a.length) a[j] >= a[i-1]
-			int idx = ArrayUtils.minElement(a, i, a.length, comp);
-			ArrayUtils.swap(a, i, idx);
+			int idx = ArrayLib.minElement(a, i, a.length, comp);
+			ArrayLib.swap(a, i, idx);
 		}
 	}
 
@@ -42,7 +42,7 @@ public class Sort {
 		for (int i = lo+1; i < hi; i++) {
 			// invariant: a[lo,i) is sorted
 			int idx = BinarySearch.upperBound(a, lo, i, a[i], comp);
-			ArrayUtils.rotateRight(a, idx, i+1);
+			ArrayLib.rotateRight(a, idx, i+1);
 		}
 	}
 
@@ -62,7 +62,7 @@ public class Sort {
 
 	private static <T> void merge(T[] a, T[] aux, int lo, int mid, int hi, Comparator<T> comp) {
 
-		ArrayUtils.copy(a, aux, lo, hi);
+		ArrayLib.copy(a, aux, lo, hi);
 		
 		for (int i = lo, j = mid, k = lo; k < hi; k++)
 			if (i == mid)
@@ -156,9 +156,9 @@ public class Sort {
 			if (i >= j) break;
 
 			// Moving swap() in-line doesn't make this any faster.
-			ArrayUtils.swap(a, i, j);
+			ArrayLib.swap(a, i, j);
 		}
-		ArrayUtils.swap(a, lo, j);
+		ArrayLib.swap(a, lo, j);
 		return j;
 	}
 
@@ -207,7 +207,7 @@ public class Sort {
 			if (hi <= lo)
 				break;
 			// Swap these values to re-establish the invariant.
-			ArrayUtils.swap(a, lo,  hi);
+			ArrayLib.swap(a, lo,  hi);
 			
 			// Increment lo to the next item
 			// Note that hi gets pre-decremented in the loop above
@@ -254,10 +254,10 @@ public class Sort {
 			//	a[i,n) >= p
 			//	a[n,hi) are unseen
 			if (less(a[n], p))
-				ArrayUtils.swap(a, i++, n);
+				ArrayLib.swap(a, i++, n);
 			n++;
 		}
-		ArrayUtils.swap(a, --i, lo);
+		ArrayLib.swap(a, --i, lo);
 		return i;
 	}
 
@@ -327,7 +327,7 @@ public class Sort {
 			//		for all i in a[lo,i) p(i) is true
 			//		for all i in a[i,n) p(i) is false
 			if (p.test(a[n]))
-				ArrayUtils.swap(a, i++, n);
+				ArrayLib.swap(a, i++, n);
 			n++;
 		}
 		return i;
@@ -362,7 +362,7 @@ public class Sort {
 		// Exchange the last entry with the top, and sink
 		// the new top entry down to restore the heap.
 		while (n > 1) {
-			ArrayUtils.swap(a, 0, --n);
+			ArrayLib.swap(a, 0, --n);
 			HeapUtils.sinkMax(a, n, 0);
 		}
 	}

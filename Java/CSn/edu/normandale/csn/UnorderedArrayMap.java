@@ -19,7 +19,7 @@ public class UnorderedArrayMap<Key, Value> implements Map<Key, Value> {
 	public void put(Key k, Value v) {
 		
 		// Look for this key.
-		int idx = ArrayUtils.find(keys, 0, numItems, k);
+		int idx = ArrayLib.find(keys, 0, numItems, k);
 		
 		// If found, just update the value.
 		if (idx != -1)
@@ -32,8 +32,8 @@ public class UnorderedArrayMap<Key, Value> implements Map<Key, Value> {
 				int newLen = keys.length * 2;
 				Key[]   newKeys   = (  Key[]) new Object[newLen];
 				Value[] newValues = (Value[]) new Object[newLen];
-				ArrayUtils.move(keys,   newKeys,   0, numItems);
-				ArrayUtils.move(values, newValues, 0, numItems);
+				ArrayLib.move(keys,   newKeys,   0, numItems);
+				ArrayLib.move(values, newValues, 0, numItems);
 				keys = newKeys;
 				values = newValues;
 			}
@@ -48,26 +48,26 @@ public class UnorderedArrayMap<Key, Value> implements Map<Key, Value> {
 
 	@Override
 	public Value get(Key k) {
-		int idx = ArrayUtils.find(keys, 0, numItems, k);
+		int idx = ArrayLib.find(keys, 0, numItems, k);
 		return idx == -1 ? null : values[idx];
 	}
 
 	@Override
 	public boolean contains(Key k) {
-		return ArrayUtils.find(keys, 0, numItems, k) != -1;
+		return ArrayLib.find(keys, 0, numItems, k) != -1;
 	}
 
 	@Override
 	public void delete(Key k) {
 		
 		// Look for this key.  If we don't find it, do nothing.
-		int idx = ArrayUtils.find(keys, 0, numItems, k);
+		int idx = ArrayLib.find(keys, 0, numItems, k);
 		if (idx == -1)
 			return;
 
 		// Rotate this item to the end, and remove it.
-		ArrayUtils.rotateLeft(keys,   idx, numItems);
-		ArrayUtils.rotateLeft(values, idx, numItems);
+		ArrayLib.rotateLeft(keys,   idx, numItems);
+		ArrayLib.rotateLeft(values, idx, numItems);
 		--numItems;
 
 		// Avoid loitering.
@@ -89,7 +89,7 @@ public class UnorderedArrayMap<Key, Value> implements Map<Key, Value> {
 
 		@Override
 		public Iterator<Key> iterator() {
-			return ArrayUtils.getForwardIterator(keys, 0, numItems);
+			return ArrayLib.getForwardIterator(keys, 0, numItems);
 		}
 	}
 

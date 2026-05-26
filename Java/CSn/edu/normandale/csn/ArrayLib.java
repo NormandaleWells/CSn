@@ -4,10 +4,10 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-public final class ArrayUtils {
+public final class ArrayLib {
 
 	// Don't allow an object of this type to be created.
-	private ArrayUtils() {
+	private ArrayLib() {
 	}
 	
 	// TODO: incorporate comments and general versions of rotate

@@ -22,7 +22,7 @@ public class ArrayStack<T> implements Stack<T> {
 	@SuppressWarnings("unchecked")
 	private void resize(int newSize) {
 		T[] newStack = (T[]) new Object[newSize];
-		ArrayUtils.move(stack, newStack, 0, top);
+		ArrayLib.move(stack, newStack, 0, top);
 		stack = newStack;
 	}
 

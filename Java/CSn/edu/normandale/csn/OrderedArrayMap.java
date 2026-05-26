@@ -33,8 +33,8 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 				int newLen = keys.length * 2;
 				Key[]   newKeys   = (  Key[]) new Comparable[newLen];
 				Value[] newValues = (Value[]) new Object[newLen];
-				ArrayUtils.move(keys,   newKeys,   0, numItems);
-				ArrayUtils.move(values, newValues, 0, numItems);
+				ArrayLib.move(keys,   newKeys,   0, numItems);
+				ArrayLib.move(values, newValues, 0, numItems);
 				keys = newKeys;
 				values = newValues;
 			}
@@ -44,8 +44,8 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 			keys[numItems]   = k;
 			values[numItems] = v;
 			numItems++;
-			ArrayUtils.rotateRight(keys,   idx, numItems);
-			ArrayUtils.rotateRight(values, idx, numItems);
+			ArrayLib.rotateRight(keys,   idx, numItems);
+			ArrayLib.rotateRight(values, idx, numItems);
 		}
 	}
 
@@ -71,8 +71,8 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 			return;
 
 		// Rotate this item to the end, and remove it.
-		ArrayUtils.rotateLeft(keys,   idx, numItems);
-		ArrayUtils.rotateLeft(values, idx, numItems);
+		ArrayLib.rotateLeft(keys,   idx, numItems);
+		ArrayLib.rotateLeft(values, idx, numItems);
 		--numItems;
 
 		// Avoid loitering.
@@ -131,7 +131,7 @@ public class OrderedArrayMap<Key extends Comparable<Key>, Value> implements Orde
 		public Iterator<Key> iterator() {
 			int idxLo = BinarySearch.lowerBound(keys, 0, numItems, lo);
 			int idxHi = BinarySearch.upperBound(keys, 0, numItems, hi);
-			return ArrayUtils.getForwardIterator(keys, idxLo, idxHi);
+			return ArrayLib.getForwardIterator(keys, idxLo, idxHi);
 		}
 	}
 	

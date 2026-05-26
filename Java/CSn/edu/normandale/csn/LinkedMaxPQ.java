@@ -55,7 +55,7 @@ public class LinkedMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<
 		for (T t : q)
 			sortedQ[pos++] = t;
 		Arrays.sort(sortedQ);
-		return ArrayUtils.getBackwardIterator(sortedQ, 0, pos);
+		return ArrayLib.getBackwardIterator(sortedQ, 0, pos);
 	}
 
 	public static void main(String[] args) {

@@ -12,7 +12,7 @@ public class UnorderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, I
     private void resize(int newSize) {
         assert (newSize >= count);
         T[] newQ = (T[]) new Comparable[newSize];
-        ArrayUtils.move(q, newQ, 0, count);
+        ArrayLib.move(q, newQ, 0, count);
         q = newQ;
     }
 
@@ -27,7 +27,7 @@ public class UnorderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, I
     public T max() {
         if (count == 0)
             throw new RuntimeException("UnorderedArrayMaxPQ underflow");
-        int idx = ArrayUtils.maxElement(q, 0, count);
+        int idx = ArrayLib.maxElement(q, 0, count);
         return q[idx];
     }
 
@@ -39,8 +39,8 @@ public class UnorderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, I
         // Since the array is unordered, there's no need to remove the max
         // from the middle and shift the elements. Instead, we just exchange
         // the max with the last item, and remove it from the end.
-        int idx = ArrayUtils.maxElement(q, 0, count);
-        ArrayUtils.swap(q, idx, count - 1);
+        int idx = ArrayLib.maxElement(q, 0, count);
+        ArrayLib.swap(q, idx, count - 1);
         T max = q[--count];
 
         if (q.length > 4 && count <= q.length / 4) {
@@ -64,7 +64,7 @@ public class UnorderedArrayMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, I
         @SuppressWarnings("unchecked")
         T[] qCopy = (T[]) new Comparable[count];
         Sort.quicksort(qCopy);
-        ArrayUtils.copy(q, qCopy, 0, count);
-        return ArrayUtils.getBackwardIterator(q, 0, count);
+        ArrayLib.copy(q, qCopy, 0, count);
+        return ArrayLib.getBackwardIterator(q, 0, count);
     }
 }
