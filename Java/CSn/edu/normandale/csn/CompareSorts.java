@@ -1,5 +1,7 @@
 package edu.normandale.csn;
 
+import java.util.Comparator;
+
 public class CompareSorts {
 
 	private static void timeInsertionsort(int[] a, int n) {
@@ -50,6 +52,45 @@ public class CompareSorts {
 		System.out.printf("Mergesort : %d, %7.3f\n", n, elapsed);
 	}
 	
+	/**
+	 * Comparator based on the compareTo method of a Comparable element type.
+	 *
+	 * @param <E> an element type
+	 *
+	 * @author Michael T. Goodrich
+	 * @author Roberto Tamassia
+	 * @author Michael H. Goldwasser
+	 */
+	public static class DefaultComparator<E> implements Comparator<E> {
+
+		/**
+		 * Compares two elements.
+		 *
+		 * @param a  the first of two elements to compare
+		 * @param b  the second of two elements to compare
+		 *
+		 * @return a negative integer if <code>a</code> is less than <code>b</code>,
+		 * zero if <code>a</code> equals <code>b</code>, or a positive integer if
+		 * <code>a</code> is greater than <code>b</code>
+		 */
+		@SuppressWarnings({"unchecked"})
+		public int compare(E a, E b) throws ClassCastException {
+			return ((Comparable<E>) a).compareTo(b);
+		}
+	}
+
+	private static void timeMergesortGoodrich(int[] a, int n) {
+		Integer[] aInt = new Integer[n];
+		for (int i = 0; i < n; i++)
+			aInt[i] = a[i];
+		Timer sw = new Timer();
+		Sort.mergeSortGoodrich(aInt, new DefaultComparator<Integer>());
+		double elapsed = sw.elapsed();
+		if (!ArrayUtils.isSorted(aInt))
+			System.out.println("Sort failure!\n");
+		System.out.printf("Mergesort (Goodrich) : %d, %7.3f\n", n, elapsed);
+	}
+	
 	private static void timeHeapsort(int[] a, int n) {
 		Integer[] aInt = new Integer[n];
 		for (int i = 0; i < n; i++)
@@ -72,6 +113,7 @@ public class CompareSorts {
 			System.out.println("        s - selection sort");
 			System.out.println("        i - insertion sort");
 			System.out.println("        m - merge sort");
+			System.out.println("        x - merge sort from Goodrich");
 			System.out.println("        q - quicksort");
 			System.out.println("        h - heapsort");
 			System.exit(0);
@@ -98,6 +140,9 @@ public class CompareSorts {
 		if (sorts.contains("m"))
 			for (int i = 0; i < repeat; i++)
 				timeMergesort(a, n);
+		if (sorts.contains("x"))
+			for (int i = 0; i < repeat; i++)
+				timeMergesortGoodrich(a, n);
 		if (sorts.contains("q"))
 			for (int i = 0; i < repeat; i++)
 				timeQuicksort(a, n);
