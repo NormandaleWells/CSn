@@ -72,7 +72,7 @@ public final class BinarySearch {
 	public static <T extends Comparable<T>> int index(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
 		assert ArrayLib.isSorted(a, lo, hi);
-		return index(a, lo, hi, value, new WrapComparable<T>());
+		return index(a, lo, hi, value, new DefaultComparable<T>());
 	}
 
 	public static <T extends Comparable<T>> int index(T[] a, T value) {
@@ -146,7 +146,7 @@ public final class BinarySearch {
 	public static <T extends Comparable<T>> int lowerBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
 		assert ArrayLib.isSorted(a, lo, hi);
-		return lowerBound(a, lo, hi, value, new WrapComparable<T>());
+		return lowerBound(a, lo, hi, value, new DefaultComparable<T>());
 	}
 
 	// lowerBound returns the index of the first (lowest-index)
@@ -230,7 +230,7 @@ public final class BinarySearch {
 	public static <T extends Comparable<T>> int upperBound(T[] a, int lo, int hi, T value) {
 		checkArguments(a, lo, hi, true);
 		assert ArrayLib.isSorted(a, lo, hi);
-		return upperBound(a, lo, hi, value, new WrapComparable<T>());
+		return upperBound(a, lo, hi, value, new DefaultComparable<T>());
 	}
 
 	// upperBound returns the index of the first (lowest-index)

@@ -33,7 +33,7 @@ public class Sort {
 	}
 
 	public static <T extends Comparable<T>> void selectionSort(T[] a) {
-		selectionSort(a, new WrapComparable<T>());
+		selectionSort(a, new DefaultComparable<T>());
 	}
 
 		// insertionSort and variants
@@ -47,7 +47,7 @@ public class Sort {
 	}
 
 	public static <T extends Comparable<T>> void insertionSort(T[] a, int lo, int hi) {
-		Sort.insertionSort(a, lo, hi, new WrapComparable<T>());
+		Sort.insertionSort(a, lo, hi, new DefaultComparable<T>());
 	}
 
 	public static <T extends Comparable<T>> void insertionSort(T[] a, Comparator<T> comp) {
@@ -96,7 +96,7 @@ public class Sort {
 	}
 
 	public static <T extends Comparable<T>> void mergeSort(T[] a) {
-		mergeSort(a, new WrapComparable<T>());
+		mergeSort(a, new DefaultComparable<T>());
 	}
 
 	/** Merge contents of arrays S1 and S2 into properly sized array S. */
@@ -134,7 +134,7 @@ public class Sort {
 	}
 
 	public static <T extends Comparable<T>> void bottomUpMergeSort(T[] a) {
-		bottomUpMergeSort(a, new WrapComparable<T>());
+		bottomUpMergeSort(a, new DefaultComparable<T>());
 	}
 
 	// quickSort and variants

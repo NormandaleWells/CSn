@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class LinkedMaxPQ<T extends Comparable<T>> implements MaxPQ<T>, Iterable<T> {
 
 	LinkedList<T> q = new LinkedList<T>();
-	Comparator<T> comp = new WrapComparable<T>();
+	Comparator<T> comp = new DefaultComparable<T>();
 
 	@Override
 	public void insert(T value) {

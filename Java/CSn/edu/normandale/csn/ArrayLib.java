@@ -231,7 +231,7 @@ public final class ArrayLib {
 	// for i in [r,hi) a[i] >= a[r]
 	public static <T extends Comparable<T>> int minElement(T[] a, int lo, int hi) {
 		checkArguments(a, lo, hi, false);
-		return minElement(a, lo, hi, new WrapComparable<T>());
+		return minElement(a, lo, hi, new DefaultComparable<T>());
 	}
 
 	// minElement returns the index of the smallest
@@ -309,7 +309,7 @@ public final class ArrayLib {
 	// for i in [r,hi) a[i] <= a[r]
 	public static <T extends Comparable<T>> int maxElement(T[] a, int lo, int hi) {
 		checkArguments(a, lo, hi, false);
-		return maxElement(a, lo, hi, new WrapComparable<T>());
+		return maxElement(a, lo, hi, new DefaultComparable<T>());
 	}
 
 	// maxElement returns the index of the largest
@@ -573,7 +573,7 @@ public final class ArrayLib {
 	}
 	
 	public static <T extends Comparable<T>> boolean isSorted(T[] a, int lo, int hi) {
-		return isSorted(a, lo, hi, new WrapComparable<T>());
+		return isSorted(a, lo, hi, new DefaultComparable<T>());
 	}
 
 	public static <T> boolean isSorted(T[] a, Comparator<T> c) {
@@ -582,7 +582,7 @@ public final class ArrayLib {
 	}
 
 	public static <T extends Comparable<T>> boolean isSorted(T[] a) {
-		return isSorted(a, new WrapComparable<T>());
+		return isSorted(a, new DefaultComparable<T>());
 	}
 
 	public static <T> String toString(T[] a, int lo, int hi) {
